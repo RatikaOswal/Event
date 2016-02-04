@@ -7,7 +7,7 @@
         <item
             android:id="@+id/myschedule_item"
             android:title="@string/my_schedule"
-            android:icon="@drawable/Calendar_48">
+            android:icon="@drawable/calendar">
         </item>
     </group>
     <group
@@ -16,11 +16,11 @@
         <item
             android:id="@+id/explore_item"
             android:title="@string/explore"
-            android:icon="@drawable/Binoculars-48">
+            android:icon="@drawable/binoculars">
 
         </item>
         <item
-            android:icon="@drawable/Map_48"
+            android:icon="@drawable/map"
             android:id="@+id/map_item"
             android:title="@string/map">
 
@@ -33,11 +33,11 @@
         <item
             android:id="@+id/settings_item"
             android:title="@string/settings"
-            android:icon="@drawable/Settings_48">
+            android:icon="@drawable/settings">
         </item>
 
         <item
-            android:icon="@drawable/About_48"
+            android:icon="@drawable/about"
             android:id="@+id/about_item"
             android:title="@string/about">
 

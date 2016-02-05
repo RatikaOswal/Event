@@ -3,7 +3,6 @@ package com.example.event.eventapp.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -20,11 +19,12 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Explore extends Fragment {
+public class Explore extends Fragment  {
     public ArrayList<Item> eventitem;
     private RecyclerView mListView;
-    private RecyclerView.Adapter ListOfExploreItem;
+    private RecyclerView.Adapter ExploreItemList;
     private View view;
+   // private ExploreItemList.ViewHolderExploreList.ClickListener clickListener;
    // public RecyclerView.LayoutManager mLayoutManager;
 
 
@@ -52,8 +52,8 @@ public class Explore extends Fragment {
         eventitem=new ArrayList();
 
         mListView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        ListOfExploreItem = new ExploreItemList(getActivity(),getData());
-        mListView.setAdapter(ListOfExploreItem);
+        ExploreItemList = new ExploreItemList(getActivity(),getData());
+        mListView.setAdapter(ExploreItemList);
 
 
         return view;
@@ -93,4 +93,6 @@ public class Explore extends Fragment {
     public void onDetach() {
         super.onDetach();
     }
+
+
 }

@@ -7,6 +7,8 @@
     <color name="Text_time">#b7000000</color>
     <color name="Text_venue">#7d000000</color>
     <color name="Text_title">#000000</color>>
+    <color name="fragment_backgrnd">#dbd9da</color>>
+    <color name="overlayBlue">#CC2196F3</color>
 
 
 

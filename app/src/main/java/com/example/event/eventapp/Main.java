@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.event.eventapp.activity.SearchActivity;
 import com.example.event.eventapp.fragments.About;
 import com.example.event.eventapp.fragments.Explore;
 import com.example.event.eventapp.fragments.My_Schedule;
@@ -89,16 +90,20 @@ public FragmentManager fragmentManager;
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.toolbar)
-        {
-            return true;
-        }
-        else if (id == android.R.id.home) {
-            if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+        switch(id){
+            case android.R.id.home:
+            if (drawerLayout.isDrawerOpen(GravityCompat.START))
+            {
                 drawerLayout.closeDrawer(GravityCompat.START);
             } else {
                 drawerLayout.openDrawer(GravityCompat.START);
             }
+                break;
+
+            case R.id.search:
+                Intent intent = new Intent(this, SearchActivity.class);
+                startActivity(intent);
+                return true;
         }
             return super.onOptionsItemSelected(item);
 
@@ -148,6 +153,7 @@ public FragmentManager fragmentManager;
         }
         menu.setCheckable(true);
         drawerLayout.closeDrawers();
+
         return true;
     }
 

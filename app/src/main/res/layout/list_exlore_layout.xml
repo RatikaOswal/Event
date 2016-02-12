@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <android.support.v7.widget.CardView
+
+<android.support.v7.widget.CardView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
+        android:layout_margin="2dp"
+        card_view:cardBackgroundColor="@color/white"
         android:descendantFocusability="blocksDescendants"
-        card_view:cardCornerRadius="4dp">
+        card_view:cardCornerRadius="0dp">
 
 
         <LinearLayout
@@ -18,13 +22,21 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
             <ImageView
                 android:id="@+id/CoverView"
                 android:layout_width="wrap_content"
-                android:layout_height="125dp"
+                android:layout_height="130dp"
                 android:background="@drawable/image_background"
                 >
+
             </ImageView>
+
             <TextView
                 android:id="@+id/event_time"
                 android:layout_width="match_parent"
@@ -33,23 +45,22 @@
                 android:textAllCaps="true"
                 android:paddingLeft="15dp"
                 android:text="Date and Time"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textStyle="normal"
-                android:paddingBottom="3dp"
-                android:paddingTop="3dp"
+                android:paddingBottom="7dp"
+                android:paddingTop="7dp"
+                android:typeface="sans" />
 
-                />
             <TextView
                 android:id="@+id/event_name"
                 android:text="Tile of Event"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/Text_title"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:paddingLeft="15dp"
-
-                />
+                android:typeface="sans" />
 
             <TextView
                 android:id="@+id/event_venue"
@@ -57,17 +68,94 @@
                 android:text="Location"
                 android:layout_height="wrap_content"
                 android:textColor="@color/Text_venue"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 android:textStyle="normal"
+                android:paddingTop="7dp"
                 android:paddingLeft="15dp"
-                android:paddingBottom="3dp"
-                />
+                android:paddingBottom="10dp"
+                android:typeface="sans" />
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <RelativeLayout
+
+                android:orientation="horizontal"
+                android:outlineProvider="paddedBounds"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                >
+
+                <TextView
+                    android:id="@+id/tag1"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="#TAG1"
+                    android:padding="5dp"
+                    android:textColor="@color/Text_title"
+                    android:textSize="12sp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="10dp"
+                    />
+                <TextView
+                    android:id="@+id/tag2"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="#TAG2"
+                    android:textColor="@color/Text_title"
+                    android:textSize="12sp"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/tag1"
+                    android:layout_marginLeft="10dp"
+                    />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/darker_gray"
+                    android:layout_toLeftOf="@+id/share"
+                    android:id="@+id/view" />
+
+                <ImageView
+                    android:id="@+id/share"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/share"
+                    android:layout_toLeftOf="@+id/view2"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/darker_gray"
+                    android:layout_toLeftOf="@+id/bookmark"
+                    android:id="@+id/view2" />
+
+                <ImageView
+                    android:id="@+id/bookmark"
+                    android:layout_alignParentRight="true"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:background="@drawable/sstar"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                   android:layout_centerVertical="true"
+                    />
+                </RelativeLayout>
 
 
 
 
-        </LinearLayout>
+    </LinearLayout>
 
-    </android.support.v7.widget.CardView>
+</android.support.v7.widget.CardView>
 
 </LinearLayout>

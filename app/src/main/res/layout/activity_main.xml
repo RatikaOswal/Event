@@ -12,13 +12,12 @@
         android:layout_height="match_parent"
 
         >
-
         <!-- The tool bar-->
         <FrameLayout
             android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white"
+            android:background="@color/fragment_backgrnd"
             android:layout_gravity="center_horizontal|bottom"
             />
 
@@ -36,15 +35,21 @@
 
 
     <!-- The navigation drawer -->
+
     <android.support.design.widget.NavigationView
         android:id="@+id/nvView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/primaryBackGround"
+        app:itemTextColor="@color/Text_title"
+        app:itemTextAppearance="@color/Text_title"
+        app:itemIconTint="@color/Text_title"
         android:scrollbars="none"
+        android:background="@color/white"
         app:headerLayout="@layout/header_nav"
-        app:menu="@menu/menu_nav"/>
+        app:menu="@menu/menu_nav"
+
+    />
 
 </android.support.v4.widget.DrawerLayout>
 

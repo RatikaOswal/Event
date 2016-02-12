@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="true"
-    android:background="@color/white"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -23,6 +22,7 @@
         android:layout_height="86dp"
         android:src="@drawable/ic_account_circle"
         app:border_width="2dp"
+        android:paddingTop="10dp"
         app:border_color="@color/border"
         android:layout_gravity="center"
         android:layout_alignParentTop="true"
@@ -34,10 +34,10 @@
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:text="UserName"
+        android:padding="10dp"
         android:textStyle="bold"
         android:textSize="18sp"
         android:layout_below="@+id/circleImageViewProfile"
-        android:layout_alignRight="@+id/circleImageViewProfile"
-        android:layout_alignEnd="@+id/circleImageViewProfile" />
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

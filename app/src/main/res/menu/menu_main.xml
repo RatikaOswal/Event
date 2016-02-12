@@ -4,9 +4,10 @@
     tools:context=".Main"
 
     >
-    <item
-        android:id="@+id/menu"
-        android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never"
-        />
-</menu>
+
+    <item android:id="@+id/search"
+        android:title="Search"
+        android:icon="@drawable/ic_search"
+        app:showAsAction="ifRoom"
+        android:actionViewClass="android.widget.SearchView" />
+    </menu>

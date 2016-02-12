@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="primaryBackGround">#838484</color>
-    <color name="toolbar_background">#4fe6ff</color>
+    <color name="toolbar_background">#32add6</color>
     <color name="white">#ffffff</color>
     <color name="border">#FFEEEEEE</color>
     <color name="Text_time">#b7000000</color>
@@ -9,6 +9,10 @@
     <color name="Text_title">#000000</color>>
     <color name="fragment_backgrnd">#dbd9da</color>>
     <color name="overlayBlue">#CC2196F3</color>
+    <color name="floating_bg">#6ac5f4f4</color>>
+    <color name="transparent">#568c8c8c</color>>
+    <color name="orange">#ffc870</color>>
+    <color name="green">#91ff79</color>>
 
 
 

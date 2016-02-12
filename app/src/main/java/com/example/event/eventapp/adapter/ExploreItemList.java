@@ -60,6 +60,8 @@ public class ExploreItemList extends RecyclerView.Adapter<ExploreItemList.ViewHo
         holder.title.setText(current.title);
         holder.venue.setText(current.venue);
         holder.cover.setImageResource(current.image);
+        holder.tag1.setText(current.tag1);
+        holder.tag2.setText(current.tag2);
 
     }
 
@@ -69,7 +71,7 @@ public class ExploreItemList extends RecyclerView.Adapter<ExploreItemList.ViewHo
     public int getItemCount() {
 
         return 5;
-        //return data.getSize();
+        //back data.getSize();
 
     }
 
@@ -77,8 +79,8 @@ public class ExploreItemList extends RecyclerView.Adapter<ExploreItemList.ViewHo
 
          private ImageView cover;
          private TextView time;
-         private TextView title;
-         private TextView venue;
+         private TextView title,tag2;
+         private TextView venue,tag1;
          private Context context;
          // public ClickListener clickListener;
 
@@ -95,6 +97,8 @@ public class ExploreItemList extends RecyclerView.Adapter<ExploreItemList.ViewHo
              time = (TextView) itemView.findViewById(R.id.event_time);
              title = (TextView) itemView.findViewById(R.id.event_name);
              venue = (TextView) itemView.findViewById(R.id.event_venue);
+             tag1 =(TextView) itemView.findViewById(R.id.tag1);
+             tag2 =(TextView) itemView.findViewById(R.id.tag2);
 
          }
 

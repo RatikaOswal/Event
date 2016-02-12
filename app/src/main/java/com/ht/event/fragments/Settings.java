@@ -1,4 +1,4 @@
-package com.example.event.eventapp.fragments;
+package com.ht.event.fragments;
 
 
 import android.content.Context;

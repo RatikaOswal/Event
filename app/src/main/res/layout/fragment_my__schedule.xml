@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/my_schedule"
-    tools:context="com.example.event.eventapp.fragments.My_Schedule">
+    tools:context="com.ht.event.fragments.My_Schedule">
 
 
 </FrameLayout>

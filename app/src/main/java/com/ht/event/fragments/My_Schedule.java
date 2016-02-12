@@ -1,4 +1,4 @@
-package com.example.event.eventapp.fragments;
+package com.ht.event.fragments;
 
 
 import android.content.Context;
@@ -14,10 +14,10 @@ import com.example.event.eventapp.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class About extends Fragment {
+public class My_Schedule extends Fragment {
 
 
-    public About() {
+    public My_Schedule() {
         // Required empty public constructor
     }
 
@@ -35,9 +35,8 @@ public class About extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_about, container, false);
+        return inflater.inflate(R.layout.fragment_my__schedule, container, false);
     }
-
 
     @Override
     public void onDestroy() {
@@ -49,4 +48,3 @@ public class About extends Fragment {
         super.onDetach();
     }
 }
-

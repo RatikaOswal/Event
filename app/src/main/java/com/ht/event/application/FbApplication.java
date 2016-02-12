@@ -1,4 +1,4 @@
-package com.example.event.eventapp.application;
+package com.ht.event.application;
 
 
 import android.app.Application;

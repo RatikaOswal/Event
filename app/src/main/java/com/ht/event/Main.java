@@ -1,9 +1,8 @@
-package com.example.event.eventapp;
+package com.ht.event;
 
 
 import android.content.Intent;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
@@ -15,15 +14,15 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
-import com.example.event.eventapp.activity.SearchActivity;
-import com.example.event.eventapp.fragments.About;
-import com.example.event.eventapp.fragments.Explore;
-import com.example.event.eventapp.fragments.My_Schedule;
-import com.example.event.eventapp.fragments.NaviMap;
-import com.example.event.eventapp.fragments.Settings;
+import com.example.event.eventapp.R;
+import com.ht.event.activity.SearchActivity;
+import com.ht.event.fragments.About;
+import com.ht.event.fragments.Explore;
+import com.ht.event.fragments.My_Schedule;
+import com.ht.event.fragments.NaviMap;
+import com.ht.event.fragments.Settings;
 
 public class Main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 

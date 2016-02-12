@@ -1,4 +1,4 @@
-package com.example.event.eventapp.modle;
+package com.ht.event.modle;
 
 import java.io.Serializable;
 

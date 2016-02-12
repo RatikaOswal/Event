@@ -1,4 +1,4 @@
-package com.example.event.eventapp.fragments;
+package com.ht.event.fragments;
 
 
 import android.content.Context;
@@ -11,8 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.event.eventapp.R;
-import com.example.event.eventapp.adapter.ExploreItemList;
-import com.example.event.eventapp.modle.Item;
+import com.ht.event.adapter.ExploreItemList;
+import com.ht.event.modle.Item;
 
 import java.util.ArrayList;
 

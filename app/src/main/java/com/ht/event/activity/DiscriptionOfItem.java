@@ -1,18 +1,14 @@
-package com.example.event.eventapp.activity;
+package com.ht.event.activity;
 
 
-import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.event.eventapp.R;
 import com.github.clans.fab.FloatingActionButton;

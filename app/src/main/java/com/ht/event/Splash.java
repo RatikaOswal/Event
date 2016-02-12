@@ -1,4 +1,4 @@
-package com.example.event.eventapp;
+package com.ht.event;
 
 
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+
+import com.example.event.eventapp.R;
 
 public class Splash extends AppCompatActivity {
 

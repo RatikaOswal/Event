@@ -1,4 +1,4 @@
-package com.example.event.eventapp.adapter;
+package com.ht.event.adapter;
 
 
 import android.content.Context;
@@ -13,8 +13,8 @@ import android.widget.TextView;
 
 
 import com.example.event.eventapp.R;
-import com.example.event.eventapp.activity.DiscriptionOfItem;
-import com.example.event.eventapp.modle.Item;
+import com.ht.event.activity.DiscriptionOfItem;
+import com.ht.event.modle.Item;
 import java.util.ArrayList;
 
 

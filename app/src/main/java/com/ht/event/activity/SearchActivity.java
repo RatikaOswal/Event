@@ -1,4 +1,4 @@
-package com.example.event.eventapp.activity;
+package com.ht.event.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

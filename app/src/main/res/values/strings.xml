@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">EventApp</string>
+    <string name="app_name">htEvents</string>
     <string name="opendrawer">Open</string>
     <string name="closedrawer">Close</string>
     <string name="hello_world">Hello world!</string>

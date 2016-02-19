@@ -49,6 +49,17 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
         viewHolderExploreList = new ViewHolderExploreList(view,context,eventitem);
 
 
+//bookmark
+        final ImageView mStar=(ImageView)view.findViewById(R.id.bookmark);
+        mStar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+
+            }
+        });
+
+
         return viewHolderExploreList;
 
 

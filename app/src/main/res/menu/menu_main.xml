@@ -11,9 +11,9 @@
         app:showAsAction="ifRoom"/>
 
 
-    <item android:id="@+id/search"
-        android:title="Search"
-        android:icon="@drawable/ic_search"
+    <item android:id="@+id/filter"
+        android:title="Filter"
+        android:icon="@drawable/ic_filter"
         app:showAsAction="ifRoom"
         android:actionViewClass="android.widget.SearchView" />
 

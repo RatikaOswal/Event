@@ -17,15 +17,20 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.event.eventapp.R;
+import com.ht.event.activity.FilterActivity;
 import com.ht.event.fragments.AboutFragment;
 import com.ht.event.fragments.ExploreFragment;
 import com.ht.event.fragments.MyScheduleFragment;
+import com.ht.event.fragments.MyScheduleFragment;
 import com.ht.event.fragments.NaviMapFragment;
+import com.ht.event.fragments.NaviMapFragment;
+import com.ht.event.fragments.SettingsFragment;
 import com.ht.event.fragments.SettingsFragment;
 
 public class Main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-public FragmentManager fragmentManager;
+
+    public FragmentManager fragmentManager;
 
     private Toolbar mToolbar;
     private NavigationView mNvDrawer;
@@ -55,9 +60,9 @@ public FragmentManager fragmentManager;
         actionBarDrawerToggle.syncState();
 
         // Setting navigation view
-
         mNvDrawer = (NavigationView) findViewById(R.id.nvView);
         mNvDrawer.setNavigationItemSelectedListener(this);
+        mNvDrawer.getMenu();
 
         //default fragment
         ExploreFragment explore = new ExploreFragment();
@@ -66,7 +71,6 @@ public FragmentManager fragmentManager;
         fragmentTransaction.commit();
 
     }
-
 
     @Override
     public void onBackPressed() {
@@ -105,6 +109,12 @@ public FragmentManager fragmentManager;
             }
                 break;
 
+            case R.id.filter:
+            {
+                Intent intent =new Intent(this,FilterActivity.class);
+                startActivity(intent);
+                    return true;
+            }
 
         }
             return super.onOptionsItemSelected(item);
@@ -115,7 +125,6 @@ public FragmentManager fragmentManager;
 
     @Override
     public boolean onNavigationItemSelected(MenuItem menu) {
-
         int ids = menu.getItemId();
 
         switch (ids) {

@@ -48,6 +48,18 @@ public class ExploreItemList extends RecyclerView.Adapter<ExploreItemList.ViewHo
         ViewHolderExploreList viewHolderExploreList;
         viewHolderExploreList = new ViewHolderExploreList(view,context,eventitem);
 
+
+//bookmark
+        final ImageView mStar=(ImageView)view.findViewById(R.id.bookmark);
+        mStar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+
+            }
+        });
+
+
         return viewHolderExploreList;
 
 
@@ -101,6 +113,7 @@ public class ExploreItemList extends RecyclerView.Adapter<ExploreItemList.ViewHo
              tag2 =(TextView) itemView.findViewById(R.id.tag2);
 
          }
+
 
 
          @Override

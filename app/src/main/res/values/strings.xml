@@ -16,12 +16,16 @@
     <string name="registerinfo">Click to LogIn</string>
     <string name="email">Email</string>>
     <string name="app_id">171135796238815</string>>
+    <string name="search_event">Search Events</string>>
+    <string name="apply">apply</string>
 
-<!-- TODO: Remove or change this placeholder text -->
+
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-        <string name="title_activity_discription_of_item">DiscriptionOfItem</string>
-        <string name="title_activity_registration">Registration</string>
+    <string name="title_activity_discription_of_item">DiscriptionOfItem</string>
+    <string name="title_activity_registration">Registration</string>
     <string name="action_settings">Settings</string>
-        <string name="title_activity_search">SearchActivity</string>
+    <string name="title_activity_search">SearchActivity</string>
+    <string name="title_activity_filter">FilterActivity</string>
 
 </resources>

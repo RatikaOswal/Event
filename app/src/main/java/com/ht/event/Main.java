@@ -17,16 +17,17 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.event.eventapp.R;
-import com.ht.event.activity.SearchActivity;
-import com.ht.event.fragments.About;
-import com.ht.event.fragments.Explore;
+import com.ht.event.activity.FilterActivity;
+import com.ht.event.fragments.AboutFragment;
+import com.ht.event.fragments.ExploreFragment;
 import com.ht.event.fragments.My_Schedule;
 import com.ht.event.fragments.NaviMap;
 import com.ht.event.fragments.Settings;
 
 public class Main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-public FragmentManager fragmentManager;
+
+    public FragmentManager fragmentManager;
 
     private Toolbar mToolbar;
     private NavigationView mNvDrawer;
@@ -99,10 +100,13 @@ public FragmentManager fragmentManager;
             }
                 break;
 
-            case R.id.search:
-                Intent intent = new Intent(this, SearchActivity.class);
+            case R.id.filter:
+            {
+                Intent intent =new Intent(this,FilterActivity.class);
                 startActivity(intent);
-                return true;
+                    return true;
+            }
+
         }
             return super.onOptionsItemSelected(item);
 
@@ -123,7 +127,7 @@ public FragmentManager fragmentManager;
                 fragmentTransaction.commit();
                 break;
             case R.id.explore_item:
-                Explore explore = new Explore();
+                ExploreFragment explore = new ExploreFragment();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.content, explore);
                 fragmentTransaction.commit();
@@ -142,7 +146,7 @@ public FragmentManager fragmentManager;
 
                 break;
             case R.id.about_item:
-                About about = new About();
+                AboutFragment about = new AboutFragment();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.content, about);
                 fragmentTransaction.commit();

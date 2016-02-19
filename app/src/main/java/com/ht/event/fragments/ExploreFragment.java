@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.event.eventapp.R;
 import com.ht.event.adapter.ExploreItemList;
@@ -19,16 +20,17 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Explore extends Fragment  {
+public class ExploreFragment extends Fragment  {
     public ArrayList<Item> eventitem;
     private RecyclerView mListView;
     private RecyclerView.Adapter ExploreItemList;
     private View view;
+    private ImageView mStar;
    // private ExploreItemList.ViewHolderExploreList.ClickListener clickListener;
    // public RecyclerView.LayoutManager mLayoutManager;
 
 
-    public Explore() {
+    public ExploreFragment() {
         // Required empty public constructor
     }
 
@@ -41,6 +43,9 @@ public class Explore extends Fragment  {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
     }
 
     @Override
@@ -48,18 +53,15 @@ public class Explore extends Fragment  {
                              Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_explore, container, false);
-        mListView =(RecyclerView) view.findViewById(R.id.listview_explore);
-        eventitem=new ArrayList();
+        mListView = (RecyclerView) view.findViewById(R.id.listview_explore);
+        eventitem = new ArrayList();
 
         mListView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        ExploreItemList = new ExploreItemList(getActivity(),getData());
+        ExploreItemList = new ExploreItemList(getActivity(), getData());
         mListView.setAdapter(ExploreItemList);
 
-
         return view;
-
     }
-
     public static ArrayList<Item> getData()
 
     {

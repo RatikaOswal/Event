@@ -12,13 +12,11 @@ import android.view.View;
 import android.widget.ExpandableListView;
 
 import com.example.event.eventapp.R;
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.common.api.GoogleApiClient;
+
 import com.ht.event.adapter.FilterAdapter;
 import com.ht.event.modle.Category;
 import com.ht.event.modle.DataProvider;
-import com.ht.event.modle.SubCategory;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -78,7 +76,7 @@ public class FilterActivity extends AppCompatActivity
 
                 int id = item.getItemId();
 
-                if (id == R.id.home)
+                if (id == android.R.id.home)
                 {
                     onBackPressed();
                     return true;

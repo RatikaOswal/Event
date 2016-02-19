@@ -13,12 +13,13 @@ import android.widget.TextView;
 
 
 import com.example.event.eventapp.R;
-import com.ht.event.activity.DiscriptionOfItem;
+import com.ht.event.activity.DiscriptionItemListActivity;
+
 import com.ht.event.modle.Item;
 import java.util.ArrayList;
 
 
-public class ExploreItemList extends RecyclerView.Adapter<ExploreItemList.ViewHolderExploreList>{
+class ExploreItemList extends RecyclerView.Adapter<ExploreItemList.ViewHolderExploreList>{
 
     private LayoutInflater layoutInflater;
     public ArrayList<Item> eventitem ;
@@ -121,7 +122,7 @@ public class ExploreItemList extends RecyclerView.Adapter<ExploreItemList.ViewHo
 
              int position=getAdapterPosition();
              Item item=this.eventitem.get(position);
-             Intent intent=new Intent(this.context, DiscriptionOfItem.class);
+             Intent intent=new Intent(this.context,DiscriptionItemListActivity.class);
              intent.putExtra("CoverImg",item.getImage());
              intent.putExtra("Time",item.getTime());
              intent.putExtra("Title",item.getTitle());

@@ -18,7 +18,7 @@ import com.facebook.Profile;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
-public class Registration extends AppCompatActivity  {
+public class RegistrationActivity extends AppCompatActivity  {
 
     private CallbackManager mcallbackManager;
     private TextView mTextDetail;

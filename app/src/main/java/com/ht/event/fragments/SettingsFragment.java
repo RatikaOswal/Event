@@ -14,10 +14,10 @@ import com.example.event.eventapp.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Settings extends Fragment {
+public class SettingsFragment extends Fragment {
 
 
-    public Settings() {
+    public SettingsFragment() {
         // Required empty public constructor
     }
 

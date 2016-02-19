@@ -20,9 +20,12 @@ import com.example.event.eventapp.R;
 import com.ht.event.activity.FilterActivity;
 import com.ht.event.fragments.AboutFragment;
 import com.ht.event.fragments.ExploreFragment;
-import com.ht.event.fragments.My_Schedule;
-import com.ht.event.fragments.NaviMap;
-import com.ht.event.fragments.Settings;
+import com.ht.event.fragments.MyScheduleFragment;
+import com.ht.event.fragments.MyScheduleFragment;
+import com.ht.event.fragments.NaviMapFragment;
+import com.ht.event.fragments.NaviMapFragment;
+import com.ht.event.fragments.SettingsFragment;
+import com.ht.event.fragments.SettingsFragment;
 
 public class Main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -121,7 +124,7 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
         switch (ids) {
 
             case R.id.myschedule_item:
-                My_Schedule myschedule = new My_Schedule();
+                MyScheduleFragment myschedule = new MyScheduleFragment();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.content, myschedule);
                 fragmentTransaction.commit();
@@ -133,13 +136,13 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
                 fragmentTransaction.commit();
                 break;
             case R.id.map_item:
-                NaviMap navimap = new NaviMap();
+                NaviMapFragment navimap = new NaviMapFragment();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.content, navimap);
                 fragmentTransaction.commit();
                 break;
             case R.id.settings_item:
-                Settings settings = new Settings();
+                SettingsFragment settings = new SettingsFragment();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.content, settings);
                 fragmentTransaction.commit();

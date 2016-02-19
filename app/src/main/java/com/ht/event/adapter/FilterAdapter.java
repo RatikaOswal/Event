@@ -23,8 +23,7 @@ public class FilterAdapter  extends BaseExpandableListAdapter{
    private Context cxt;
     private HashMap<String,List<String>>Filter_category;
     private List<String>Filter_List;
-    private int[] groupStatus;
-    Boolean isActive=false;
+
 
 
     public FilterAdapter(Context cxt,HashMap<String,List<String>>Filter_category,List<String>Filter_List){
@@ -32,17 +31,9 @@ public class FilterAdapter  extends BaseExpandableListAdapter{
         this.cxt=cxt;
         this.Filter_category=Filter_category;
         this.Filter_List=Filter_List;
-        groupStatus = new int[Filter_List.size()];
-        setListEvent();
 
     }
 
-    private void setListEvent()
-    {
-
-
-
-       }
 
         @Override
     public int getGroupCount() {

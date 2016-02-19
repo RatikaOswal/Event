@@ -14,10 +14,10 @@ import com.example.event.eventapp.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NaviMap extends Fragment {
+public class NaviMapFragment extends Fragment {
 
 
-    public NaviMap() {
+    public NaviMapFragment() {
         // Required empty public constructor
     }
 

@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.event.eventapp.R;
-import com.ht.event.adapter.ExploreItemList;
 import com.ht.event.modle.Item;
 
 import java.util.ArrayList;
@@ -56,8 +55,8 @@ public class ExploreFragment extends Fragment  {
         mListView = (RecyclerView) view.findViewById(R.id.listview_explore);
         eventitem = new ArrayList();
 
+
         mListView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        ExploreItemList = new ExploreItemList(getActivity(), getData());
         mListView.setAdapter(ExploreItemList);
 
         return view;

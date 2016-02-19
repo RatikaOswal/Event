@@ -2,6 +2,7 @@ package com.ht.event.modle;
 
 import java.io.Serializable;
 
+
 public class Item implements Serializable
 
 {   public String tag2;
@@ -10,8 +11,25 @@ public class Item implements Serializable
     public String time;
     public String title;
     public String venue;
+    public String price;
+    private boolean is_bookmarked;
 
 
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public boolean is_bookmarked() {
+        return is_bookmarked;
+    }
+
+    public void setIs_bookmarked(boolean is_bookmarked) {
+        this.is_bookmarked = is_bookmarked;
+    }
 
     public void setTag1(String tag1) {
         this.tag1 = tag1;

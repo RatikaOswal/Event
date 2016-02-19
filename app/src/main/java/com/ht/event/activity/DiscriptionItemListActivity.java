@@ -1,24 +1,29 @@
 package com.ht.event.activity;
 
 
-import android.support.v7.app.ActionBar;
+import android.content.Intent;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
+
 import android.widget.TextView;
 
 import com.example.event.eventapp.R;
-import com.github.clans.fab.FloatingActionButton;
 
-public class DiscriptionOfItem extends AppCompatActivity  {
+
+
+
+public class DiscriptionItemListActivity extends AppCompatActivity {
 
     ImageView imageView;
-    TextView time,registerbut;
-    TextView title;
-    FloatingActionButton floatingActionButton;
+    TextView time, registerbut;
+    TextView title, price;
+    private boolean bookmarked;
 
 
     @Override
@@ -28,22 +33,35 @@ public class DiscriptionOfItem extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.discription_of_item);
         imageView = (ImageView) findViewById(R.id.CoverView);
+
         time = (TextView) findViewById(R.id.event_time);
         title = (TextView) findViewById(R.id.event_name);
+        price = (TextView) findViewById(R.id.price);
+        TextView text = (TextView) findViewById(R.id.text_fill);
+        registerbut = (TextView) findViewById(R.id.registerBut);
+
+
         imageView.setImageResource(getIntent().getIntExtra("CoverImg", 00));
         time.setText(getIntent().getStringExtra("Time"));
         title.setText(getIntent().getStringExtra("Title"));
+        price.setText(getIntent().getStringExtra("Price"));
 
         //Setting toolbar
         Toolbar mToolbar = (Toolbar) findViewById(R.id.discrbar);
         setSupportActionBar(mToolbar);
-        final ActionBar ab = getSupportActionBar();
-
+        //final ActionBar ab = getSupportActionBar();
+        // ab.setHomeAsUpIndicator(R.drawable.wbackk);
         getSupportActionBar().setHomeButtonEnabled(true);
-       // ab.setHomeAsUpIndicator(R.drawable.wbackk);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        registerbut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Intent intent = new Intent(DiscriptionItemListActivity.this,RegistrationActivity.class);
+                startActivity(intent);
+            }
+        });
 
 // Create an icon for floating action bar
         /*icon = new ImageView(this);
@@ -58,7 +76,7 @@ public class DiscriptionOfItem extends AppCompatActivity  {
         iconSnap.setImageResource(R.drawable.snap);
 
         ImageView iconShare=new ImageView(this);
-        iconShare.setImageResource(R.drawable.share);
+        iconShare.setImageResource(R.drawable.ic_share);
 
         ImageView iconRegister=new ImageView(this);
         iconRegister.setImageResource(R.drawable.register);
@@ -92,10 +110,6 @@ public class DiscriptionOfItem extends AppCompatActivity  {
 
 
         //register text
-       // registerbut=(TextView)findViewById(R.id.registerbut);
-        //registerbut.setOnClickListener(this);
-
-
 
 
     }
@@ -108,27 +122,49 @@ public class DiscriptionOfItem extends AppCompatActivity  {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
+    public boolean onOptionsItemSelected(MenuItem item) {
 
-        int id=item.getItemId();
-
-        if(id==android.R.id.home)
-        {
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
             onBackPressed();
             return true;
+        }
+
+        switch (id) {
+
+            case R.id.share_ic:
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "");
+                sharingIntent.putExtra(Intent.EXTRA_TITLE, "Check Out: ");
+                startActivity(Intent.createChooser(sharingIntent, "Share via"));
+                break;
+
+            case R.id.bookmark_ic:
+
+                if (!bookmarked) {
+//                    bookmark.setImageResource(R.drawable.ic_starfill);
+                    bookmarked = true;
+
+                } else {
+//                    bookmark.setImageResource(R.drawable.ic_starw);
+                    bookmarked = false;
+                }
+                break;
+
         }
         return super.onOptionsItemSelected(item);
     }
 
    /* @Override
-   public void onClick(View v) {
+    public void onClick(View v) {
 
-       int id=v.getId();
+       /*int id=v.getId();
         switch(id){
             case R.id.flagbut:
                 break;
             case R.id.registerbut:
-                Intent intent= new Intent(v.getContext(),Registration.class);
+                Intent intent= new Intent(v.getContext(),egistrationActivity.class);
                 startActivityForResult(intent,0);
 
                 break;
@@ -142,6 +178,7 @@ public class DiscriptionOfItem extends AppCompatActivity  {
         }*/
 
 
-    }
+
+}
 
 

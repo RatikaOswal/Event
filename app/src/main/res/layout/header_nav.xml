@@ -3,7 +3,9 @@
 <RelativeLayout
     android:id="@+id/containerDrawerImage"
     android:layout_width="match_parent"
+    android:background="@color/toolbar_background"
     android:layout_height="wrap_content"
+    android:paddingTop="10dp"
     android:clickable="true"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -13,7 +15,6 @@
         android:layout_width="match_parent"
         android:layout_height="140dp"
         android:scaleType="fitXY"
-        android:background="@color/toolbar_background"
         android:id="@+id/imageView" />
 
     <de.hdodenhof.circleimageview.CircleImageView

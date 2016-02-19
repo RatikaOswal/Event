@@ -17,7 +17,6 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.event.eventapp.R;
-import com.ht.event.activity.SearchActivity;
 import com.ht.event.fragments.AboutFragment;
 import com.ht.event.fragments.ExploreFragment;
 import com.ht.event.fragments.MyScheduleFragment;
@@ -106,10 +105,7 @@ public FragmentManager fragmentManager;
             }
                 break;
 
-            case R.id.search:
-                Intent intent = new Intent(this, SearchActivity.class);
-                startActivity(intent);
-                return true;
+
         }
             return super.onOptionsItemSelected(item);
 

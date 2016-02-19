@@ -118,6 +118,7 @@ public class DiscriptionItemListActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_discription_of_item, menu);
+
         return true;
     }
 
@@ -143,12 +144,12 @@ public class DiscriptionItemListActivity extends AppCompatActivity {
             case R.id.bookmark_ic:
 
                 if (!bookmarked) {
-//                    bookmark.setImageResource(R.drawable.ic_starfill);
-                    bookmarked = true;
+//                bookmark.setImageResource(R.drawable.ic_starfill);
+                      bookmarked = true;
 
                 } else {
-//                    bookmark.setImageResource(R.drawable.ic_starw);
-                    bookmarked = false;
+//                bookmark.setImageResource(R.drawable.ic_starw);
+                      bookmarked = false;
                 }
                 break;
 

@@ -14,10 +14,10 @@ import com.example.event.eventapp.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class NaviMap extends Fragment {
+public class AboutFragment extends Fragment {
 
 
-    public NaviMap() {
+    public AboutFragment() {
         // Required empty public constructor
     }
 
@@ -35,8 +35,9 @@ public class NaviMap extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_navi_map, container, false);
+        return inflater.inflate(R.layout.fragment_about, container, false);
     }
+
 
     @Override
     public void onDestroy() {
@@ -48,3 +49,4 @@ public class NaviMap extends Fragment {
         super.onDetach();
     }
 }
+

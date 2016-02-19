@@ -9,8 +9,14 @@
     <item name="windowNoTitle">true</item>
     <item name="windowActionBar">false</item>
 
+    </style>>
+<style
+     name="EditTextTheme">
+        <!-- Used for the bottom line when not selected / focused -->
+        <item name="colorControlNormal">#ffffff</item>
+    <item name="colorControlActivated">#ffffff</item>
+    <item name="colorControlHighlight">#ffffff</item>
+    </style>>
 
 
-
-</style>>
 </resources>

@@ -24,11 +24,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.ht.event.activity.DiscriptionOfItem"
-            android:label="@string/title_activity_discription_of_item" >
+            android:name="com.ht.event.activity.DiscriptionItemListActivity"
+            android:label="" >
         </activity>
         <activity
-            android:name="com.ht.event.activity.Registration"
+            android:name="com.ht.event.activity.RegistrationActivity"
             android:label="@string/title_activity_registration" >
         </activity>
         <activity
@@ -38,7 +38,7 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name="com.ht.event.activity.SearchActivity"
-            android:label="@string/title_activity_search" >
+            android:label="" >
         </activity>
     </application>
 

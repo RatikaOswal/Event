@@ -12,7 +12,9 @@
     <color name="floating_bg">#6ac5f4f4</color>>
     <color name="transparent">#568c8c8c</color>>
     <color name="orange">#ffc870</color>>
-    <color name="green">#91ff79</color>>
+    <color name="green">#25e00a</color>>
+    <color name="transparent_gray">#94808080</color>
+    <color name="transparent_black">#8c000000</color>
 
 
 

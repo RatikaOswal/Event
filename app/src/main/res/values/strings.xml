@@ -16,6 +16,22 @@
     <string name="registerinfo">Click to LogIn</string>
     <string name="email">Email</string>>
     <string name="app_id">171135796238815</string>>
+    <string name="search_event">Search Events</string>>
+
+
+    <string name="text">Views in Android development provide users with the buttons, images and other controls to navigate through the Android app. To create a footer view that aligns at the bottom of the screen, you must create a LinearLayout XML element and set the buttons in the layout with the layout_alignParentBottom property to true. Each Android app is designed in the Eclipse software, and you review your results in the Android emulator.
+
+Ads by Google
+Recover/Repair Data Files
+We Recover 100% data from Lost Corrupted files. Free Analysis!www.stellarinfo.co.in​/​File-Recovery
+Step 1
+Click the Windows "Start" button and type "eclipse.exe" in the search text box. Press "Enter" to locate the Eclipse executable. Double-click "eclipse.exe" to open the development software.
+
+Step 2
+Click the "res" directory to see a list of XML files that make up your menus. Double-click the XML file you want to use to display the menu.
+
+Step 5
+Save the file changes and click the Eclipse "Run" button to view the new view in the Android emulator.</string>
 
 <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

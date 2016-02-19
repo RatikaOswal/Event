@@ -6,16 +6,38 @@
     tools:context="com.ht.event.activity.SearchActivity">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/search_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/toolbar_background"
         android:minHeight="?attr/actionBarSize"
         app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar"
-        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <ImageView
+            android:id="@+id/search_ic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_search"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="7dp"
+
+            />
+
+    <EditText
+        android:id="@+id/edtSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:imeOptions="actionSearch"
+        android:textColor="@color/white"
+        android:hint="@string/search_event"
+        android:layout_marginRight="20dp"
+        android:textColorHint="@color/fragment_backgrnd"
+        android:theme="@style/EditTextTheme"
 
 
 
         />
-
+    </android.support.v7.widget.Toolbar>
 </LinearLayout>

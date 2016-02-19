@@ -18,11 +18,11 @@ import android.widget.Toast;
 
 import com.example.event.eventapp.R;
 import com.ht.event.activity.SearchActivity;
-import com.ht.event.fragments.About;
-import com.ht.event.fragments.Explore;
-import com.ht.event.fragments.My_Schedule;
-import com.ht.event.fragments.NaviMap;
-import com.ht.event.fragments.Settings;
+import com.ht.event.fragments.AboutFragment;
+import com.ht.event.fragments.ExploreFragment;
+import com.ht.event.fragments.MyScheduleFragment;
+import com.ht.event.fragments.NaviMapFragment;
+import com.ht.event.fragments.SettingsFragment;
 
 public class Main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -56,11 +56,18 @@ public FragmentManager fragmentManager;
         actionBarDrawerToggle.syncState();
 
         // Setting navigation view
+
         mNvDrawer = (NavigationView) findViewById(R.id.nvView);
         mNvDrawer.setNavigationItemSelectedListener(this);
-        mNvDrawer.getMenu();
+
+        //default fragment
+        ExploreFragment explore = new ExploreFragment();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.content, explore);
+        fragmentTransaction.commit();
 
     }
+
 
     @Override
     public void onBackPressed() {
@@ -112,45 +119,53 @@ public FragmentManager fragmentManager;
 
     @Override
     public boolean onNavigationItemSelected(MenuItem menu) {
+
         int ids = menu.getItemId();
 
         switch (ids) {
 
             case R.id.myschedule_item:
-                My_Schedule myschedule = new My_Schedule();
+                MyScheduleFragment myschedule = new MyScheduleFragment();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.content, myschedule);
+                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
                 break;
             case R.id.explore_item:
-                Explore explore = new Explore();
+                ExploreFragment explore = new ExploreFragment();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.content, explore);
+                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
                 break;
             case R.id.map_item:
-                NaviMap navimap = new NaviMap();
+                NaviMapFragment navimap = new NaviMapFragment();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.content, navimap);
+                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
                 break;
             case R.id.settings_item:
-                Settings settings = new Settings();
+                SettingsFragment settings = new SettingsFragment();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.content, settings);
+                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
 
                 break;
             case R.id.about_item:
-                About about = new About();
+                AboutFragment about = new AboutFragment();
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.content, about);
+                fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
                 break;
         default: Toast.makeText(this, "Not Implemented!", Toast.LENGTH_SHORT).show();
             break;
         }
-        menu.setCheckable(true);
+
+        menu.setChecked(true);
+        setTitle(menu.getTitle());
         drawerLayout.closeDrawers();
 
         return true;

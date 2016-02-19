@@ -7,7 +7,7 @@
         <item
             android:id="@+id/myschedule_item"
             android:title="@string/my_schedule"
-            android:icon="@drawable/calendar"
+            android:icon="@drawable/ic_calendar"
             >
         </item>
     </group>
@@ -23,7 +23,7 @@
         </item>
 
         <item
-            android:icon="@drawable/map"
+            android:icon="@drawable/ic_map_nav"
             android:id="@+id/map_item"
             android:title="@string/map">
         </item>
@@ -35,13 +35,13 @@
         <item
             android:id="@+id/settings_item"
             android:title="@string/settings"
-            android:icon="@drawable/settings"
+            android:icon="@drawable/ic_settings"
 
             >
         </item>
 
         <item
-            android:icon="@drawable/about"
+            android:icon="@drawable/ic_about"
             android:id="@+id/about_item"
             android:title="@string/about">
 

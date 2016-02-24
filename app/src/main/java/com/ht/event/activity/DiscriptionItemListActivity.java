@@ -18,6 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.event.eventapp.R;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.MapFragment;
@@ -37,10 +38,10 @@ public class DiscriptionItemListActivity extends AppCompatActivity{
     private GoogleMap map;
     MenuItem BookmarkItem;
     Item itemobjects;
-    TextView time, registerbut;
-    TextView title, price,venue,VenueAddress;
+    TextView time, registerbut,discription;
+    TextView title, price,venue,venueAddress;
     private boolean bookmarked;
-
+    private int zoomLevel = 7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,8 @@ public class DiscriptionItemListActivity extends AppCompatActivity{
         price = (TextView) findViewById(R.id.price);
         registerbut = (TextView) findViewById(R.id.registerBut);
         venue = (TextView)findViewById(R.id.venue);
-        VenueAddress = (TextView)findViewById(R.id.venueAddress);
+        venueAddress = (TextView)findViewById(R.id.venueAddress);
+        discription = (TextView) findViewById(R.id.text_discription);
 
 
         itemobjects = (Item) getIntent().getSerializableExtra("Item");
@@ -66,7 +68,10 @@ public class DiscriptionItemListActivity extends AppCompatActivity{
         title.setText(itemobjects.getTitle());
         price.setText(itemobjects.getPrice());
         venue.setText(itemobjects.getVenue());
-        VenueAddress.setText(itemobjects.getVenueAddress());
+        discription.setText(itemobjects.getDiscription());
+        venueAddress.setText(itemobjects.getVenueAddress());
+
+
 
 
         //Setting toolbar
@@ -76,6 +81,18 @@ public class DiscriptionItemListActivity extends AppCompatActivity{
         // ab.setHomeAsUpIndicator(R.drawable.wbackk);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+
+        discription.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent =new Intent(DiscriptionItemListActivity.this,EventDescription.class);
+                intent.putExtra("Item",itemobjects);
+                startActivity(intent);
+            }
+        });
 
         registerbut.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +109,8 @@ public class DiscriptionItemListActivity extends AppCompatActivity{
         {
             map.getUiSettings().setAllGesturesEnabled(false);
 
+            // Move the camera instantly to defaultLatLng.
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(39.233956, -77.484703), zoomLevel));
 
             map.addMarker(new MarkerOptions().position(new LatLng(39.233956, -77.484703))
                             .icon(BitmapDescriptorFactory

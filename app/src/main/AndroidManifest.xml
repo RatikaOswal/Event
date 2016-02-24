@@ -64,6 +64,10 @@
             android:name="com.ht.event.activity.MapLocation"
             android:label="@string/title_activity_map_location" >
         </activity>
+        <activity
+            android:name="com.ht.event.activity.EventDescription"
+            android:label="@string/title_activity_event_description" >
+        </activity>
     </application>
 
 </manifest>

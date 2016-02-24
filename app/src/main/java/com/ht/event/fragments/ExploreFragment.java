@@ -83,8 +83,8 @@ public class ExploreFragment extends Fragment  {
         String []tag2={"#Expo","#Networking","#Race","#Game","#Seminar"};
         String []price={"FREE","FREE","FREE","$5-$8","FREE"};
         String []venueAddress={"Delhi-27","Gurgaon","Faridabad","Saket","Punjabi Bagh"};
-        String []discription={"discription1","discription2","discription3","discription4","discription5"};
-
+        String []discription={"description 1:I can almost bet that the thinking behind not implementing the buttons is because the zoom/pinch gestures are almost considered second nature these days The tradeoff for a lack of this indication (pinch/zoom actions) is a cleaner UI that allows the user to focus on the content, which in this case is finding a location on a map. The buttons within a mobile context of such limited real estate can be of a nuisance and can just get in the way"
+                ,"description 2","description 3","description 4","description 5"};
 
 
         for(int i=0;i<title.length && i<time.length&&i<venue.length&&i<icon.length && i<tag1.length && i<tag2.length && i<price.length ;i++)
@@ -94,7 +94,6 @@ public class ExploreFragment extends Fragment  {
             current.setTime(time[i]);
             current.setTitle(title[i]);
             current.setDiscription(discription[i]);
-           // current.setDefaultLatLng(defaultLatLng[i]);
             current.setVenueAddress(venueAddress[i]);
             current.setVenue(venue[i]);
             current.setTag1(tag1[i]);

@@ -22,7 +22,7 @@
     <string name="venueAddress">Complete Address</string>
     <string name="map_key">AIzaSyAi3gpVBC_egUEjIsEtAgkH0wqYHzp_EP8</string>
 
-    <string name="textDiscription">Views results in the Android emulator.
+    <string name="textDiscription">Text Discription
     </string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -32,6 +32,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_search">SearchActivity</string>
     <string name="title_activity_filter">FilterActivity</string>
-        <string name="title_activity_map_location">MapLocation</string>
+        <string name="title_activity_map_location">Map Location</string>
+        <string name="title_activity_event_description">Event Description</string>
 
 </resources>

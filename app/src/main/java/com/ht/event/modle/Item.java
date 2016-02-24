@@ -14,13 +14,18 @@ public class Item implements Serializable
     public String title;
     public String venue;
     public String price;
-    public String VenueAddress;
+    public String venueAddress;
     public String discription;
     private boolean is_bookmarked;
 
 
+    public String getVenueAddress() {
+        return venueAddress;
+    }
 
-
+    public void setVenueAddress(String venueAddress) {
+        this.venueAddress = venueAddress;
+    }
     public String getDiscription() {
         return discription;
     }
@@ -28,17 +33,6 @@ public class Item implements Serializable
     public void setDiscription(String discription) {
         this.discription = discription;
     }
-
-
-
-    public String getVenueAddress() {
-        return VenueAddress;
-    }
-
-    public void setVenueAddress(String venueAddress) {
-        VenueAddress = venueAddress;
-    }
-
 
     public String getPrice() {
         return price;

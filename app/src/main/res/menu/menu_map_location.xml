@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.ht.event.activity.MapLocation">
+
+
+    <item android:id="@+id/map_settings"
+        android:title="@string/map"
+        android:icon="@drawable/ic_map"
+        app:showAsAction="ifRoom"
+
+         />
+</menu>

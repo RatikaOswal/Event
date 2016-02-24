@@ -3,26 +3,42 @@ package com.ht.event.activity;
 
 import android.content.Intent;
 
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.event.eventapp.R;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.ht.event.modle.Item;
+
+import org.w3c.dom.Text;
 
 
-
-
-public class DiscriptionItemListActivity extends AppCompatActivity {
+public class DiscriptionItemListActivity extends AppCompatActivity{
 
     ImageView imageView;
+    private GoogleMap map;
+    MenuItem BookmarkItem;
+    Item itemobjects;
     TextView time, registerbut;
-    TextView title, price;
+    TextView title, price,venue,VenueAddress;
     private boolean bookmarked;
 
 
@@ -32,19 +48,26 @@ public class DiscriptionItemListActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.discription_of_item);
-        imageView = (ImageView) findViewById(R.id.CoverView);
 
+        RelativeLayout relativeLayout=(RelativeLayout)findViewById(R.id.address_frame);
+
+        imageView = (ImageView) findViewById(R.id.CoverView);
         time = (TextView) findViewById(R.id.event_time);
         title = (TextView) findViewById(R.id.event_name);
         price = (TextView) findViewById(R.id.price);
-        TextView text = (TextView) findViewById(R.id.text_fill);
         registerbut = (TextView) findViewById(R.id.registerBut);
+        venue = (TextView)findViewById(R.id.venue);
+        VenueAddress = (TextView)findViewById(R.id.venueAddress);
 
 
-        imageView.setImageResource(getIntent().getIntExtra("CoverImg", 00));
-        time.setText(getIntent().getStringExtra("Time"));
-        title.setText(getIntent().getStringExtra("Title"));
-        price.setText(getIntent().getStringExtra("Price"));
+        itemobjects = (Item) getIntent().getSerializableExtra("Item");
+        imageView.setImageResource(itemobjects.getImage());
+        time.setText(itemobjects.getTime());
+        title.setText(itemobjects.getTitle());
+        price.setText(itemobjects.getPrice());
+        venue.setText(itemobjects.getVenue());
+        VenueAddress.setText(itemobjects.getVenueAddress());
+
 
         //Setting toolbar
         Toolbar mToolbar = (Toolbar) findViewById(R.id.discrbar);
@@ -58,10 +81,39 @@ public class DiscriptionItemListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(DiscriptionItemListActivity.this,RegistrationActivity.class);
+                Intent intent = new Intent(DiscriptionItemListActivity.this, RegistrationActivity.class);
                 startActivity(intent);
             }
         });
+
+        map = ((MapFragment) getFragmentManager().findFragmentById(R.id.maplocationstatic))
+                .getMap();
+        if( map!=null)
+        {
+            map.getUiSettings().setAllGesturesEnabled(false);
+
+
+            map.addMarker(new MarkerOptions().position(new LatLng(39.233956, -77.484703))
+                            .icon(BitmapDescriptorFactory
+                                    .fromResource(R.drawable.ic_marker)));
+
+        }
+
+
+
+        relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                Intent intent=new Intent(DiscriptionItemListActivity.this,MapLocation.class);
+                intent.putExtra("Item",itemobjects);
+                startActivity(intent);
+
+            }
+        });
+
+
 
 // Create an icon for floating action bar
         /*icon = new ImageView(this);
@@ -118,7 +170,7 @@ public class DiscriptionItemListActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_discription_of_item, menu);
-
+        BookmarkItem =menu.findItem(R.id.bookmark_ic);
         return true;
     }
 
@@ -144,11 +196,11 @@ public class DiscriptionItemListActivity extends AppCompatActivity {
             case R.id.bookmark_ic:
 
                 if (!bookmarked) {
-//                bookmark.setImageResource(R.drawable.ic_starfill);
+                 BookmarkItem.setIcon(R.drawable.ic_starfill);
                       bookmarked = true;
 
                 } else {
-//                bookmark.setImageResource(R.drawable.ic_starw);
+                BookmarkItem.setIcon(R.drawable.ic_starw);
                       bookmarked = false;
                 }
                 break;
@@ -156,6 +208,8 @@ public class DiscriptionItemListActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 
    /* @Override
     public void onClick(View v) {

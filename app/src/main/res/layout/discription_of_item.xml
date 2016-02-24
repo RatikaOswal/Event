@@ -116,15 +116,63 @@
 
 
             <TextView
-                android:id="@+id/text_fill"
+                android:id="@+id/text_discription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/text"
-                android:textColor="#000000"
+                android:text="@string/textDiscription"
+                android:textColor="@color/Text_title"
                 android:padding="50dp"
                 android:layout_below="@+id/event_name"
                 />
 
+
+            <RelativeLayout
+                android:orientation="vertical"
+                android:layout_below="@+id/text_discription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:id="@+id/address_frame"
+
+                >
+                <fragment
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:id="@+id/maplocationstatic"
+                    android:background="@color/white"
+                    android:name="com.google.android.gms.maps.MapFragment"
+                  >
+                </fragment>
+
+                <TextView
+                    android:id="@+id/venue"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/venue"
+                    android:textColor="@color/Text_title"
+                    android:textSize="20sp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingTop="10dp"
+                    android:textStyle="bold"
+                    android:layout_below="@+id/maplocationstatic"
+                   />
+
+                <TextView
+                    android:id="@+id/venueAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/venueAddress"
+                    android:textColor="@color/Text_time"
+                    android:textSize="15sp"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp"
+                    android:layout_below="@+id/venue"
+                    android:layout_gravity="bottom" />
+
+            </RelativeLayout>
         </RelativeLayout>
     </ScrollView>
 

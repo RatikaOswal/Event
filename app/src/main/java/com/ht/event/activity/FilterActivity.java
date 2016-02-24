@@ -22,8 +22,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class FilterActivity extends AppCompatActivity
-{
+public class FilterActivity extends AppCompatActivity {
 
     HashMap<String, List<String>> Filter_category;
     List<String> Filter_list;
@@ -32,8 +31,7 @@ public class FilterActivity extends AppCompatActivity
     ArrayList<Category> category_array = new ArrayList<Category>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter);
 
@@ -60,40 +58,34 @@ public class FilterActivity extends AppCompatActivity
         Exp_list.setAdapter(adapter);
 
 
-        Exp_list.setOnChildClickListener(new ExpandableListView.OnChildClickListener()
-        {
+        Exp_list.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id)
-            {
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
 
 
                 return false;
             }
 
 
-            public boolean onOptionsItemSelected(MenuItem item)
-            {
-
-                int id = item.getItemId();
-
-                if (id == android.R.id.home)
-                {
-                    onBackPressed();
-                    return true;
-                }
-                return false;
-            }
-
-            private int GetPixelFromDips(float pixels)
-            {
+            private int GetPixelFromDips(float pixels) {
                 final float scale = getResources().getDisplayMetrics().density;
                 return (int) (pixels * scale + 0.5f);
             }
         });
     }
 
-    private int GetPixelFromDips(int i)
-    {
+    private int GetPixelFromDips(int i) {
         return 0;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if (id == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return false;
     }
 }

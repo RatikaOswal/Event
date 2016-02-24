@@ -22,6 +22,7 @@ public class DiscriptionItemListActivity extends AppCompatActivity {
 
     ImageView imageView;
     TextView time, registerbut;
+    MenuItem BookmarkItem;
     TextView title, price;
     private boolean bookmarked;
 
@@ -118,6 +119,7 @@ public class DiscriptionItemListActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_discription_of_item, menu);
+        BookmarkItem = menu.findItem(R.id.bookmark_ic);
 
         return true;
     }
@@ -144,11 +146,11 @@ public class DiscriptionItemListActivity extends AppCompatActivity {
             case R.id.bookmark_ic:
 
                 if (!bookmarked) {
-//                bookmark.setImageResource(R.drawable.ic_starfill);
+                    BookmarkItem.setIcon(R.drawable.ic_starfill);
                       bookmarked = true;
 
                 } else {
-//                bookmark.setImageResource(R.drawable.ic_starw);
+                BookmarkItem.setIcon(R.drawable.ic_starw);
                       bookmarked = false;
                 }
                 break;

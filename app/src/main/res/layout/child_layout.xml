@@ -9,13 +9,39 @@
     android:id="@+id/child_txt"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-       android:layout_marginTop="5dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginBottom="5dp"
         android:textColor="@color/Text_title"
+        android:textSize="17dp"
         android:layout_alignParentLeft="true"
     android:layout_centerVertical="true"
     />
+
+    <RadioGroup
+        android:id="@+id/radiogroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
+        
+        <RadioButton
+            android:id="@+id/radiobutton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:button="@drawable/radio_button"/>
+
+
+
+
+
+
+
+    </RadioGroup>
 
 
 

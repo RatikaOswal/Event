@@ -59,8 +59,10 @@ public class FilterActivity extends AppCompatActivity {
         });
 
 
+
     // get the listview
         expListView = (ExpandableListView) findViewById(R.id.expandablelist);
+
 
         // preparing list data
         prepareListData();
@@ -136,3 +138,4 @@ public class FilterActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
     }
+

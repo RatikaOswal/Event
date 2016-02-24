@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:weightSum="1">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/mapbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/toolbar_background"
+        android:minHeight="?attr/actionBarSize"
+        app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+         />
+
+
+    <RelativeLayout
+        android:id="@+id/mapfooter"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:background="@color/white"
+        android:layout_alignParentBottom="true"
+
+        >
+        <TextView
+            android:id="@+id/venuemap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/venue"
+            android:textColor="@color/Text_title"
+            android:textSize="20dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:textStyle="bold"
+
+            />
+        <TextView
+            android:id="@+id/venueAddressmap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/venueAddress"
+            android:textColor="@color/Text_time"
+            android:textSize="15dp"
+            android:paddingLeft="10dp"
+            android:paddingBottom="10dp"
+            android:layout_below="@+id/venuemap"
+            />
+
+    </RelativeLayout>
+
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/maplocation"
+        android:tag="map_fragment"
+        android:layout_below="@+id/mapbar"
+        android:layout_above="@id/mapfooter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="com.google.android.gms.maps.MapFragment">
+         </fragment>
+
+
+
+</RelativeLayout>

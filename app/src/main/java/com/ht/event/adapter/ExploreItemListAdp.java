@@ -156,10 +156,14 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
              int position=getAdapterPosition();
              Item item=this.eventitem.get(position);
              Intent intent=new Intent(this.context, DiscriptionItemListActivity.class);
-             intent.putExtra("CoverImg",item.getImage());
+             intent.putExtra("Item",item);
+
+            /* intent.putExtra("CoverImg",item.getImage());
              intent.putExtra("Time",item.getTime());
              intent.putExtra("Title",item.getTitle());
              intent.putExtra("Price",item.getPrice());
+             intent.putExtra("venue",item.getVenue());
+             intent.putExtra("VenueAddress",item.getVenueAddress());*/
              this.context.startActivity(intent);
 
 

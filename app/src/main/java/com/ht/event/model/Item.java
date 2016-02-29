@@ -1,6 +1,4 @@
-package com.ht.event.modle;
-
-import com.google.android.gms.maps.model.LatLng;
+package com.ht.event.model;
 
 import java.io.Serializable;
 
@@ -14,10 +12,28 @@ public class Item implements Serializable
     public String title;
     public String venue;
     public String price;
+    public String lat;
+    public String lng;
     public String venueAddress;
     public String discription;
     private boolean is_bookmarked;
 
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
+
+    public String getLng() {
+        return lng;
+    }
+
+    public void setLng(String lng) {
+        this.lng = lng;
+    }
 
     public String getVenueAddress() {
         return venueAddress;

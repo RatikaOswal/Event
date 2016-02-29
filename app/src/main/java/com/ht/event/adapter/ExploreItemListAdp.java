@@ -12,9 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-import com.example.event.eventapp.R;
+import com.ht.event.R;
 import com.ht.event.activity.DiscriptionItemListActivity;
-import com.ht.event.modle.Item;
+import com.ht.event.model.Item;
 import java.util.ArrayList;
 
 

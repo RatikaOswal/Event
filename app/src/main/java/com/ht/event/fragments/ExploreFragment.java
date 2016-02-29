@@ -9,12 +9,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.example.event.eventapp.R;
+import com.ht.event.R;
 import com.google.gson.Gson;
 import com.ht.event.adapter.ExploreItemListAdp;
-import com.ht.event.modle.Item;
-import com.ht.event.modle.ItemList;
+import com.ht.event.model.Item;
+import com.ht.event.model.ItemList;
 
 import java.util.ArrayList;
 
@@ -82,7 +81,7 @@ public class ExploreFragment extends Fragment  {
         String []tag1={"#Business","#Seminar","#Game","#Family&Education","#Networking"};
         String []tag2={"#Expo","#Networking","#Race","#Game","#Seminar"};
         String []price={"FREE","FREE","FREE","$5-$8","FREE"};
-        String []venueAddress={"Delhi-27","Gurgaon","Faridabad","Saket","Punjabi Bagh"};
+        String []venueAddress={"palam dwarka sector-8","Gurgaon","Faridabad","Saket","Punjabi Bagh"};
         String []discription={"description 1:I can almost bet that the thinking behind not implementing the buttons is because the zoom/pinch gestures are almost considered second nature these days The tradeoff for a lack of this indication (pinch/zoom actions) is a cleaner UI that allows the user to focus on the content, which in this case is finding a location on a map. The buttons within a mobile context of such limited real estate can be of a nuisance and can just get in the way"
                 ,"description 2","description 3","description 4","description 5"};
 

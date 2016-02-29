@@ -12,7 +12,7 @@
         android:id="@+id/regisbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/overlayBlue"
         android:minHeight="?attr/actionBarSize"
         app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
@@ -24,12 +24,13 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/registerinfo"
         android:id="@+id/info"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textColor="@color/Text_title"
         android:layout_marginTop="63dp"
         android:gravity="center"
         android:layout_below="@+id/regisbar"
         android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:typeface="sans" />
 <TextView
     android:layout_width="wrap_content"

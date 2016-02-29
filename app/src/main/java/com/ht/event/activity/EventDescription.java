@@ -7,8 +7,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.example.event.eventapp.R;
-import com.ht.event.modle.Item;
+import com.ht.event.R;
+import com.ht.event.model.Item;
 
 public class EventDescription extends AppCompatActivity {
 

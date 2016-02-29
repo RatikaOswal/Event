@@ -1,4 +1,4 @@
-package com.ht.event.modle;
+package com.ht.event.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -11,11 +11,11 @@ public class ItemList implements Serializable {
 
     private ArrayList<Item> data;
 
-    public ArrayList<com.ht.event.modle.Item> getData() {
+    public ArrayList<com.ht.event.model.Item> getData() {
         return data;
     }
 
-    public void setData(ArrayList<com.ht.event.modle.Item> data) {
+    public void setData(ArrayList<com.ht.event.model.Item> data) {
         this.data = data;
     }
 }

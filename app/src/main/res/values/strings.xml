@@ -1,4 +1,7 @@
 <resources>
+    <string name="price">Price</string>
+    <string name="organisationTitle">Organisation Name</string>
+    <string name="contact">Contact</string>
     <string name="app_name">htEvents</string>
     <string name="opendrawer">Open</string>
     <string name="closedrawer">Close</string>

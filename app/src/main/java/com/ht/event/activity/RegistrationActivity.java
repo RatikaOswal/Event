@@ -8,8 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
-
-import com.example.event.eventapp.R;
+import com.ht.event.R;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -34,10 +33,9 @@ public class RegistrationActivity extends AppCompatActivity  {
 //setting the toolbar
             Toolbar mToolbar = (Toolbar) findViewById(R.id.regisbar);
             setSupportActionBar(mToolbar);
-            final ActionBar ab = getSupportActionBar();
+
 //setting the icon
             getSupportActionBar().setHomeButtonEnabled(true);
-            ab.setHomeAsUpIndicator(R.drawable.back);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
             mTextDetail=(TextView)findViewById(R.id.userinfo);

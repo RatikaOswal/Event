@@ -1,4 +1,4 @@
-package com.ht.event.modle;
+package com.ht.event.model;
 
 import java.util.ArrayList;
 

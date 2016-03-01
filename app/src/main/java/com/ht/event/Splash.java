@@ -27,11 +27,10 @@ public class Splash extends AppCompatActivity {
                 }
             }, secondsDelayed * 500);
             splashLoaded = true;
-            //FeverArtiPreferences.clearUserAudioPlay(Splash.this);
+
         }
         else {
             Intent goToMainActivity = new Intent(Splash.this, Main.class);
-            //goToMainActivity.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             startActivity(goToMainActivity);
             finish();
         }

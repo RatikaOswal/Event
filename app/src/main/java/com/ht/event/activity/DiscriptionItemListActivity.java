@@ -5,6 +5,7 @@ import android.content.Intent;
 
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -24,6 +25,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.ht.event.Interface.DataHandler;
+import com.ht.event.dialog.ConnectionDetector;
+import com.ht.event.dialog.ConnectionFragment;
 import com.ht.event.model.GeocoderLocation;
 import com.ht.event.model.Item;
 import com.ht.event.utils.Config;
@@ -33,15 +36,21 @@ import java.util.HashMap;
 
 public class DiscriptionItemListActivity extends AppCompatActivity implements DataHandler {
 
-    ImageView imageView;
+    public ImageView imageView;
     private GoogleMap map;
-    MenuItem BookmarkItem;
-    Item itemobjects;
-    TextView time, registerbut, discription;
-    TextView title, price, venue, venueAddress;
+    public MenuItem BookmarkItem;
+    public Item itemObjects;
+    public TextView time, registerbut, description,organisationName;
+    public TextView title, price, venue, venueAddress;
     private boolean bookmarked;
     private int zoomLevel = 12;
     public double latitude, longitude;
+
+
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,19 +68,22 @@ public class DiscriptionItemListActivity extends AppCompatActivity implements Da
         registerbut = (TextView) findViewById(R.id.registerBut);
         venue = (TextView) findViewById(R.id.venue);
         venueAddress = (TextView) findViewById(R.id.venueAddress);
-        discription = (TextView) findViewById(R.id.text_discription);
+        description = (TextView) findViewById(R.id.text_discription);
+        organisationName = (TextView) findViewById(R.id.organisationName);
 
 
-        itemobjects = (Item) getIntent().getSerializableExtra("Item");
-        imageView.setImageResource(itemobjects.getImage());
-        time.setText(itemobjects.getTime());
-        title.setText(itemobjects.getTitle());
-        price.setText(itemobjects.getPrice());
-        venue.setText(itemobjects.getVenue());
-        discription.setText(itemobjects.getDiscription());
-        venueAddress.setText(itemobjects.getVenueAddress());
+        itemObjects = (Item) getIntent().getSerializableExtra("Item");
+        imageView.setImageResource(itemObjects.getImage());
+        time.setText(itemObjects.getTime());
+        title.setText(itemObjects.getTitle());
+        price.setText(itemObjects.getPrice());
+        venue.setText(itemObjects.getVenue());
+        description.setText(itemObjects.getDiscription());
+        venueAddress.setText(itemObjects.getVenueAddress());
+        organisationName.setText(itemObjects.getOrganisationName());
+        String address = itemObjects.getVenueAddress();
 
-        String address = itemobjects.getVenueAddress();
+
         //GeoCoder
         GeocoderLocation locationAddress = new GeocoderLocation();
         locationAddress.getAddressFromLocation(address,
@@ -86,12 +98,12 @@ public class DiscriptionItemListActivity extends AppCompatActivity implements Da
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        discription.setOnClickListener(new View.OnClickListener() {
+        description.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent intent = new Intent(DiscriptionItemListActivity.this, EventDescription.class);
-                intent.putExtra("Item", itemobjects);
+                intent.putExtra("Item", itemObjects);
                 startActivity(intent);
             }
         });
@@ -114,13 +126,22 @@ public class DiscriptionItemListActivity extends AppCompatActivity implements Da
             public void onClick(View v) {
 
                 Intent intent = new Intent(DiscriptionItemListActivity.this, MapLocation.class);
-                intent.putExtra("Item", itemobjects);
-                intent.putExtra("Latitude",latitude);
-                intent.putExtra("Longitude",longitude);
+                intent.putExtra("Item", itemObjects);
+                intent.putExtra("Latitude", latitude);
+                intent.putExtra("Longitude", longitude);
                 startActivity(intent);
+
 
             }
         });
+    }
+        public void contactInfo(View view)
+    {
+        Intent intent =new Intent(DiscriptionItemListActivity.this,ContactOrganizer.class);
+        startActivity(intent);
+
+
+    }
 
 
 // Create an icon for floating action bar
@@ -172,7 +193,7 @@ public class DiscriptionItemListActivity extends AppCompatActivity implements Da
         //register text
 
 
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -240,11 +261,21 @@ public class DiscriptionItemListActivity extends AppCompatActivity implements Da
                 case 1:
                     Bundle bundle = message.getData();
                     locationAddress = bundle.getString("address");
+                    ConnectionDetector cd = new ConnectionDetector(getApplicationContext());
+                    Boolean isInternetPresent = cd.isConnectingToInternet();
+                    if(isInternetPresent && locationAddress != null){
                     separate=locationAddress.split(",");
                     latitude=Double.parseDouble(separate[0]);
                     longitude=Double.parseDouble(separate[1]);
+                    showMap(latitude, longitude);}
+                    else
+                    {
+                        ConnectionFragment  cFragment = new ConnectionFragment();
+                        // Show DialogFragment
+                        cFragment.show(DiscriptionItemListActivity.this,"No Internet Connection","You don't have internet connection.",false);
 
-                    showMap(latitude, longitude);
+                    }
+
                     break;
                 default:
                     locationAddress = null;

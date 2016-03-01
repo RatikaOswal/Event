@@ -34,9 +34,7 @@ public class DiscardMessage extends DialogFragment implements
         delete.setOnClickListener(this);
         cancel.setOnClickListener(this);
 
-
         return d ;
-
     }
 
     @Override

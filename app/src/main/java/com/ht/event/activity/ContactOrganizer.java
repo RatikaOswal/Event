@@ -32,11 +32,8 @@ public class ContactOrganizer extends AppCompatActivity {
 
         int id = item.getItemId();
         if (id == android.R.id.home) {
-
             discardMessage.show(this.getFragmentManager(),"discard ");
-//            onBackPressed();
             return true;
-
         }
 
         return super.onOptionsItemSelected(item);

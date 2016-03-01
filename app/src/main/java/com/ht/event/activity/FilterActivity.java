@@ -1,27 +1,19 @@
 package com.ht.event.activity;
 
 
-import android.app.Activity;
-import android.app.ExpandableListActivity;
-import android.app.usage.UsageEvents;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.example.event.eventapp.R;
+import com.ht.event.adapter.listAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class FilterActivity extends AppCompatActivity {
 
@@ -29,7 +21,7 @@ public class FilterActivity extends AppCompatActivity {
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
-    RadioGroup radioGroup;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,22 +33,6 @@ public class FilterActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-          /* Initialize Radio Group and attach click handler */
-        radioGroup = (RadioGroup) findViewById(R.id.radiogroup);
-        radioGroup.clearCheck();
-
-        /* Attach CheckedChangeListener to radio group */
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton rb = (RadioButton) group.findViewById(checkedId);
-                if(null!=rb && checkedId > -1){
-                    Toast.makeText(FilterActivity.this, rb.getText(), Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
 
 
 
@@ -72,6 +48,8 @@ public class FilterActivity extends AppCompatActivity {
         // setting list adapter
         expListView.setAdapter(listAdapter);
     }
+
+
 
     /*
      * Preparing the list data
@@ -115,15 +93,8 @@ public class FilterActivity extends AppCompatActivity {
     }
 
 
-    public void onClear(View v) {
-        /* Clears all selected radio buttons to default */
-        radioGroup.clearCheck();
-    }
 
-    public void onSubmit(View v) {
-        RadioButton rb = (RadioButton) radioGroup.findViewById(radioGroup.getCheckedRadioButtonId());
-        Toast.makeText(FilterActivity.this, rb.getText(), Toast.LENGTH_SHORT).show();
-    }
+
 
 
     @Override
@@ -136,6 +107,4 @@ public class FilterActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-    }
-
+    }}

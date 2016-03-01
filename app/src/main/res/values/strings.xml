@@ -32,7 +32,13 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_search">SearchActivity</string>
     <string name="title_activity_filter">FilterActivity</string>
-        <string name="title_activity_map_location">Map Location</string>
-        <string name="title_activity_event_description">Event Description</string>
+    <string name="title_activity_map_location">Map Location</string>
+    <string name="title_activity_event_description">Event Description</string>
+    <string name="username">username</string>
+    <string name="username1">User Name</string>
+    <string name="title_activity_profile_page">Profile Page</string>
+    <string name="tickets">Ticket</string>
+    <string name="saved">Saved</string>
+
 
 </resources>

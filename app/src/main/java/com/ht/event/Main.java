@@ -14,18 +14,19 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.event.eventapp.R;
 import com.ht.event.activity.FilterActivity;
+import com.ht.event.activity.UserProfileActivity;
 import com.ht.event.fragments.AboutFragment;
 import com.ht.event.fragments.ExploreFragment;
 import com.ht.event.fragments.MyScheduleFragment;
-import com.ht.event.fragments.MyScheduleFragment;
-import com.ht.event.fragments.NaviMapFragment;
 import com.ht.event.fragments.NaviMapFragment;
 import com.ht.event.fragments.SettingsFragment;
-import com.ht.event.fragments.SettingsFragment;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class Main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -37,7 +38,8 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     public FragmentTransaction fragmentTransaction;
-
+    public CircleImageView profileImage;
+    public View headerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,8 +72,20 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
         fragmentTransaction.add(R.id.content, explore);
         fragmentTransaction.commit();
 
-    }
+        //setting profile page
+        headerView=mNvDrawer.getHeaderView(0);
+        profileImage =(CircleImageView) headerView.findViewById(R.id.circleImageViewProfile);
+        profileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Main.this,UserProfileActivity.class);
+                startActivity(intent);
+            }
+        });
 
+
+
+    }
     @Override
     public void onBackPressed() {
 
@@ -122,7 +136,6 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
         }
 
 
-
     @Override
     public boolean onNavigationItemSelected(MenuItem menu) {
         int ids = menu.getItemId();
@@ -165,7 +178,9 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
                 break;
-        default: Toast.makeText(this, "Not Implemented!", Toast.LENGTH_SHORT).show();
+
+
+        default:Toast.makeText(this, "Not Implemented!", Toast.LENGTH_SHORT).show();
             break;
         }
 
@@ -175,5 +190,7 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
 
         return true;
     }
+
+
 
 }

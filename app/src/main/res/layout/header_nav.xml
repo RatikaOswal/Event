@@ -19,6 +19,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circleImageViewProfile"
+        android:icon="@drawable/user_icon"
+        android:title="@string/username"
         android:layout_width="86dp"
         android:layout_height="86dp"
         android:src="@drawable/ic_account_circle"

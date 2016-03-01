@@ -1,4 +1,4 @@
-package com.ht.event.modle;
+package com.ht.event.model;
 
 /**
  * Created by komal on 18-02-2016.

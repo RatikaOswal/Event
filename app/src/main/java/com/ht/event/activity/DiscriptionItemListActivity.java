@@ -3,45 +3,54 @@ package com.ht.event.activity;
 
 import android.content.Intent;
 
-import android.support.v4.app.Fragment;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.example.event.eventapp.R;
+import com.ht.event.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.GoogleMap.OnInfoWindowClickListener;
 import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.ht.event.modle.Item;
+import com.ht.event.Interface.DataHandler;
+import com.ht.event.dialog.ConnectionDetector;
+import com.ht.event.dialog.ConnectionFragment;
+import com.ht.event.model.GeocoderLocation;
+import com.ht.event.model.Item;
+import com.ht.event.utils.Config;
 
-import org.w3c.dom.Text;
+import java.util.HashMap;
 
 
-public class DiscriptionItemListActivity extends AppCompatActivity{
+public class DiscriptionItemListActivity extends AppCompatActivity implements DataHandler {
 
-    ImageView imageView;
+    public ImageView imageView;
     private GoogleMap map;
-    MenuItem BookmarkItem;
-    Item itemobjects;
-    TextView time, registerbut,discription;
-    TextView title, price,venue,venueAddress;
+    public MenuItem BookmarkItem;
+    public Item itemObjects;
+    public TextView time, registerbut, description,organisationName;
+    public TextView title, price, venue, venueAddress;
     private boolean bookmarked;
-    private int zoomLevel = 7;
+    private int zoomLevel = 12;
+    public double latitude, longitude;
+
+
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,29 +59,35 @@ public class DiscriptionItemListActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.discription_of_item);
 
-        RelativeLayout relativeLayout=(RelativeLayout)findViewById(R.id.address_frame);
+        RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.address_frame);
 
         imageView = (ImageView) findViewById(R.id.CoverView);
         time = (TextView) findViewById(R.id.event_time);
         title = (TextView) findViewById(R.id.event_name);
         price = (TextView) findViewById(R.id.price);
         registerbut = (TextView) findViewById(R.id.registerBut);
-        venue = (TextView)findViewById(R.id.venue);
-        venueAddress = (TextView)findViewById(R.id.venueAddress);
-        discription = (TextView) findViewById(R.id.text_discription);
+        venue = (TextView) findViewById(R.id.venue);
+        venueAddress = (TextView) findViewById(R.id.venueAddress);
+        description = (TextView) findViewById(R.id.text_discription);
+        organisationName = (TextView) findViewById(R.id.organisationName);
 
 
-        itemobjects = (Item) getIntent().getSerializableExtra("Item");
-        imageView.setImageResource(itemobjects.getImage());
-        time.setText(itemobjects.getTime());
-        title.setText(itemobjects.getTitle());
-        price.setText(itemobjects.getPrice());
-        venue.setText(itemobjects.getVenue());
-        discription.setText(itemobjects.getDiscription());
-        venueAddress.setText(itemobjects.getVenueAddress());
+        itemObjects = (Item) getIntent().getSerializableExtra("Item");
+        imageView.setImageResource(itemObjects.getImage());
+        time.setText(itemObjects.getTime());
+        title.setText(itemObjects.getTitle());
+        price.setText(itemObjects.getPrice());
+        venue.setText(itemObjects.getVenue());
+        description.setText(itemObjects.getDiscription());
+        venueAddress.setText(itemObjects.getVenueAddress());
+        organisationName.setText(itemObjects.getOrganisationName());
+        String address = itemObjects.getVenueAddress();
 
 
-
+        //GeoCoder
+        GeocoderLocation locationAddress = new GeocoderLocation();
+        locationAddress.getAddressFromLocation(address,
+                getApplicationContext(), new GeocoderHandler());
 
         //Setting toolbar
         Toolbar mToolbar = (Toolbar) findViewById(R.id.discrbar);
@@ -83,13 +98,12 @@ public class DiscriptionItemListActivity extends AppCompatActivity{
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-
-        discription.setOnClickListener(new View.OnClickListener() {
+        description.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent =new Intent(DiscriptionItemListActivity.this,EventDescription.class);
-                intent.putExtra("Item",itemobjects);
+                Intent intent = new Intent(DiscriptionItemListActivity.this, EventDescription.class);
+                intent.putExtra("Item", itemObjects);
                 startActivity(intent);
             }
         });
@@ -105,33 +119,29 @@ public class DiscriptionItemListActivity extends AppCompatActivity{
 
         map = ((MapFragment) getFragmentManager().findFragmentById(R.id.maplocationstatic))
                 .getMap();
-        if( map!=null)
-        {
-            map.getUiSettings().setAllGesturesEnabled(false);
-
-            // Move the camera instantly to defaultLatLng.
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(39.233956, -77.484703), zoomLevel));
-
-            map.addMarker(new MarkerOptions().position(new LatLng(39.233956, -77.484703))
-                            .icon(BitmapDescriptorFactory
-                                    .fromResource(R.drawable.ic_marker)));
-
-        }
-
 
 
         relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
-                Intent intent=new Intent(DiscriptionItemListActivity.this,MapLocation.class);
-                intent.putExtra("Item",itemobjects);
+                Intent intent = new Intent(DiscriptionItemListActivity.this, MapLocation.class);
+                intent.putExtra("Item", itemObjects);
+                intent.putExtra("Latitude", latitude);
+                intent.putExtra("Longitude", longitude);
                 startActivity(intent);
+
 
             }
         });
+    }
+        public void contactInfo(View view)
+    {
+        Intent intent =new Intent(DiscriptionItemListActivity.this,ContactOrganizer.class);
+        startActivity(intent);
 
+
+    }
 
 
 // Create an icon for floating action bar
@@ -183,13 +193,13 @@ public class DiscriptionItemListActivity extends AppCompatActivity{
         //register text
 
 
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_discription_of_item, menu);
-        BookmarkItem =menu.findItem(R.id.bookmark_ic);
+        BookmarkItem = menu.findItem(R.id.bookmark_ic);
         return true;
     }
 
@@ -216,18 +226,83 @@ public class DiscriptionItemListActivity extends AppCompatActivity{
 
                 if (!bookmarked) {
 
-                 BookmarkItem.setIcon(R.drawable.ic_starfill);
-                      bookmarked = true;
+                    BookmarkItem.setIcon(R.drawable.ic_starfill);
+                    bookmarked = true;
 
                 } else {
-                BookmarkItem.setIcon(R.drawable.ic_starw);
-                      bookmarked = false;
+                    BookmarkItem.setIcon(R.drawable.ic_starw);
+                    bookmarked = false;
                 }
                 break;
 
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onSuccess(HashMap<String, Object> map) {
+        Item item = (Item) map.get(Config.KEY_DATA);
+        item.getLat();
+        item.getLng();
+
+    }
+
+    @Override
+    public void onFailure(HashMap<String, Object> map) {
+
+    }
+
+    private class GeocoderHandler extends Handler {
+        public void handleMessage(Message message) {
+            String locationAddress;
+            String [] separate;
+
+            switch (message.what) {
+                case 1:
+                    Bundle bundle = message.getData();
+                    locationAddress = bundle.getString("address");
+                    ConnectionDetector cd = new ConnectionDetector(getApplicationContext());
+                    Boolean isInternetPresent = cd.isConnectingToInternet();
+                    if(isInternetPresent && locationAddress != null){
+                    separate=locationAddress.split(",");
+                    latitude=Double.parseDouble(separate[0]);
+                    longitude=Double.parseDouble(separate[1]);
+                    showMap(latitude, longitude);}
+                    else
+                    {
+                        ConnectionFragment  cFragment = new ConnectionFragment();
+                        // Show DialogFragment
+                        cFragment.show(DiscriptionItemListActivity.this,"No Internet Connection","You don't have internet connection.",false);
+
+                    }
+
+                    break;
+                default:
+                    locationAddress = null;
+            }
+
+
+        }
+    }
+
+    private void showMap(double latitude, double longitude) {
+        if (map != null) {
+            map.getUiSettings().setAllGesturesEnabled(false);
+
+            // Move the camera instantly to defaultLatLng.
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), zoomLevel));
+
+            map.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude))
+                    .icon(BitmapDescriptorFactory
+                            .fromResource(R.drawable.ic_marker)));
+
+        }
+
+
+
+
+    }
+}
 
 
 
@@ -254,6 +329,6 @@ public class DiscriptionItemListActivity extends AppCompatActivity{
 
 
 
-}
+
 
 

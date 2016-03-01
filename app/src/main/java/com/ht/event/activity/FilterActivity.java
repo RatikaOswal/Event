@@ -8,8 +8,10 @@ import android.view.MenuItem;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 
-import com.example.event.eventapp.R;
 import com.ht.event.adapter.listAdapter;
+
+import com.ht.event.R;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;

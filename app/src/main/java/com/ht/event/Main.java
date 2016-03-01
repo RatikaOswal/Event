@@ -17,16 +17,18 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.event.eventapp.R;
+
 import com.ht.event.activity.FilterActivity;
 import com.ht.event.activity.UserProfileActivity;
 import com.ht.event.fragments.AboutFragment;
 import com.ht.event.fragments.ExploreFragment;
 import com.ht.event.fragments.MyScheduleFragment;
-import com.ht.event.fragments.NaviMapFragment;
-import com.ht.event.fragments.SettingsFragment;
 
+import com.ht.event.fragments.NaviMapFragment;
+
+import com.ht.event.fragments.SettingsFragment;
 import de.hdodenhof.circleimageview.CircleImageView;
+
 
 public class Main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 

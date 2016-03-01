@@ -1,6 +1,4 @@
-package com.ht.event.modle;
-
-import com.google.android.gms.maps.model.LatLng;
+package com.ht.event.model;
 
 import java.io.Serializable;
 
@@ -14,9 +12,40 @@ public class Item implements Serializable
     public String title;
     public String venue;
     public String price;
+    public String lat;
+    public String lng;
     public String venueAddress;
     public String discription;
+    public String organisationName;
     private boolean is_bookmarked;
+
+    public String getOrganisationName() {
+        return organisationName;
+    }
+
+    public void setOrganisationName(String organisationName) {
+        this.organisationName = organisationName;
+    }
+
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
+
+
+
+    public String getLng() {
+        return lng;
+    }
+
+    public void setLng(String lng) {
+        this.lng = lng;
+    }
+
 
 
     public String getVenueAddress() {
@@ -26,6 +55,8 @@ public class Item implements Serializable
     public void setVenueAddress(String venueAddress) {
         this.venueAddress = venueAddress;
     }
+
+
     public String getDiscription() {
         return discription;
     }
@@ -33,6 +64,8 @@ public class Item implements Serializable
     public void setDiscription(String discription) {
         this.discription = discription;
     }
+
+
 
     public String getPrice() {
         return price;
@@ -42,6 +75,8 @@ public class Item implements Serializable
         this.price = price;
     }
 
+
+
     public boolean is_bookmarked() {
         return is_bookmarked;
     }
@@ -49,6 +84,8 @@ public class Item implements Serializable
     public void setIs_bookmarked(boolean is_bookmarked) {
         this.is_bookmarked = is_bookmarked;
     }
+
+
 
     public void setTag1(String tag1) {
         this.tag1 = tag1;
@@ -69,7 +106,6 @@ public class Item implements Serializable
     }
 
 
-
     public int getImage() {
         return image;
     }
@@ -77,6 +113,7 @@ public class Item implements Serializable
     public void setImage(int image) {
         this.image = image;
     }
+
 
     public String getTime() {
         return time;
@@ -86,6 +123,8 @@ public class Item implements Serializable
         this.time = time;
     }
 
+
+
     public String getTitle() {
         return title;
     }
@@ -93,6 +132,8 @@ public class Item implements Serializable
     public void setTitle(String title) {
         this.title = title;
     }
+
+
 
     public String getVenue() {
         return venue;

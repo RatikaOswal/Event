@@ -4,8 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
+    android:background="@color/fragment_backgrnd"
     tools:context="com.ht.event.activity.DiscriptionItemListActivity"
+
 
     >
 
@@ -31,38 +32,22 @@
 
         <TextView
             android:id="@+id/registerBut"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/register"
             android:textAllCaps="true"
             android:typeface="sans"
             android:textStyle="bold"
+            android:textSize="20sp"
             android:textColor="@color/Text_title"
             android:layout_centerVertical="true"
             android:layout_margin="5dp"
-            android:gravity="right"
+            android:gravity="center"
             android:paddingTop="10dp"
-            android:paddingRight="70dp"
             android:paddingBottom="10dp"
-            android:paddingLeft="70dp"
             android:background="@color/green"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/price"
-            android:text="price"
-            android:layout_centerVertical="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentLeft="true"
-            android:padding="10dp"
-            android:layout_marginTop="5dp"
-            android:textAllCaps="true"
 
             />
-
 
     </RelativeLayout>
 
@@ -85,27 +70,44 @@
             android:id="@+id/CoverView"
             android:background="@drawable/image_background"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            />
+            android:layout_alignParentEnd="true">
+        </ImageView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/price"
+                android:text="@string/price"
+                android:textColor="@color/white"
+                android:background="@color/transparent_black"
+                android:padding="10dp"
+                android:layout_marginTop="5dp"
+                android:textAllCaps="true"
+                android:layout_alignParentRight="true"
+/>
+
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="This is the Title"
             android:id="@+id/event_name"
             android:textSize="35dp"
+            android:background="@color/white"
             android:textColor="@color/Text_title"
             android:textStyle="normal"
+            android:gravity="center"
             android:layout_centerHorizontal="true"
             android:typeface="sans"
             android:layout_below="@+id/event_time"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Time"
             android:paddingTop="10dp"
             android:textSize="17sp"
+            android:gravity="center"
+            android:background="@color/white"
             android:id="@+id/event_time"
             android:textColor="@color/Text_time"
             android:textAllCaps="true"
@@ -117,18 +119,20 @@
 
             <TextView
                 android:id="@+id/text_discription"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/textDiscription"
                 android:textColor="@color/Text_title"
                 android:padding="10dp"
                 android:maxLines="5"
+                android:typeface="sans"
+                android:paddingBottom="10dp"
+                android:background="@drawable/gradiant_text_view"
                 android:layout_below="@+id/event_name"
                 />
 
 
             <RelativeLayout
-                android:orientation="vertical"
                 android:layout_below="@+id/text_discription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -156,6 +160,7 @@
                     android:paddingRight="10dp"
                     android:paddingTop="10dp"
                     android:textStyle="bold"
+                    android:typeface="sans"
                     android:layout_below="@+id/maplocationstatic"
                    />
 
@@ -167,6 +172,7 @@
                     android:textColor="@color/Text_time"
                     android:textSize="15sp"
                     android:paddingLeft="10dp"
+                    android:typeface="sans"
                     android:paddingTop="10dp"
                     android:paddingRight="10dp"
                     android:paddingBottom="10dp"
@@ -174,8 +180,51 @@
                     android:layout_gravity="bottom" />
 
             </RelativeLayout>
+
+             <RelativeLayout
+                 android:layout_marginTop="20dp"
+                android:background="@color/white"
+                 android:layout_below="@+id/address_frame"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:id="@+id/organisation_frame">
+
+
+             <TextView
+                 android:id="@+id/organisationName"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:textColor="@color/Text_title"
+                 android:text="@string/organisationTitle"
+                 android:textStyle="bold"
+                 android:textSize="22sp"
+                 android:typeface="sans"
+                 android:layout_marginTop="10dp"
+                 android:gravity="center"
+                 android:padding="10dp" />
+
+                 <Button
+                     android:id="@+id/contactButton"
+                     android:layout_height="40dp"
+                     android:layout_width="wrap_content"
+                     android:layout_below="@+id/organisationName"
+                     android:textAllCaps="false"
+                     android:layout_marginBottom="10dp"
+                     android:layout_centerVertical="true"
+                     android:layout_centerHorizontal="true"
+                     android:background="@drawable/custom_button"
+                     android:textColor="@color/Text_title"
+                     android:text="@string/contact"
+                     android:onClick="contactInfo">
+
+                 </Button>
+
+
+             </RelativeLayout>
+
         </RelativeLayout>
+
     </ScrollView>
 
-    </RelativeLayout>
+</RelativeLayout>
 

@@ -12,7 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 
-import com.example.event.eventapp.R;
+import com.ht.event.R;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.ht.event.adapter.ProfilePagerAdapter;
 import com.ht.event.fragments.SavedFragment;

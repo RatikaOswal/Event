@@ -9,12 +9,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import com.example.event.eventapp.R;
+import com.ht.event.R;
 import com.google.gson.Gson;
 import com.ht.event.adapter.ExploreItemListAdp;
-import com.ht.event.modle.Item;
-import com.ht.event.modle.ItemList;
+import com.ht.event.model.Item;
+import com.ht.event.model.ItemList;
 
 import java.util.ArrayList;
 
@@ -82,9 +81,10 @@ public class ExploreFragment extends Fragment  {
         String []tag1={"#Business","#Seminar","#Game","#Family&Education","#Networking"};
         String []tag2={"#Expo","#Networking","#Race","#Game","#Seminar"};
         String []price={"FREE","FREE","FREE","$5-$8","FREE"};
-        String []venueAddress={"Delhi-27","Gurgaon","Faridabad","Saket","Punjabi Bagh"};
+        String []venueAddress={"palam dwarka sector-8","Gurgaon","Faridabad","Saket","Punjabi Bagh"};
         String []discription={"description 1:I can almost bet that the thinking behind not implementing the buttons is because the zoom/pinch gestures are almost considered second nature these days The tradeoff for a lack of this indication (pinch/zoom actions) is a cleaner UI that allows the user to focus on the content, which in this case is finding a location on a map. The buttons within a mobile context of such limited real estate can be of a nuisance and can just get in the way"
                 ,"description 2","description 3","description 4","description 5"};
+        String []organisationName={"Uk Trade & Investment","Analytics.Club","WeAreTheCity India","TechHub","University of Maryland"};
 
 
         for(int i=0;i<title.length && i<time.length&&i<venue.length&&i<icon.length && i<tag1.length && i<tag2.length && i<price.length ;i++)
@@ -99,6 +99,7 @@ public class ExploreFragment extends Fragment  {
             current.setTag1(tag1[i]);
             current.setTag2(tag2[i]);
             current.setPrice(price[i]);
+            current.setOrganisationName(organisationName[i]);
             data.add(current);
 
 

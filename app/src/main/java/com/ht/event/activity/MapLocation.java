@@ -10,7 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.example.event.eventapp.R;
+import com.ht.event.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -18,13 +18,15 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.ht.event.modle.Item;
+import com.ht.event.model.Item;
 
 public class MapLocation extends AppCompatActivity implements GoogleMap.OnInfoWindowClickListener {
-    private LatLng defaultLatLng = new LatLng(39.233956, -77.484703);
+
     private GoogleMap map;
-    private int zoomLevel = 7;
+    private int zoomLevel = 15;
     public TextView venue,venueAddress;
+    public double latitude, longitude;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,12 @@ public class MapLocation extends AppCompatActivity implements GoogleMap.OnInfoWi
 
 
         Item itemobjects = (Item) getIntent().getSerializableExtra("Item");
+        Bundle  extras = getIntent().getExtras();
+        if(extras!=null){
+            latitude =  extras.getDouble("Latitude");
+            longitude = extras.getDouble("Longitude");
+
+        }
         venue.setText(itemobjects.getVenue());
         venueAddress.setText(itemobjects.getVenueAddress());
 
@@ -56,10 +64,10 @@ public class MapLocation extends AppCompatActivity implements GoogleMap.OnInfoWi
                 map.setTrafficEnabled(true);
 
                 // Move the camera instantly to defaultLatLng.
-                map.moveCamera(CameraUpdateFactory.newLatLngZoom(defaultLatLng, zoomLevel));
+                map.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), zoomLevel));
                 // Map zoom in out
                 map.getUiSettings().setZoomControlsEnabled(true);
-                map.addMarker(new MarkerOptions().position(defaultLatLng)
+                map.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude))
                         .title(itemobjects.getVenue())
                         .snippet(itemobjects.getVenueAddress())
                         .icon(BitmapDescriptorFactory

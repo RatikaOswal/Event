@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_id": "carbon-scene-123203",
+    "project_number": "52605737263",
+    "name": "My Project"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:52605737263:android:02dd12694ecc4184",
+        "client_id": "android:com.ht.event",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "com.ht.event",
+          "certificate_hash": []
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "52605737263-8qhdqtm8ggi40sc5n9p00d7cep3j95q2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ht.event",
+            "certificate_hash": "6F7190C91648B5297AAE1BB886A556022CF9FC8F"
+          }
+        },
+        {
+          "client_id": "52605737263-o264ulvukotj82bentn32pdanga44qbr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 2,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 2
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}

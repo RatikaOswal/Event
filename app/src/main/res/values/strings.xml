@@ -30,8 +30,7 @@
     <string name="message">Message</string>
     <string name="venue">Venue Name</string>
     <string name="venueAddress">Complete Address</string>
-    <string name="map_key">AIzaSyAi3gpVBC_egUEjIsEtAgkH0wqYHzp_EP8</string>
-
+    <string name="API_key">AIzaSyAi3gpVBC_egUEjIsEtAgkH0wqYHzp_EP8</string>
     <string name="textDiscription">Text Discription
     </string>
 

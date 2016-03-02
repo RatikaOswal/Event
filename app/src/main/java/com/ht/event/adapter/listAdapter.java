@@ -16,7 +16,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.event.eventapp.R;
+
+import com.ht.event.R;
 
 import java.util.HashMap;
 import java.util.List;

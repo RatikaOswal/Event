@@ -18,14 +18,8 @@ import com.ht.event.adapter.ProfilePagerAdapter;
 import com.ht.event.fragments.SavedFragment;
 import com.ht.event.fragments.TicketsFragment;
 
-import static com.example.event.eventapp.R.color.Text_title;
 
 public class UserProfileActivity extends AppCompatActivity {
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
 
 
     @Override

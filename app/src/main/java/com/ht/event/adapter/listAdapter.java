@@ -11,12 +11,14 @@ import android.widget.BaseExpandableListAdapter;
 import android.widget.CheckBox;
 import android.widget.CheckedTextView;
 import android.widget.CompoundButton;
+import android.widget.ExpandableListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.event.eventapp.R;
+
+import com.ht.event.R;
 
 import java.util.HashMap;
 import java.util.List;
@@ -151,15 +153,13 @@ public class listAdapter extends BaseExpandableListAdapter {
                 //final RadioButton radioButton =(RadioButton)convertView.findViewById(R.id.radiobutton);
 
 
-
                 txtListChild.setText(incoming_text);
 
                 break;
 
             case CHILD_TYPE_2:
                 CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.checkBox1);
-                TextView txtListChild2 = (TextView) convertView
-                        .findViewById(R.id.child1_txt);
+                TextView txtListChild2 = (TextView) convertView.findViewById(R.id.child1_txt);
 
 
 
@@ -172,6 +172,9 @@ public class listAdapter extends BaseExpandableListAdapter {
                 break;
 
         }
+
+
+
 
 
         return convertView;

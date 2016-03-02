@@ -13,7 +13,7 @@
         <item name="windowActionBar">false</item>
     </style>
 
-    <style name="EditTextTheme"  parent="Widget.AppCompat.EditText">
+    <style name="EditTextTheme" parent="Widget.AppCompat.EditText">
         <!-- Used for the bottom line when not selected / focused -->
         <item name="colorControlNormal">#747D80</item>
         <item name="colorControlActivated">#efefef</item>

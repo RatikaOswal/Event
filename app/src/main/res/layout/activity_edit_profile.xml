@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    >
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/profileEditToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/toolbar_background"
+        android:minHeight="?attr/actionBarSize"
+        app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+    </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:text="@string/save"
+        android:textAllCaps="true"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
+         />
+
+
+
+
+    <ImageView
+        android:id="@+id/test_image"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/profileEditToolbar"
+        android:layout_height="200dp"
+        android:scaleType="fitXY"
+        android:background="@color/toolbar_background"
+
+        />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/circleImageViewProfilePicture"
+        android:icon="@drawable/user_icon"
+        android:title="@string/username"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/ic_account_circle"
+        app:border_width="2dp"
+        android:paddingTop="10dp"
+        android:layout_marginTop="100dp"
+        app:border_color="@color/border"
+        android:layout_centerHorizontal="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/test_image">
+
+        <EditText
+            android:id="@+id/firstName"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/firstName"
+            android:inputType="text"
+            android:textSize="15sp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/Text_title"
+            android:textColorHint="@color/grey05"
+            android:theme="@style/EditTextTheme"
+
+
+
+            />
+        <EditText
+            android:id="@+id/lastName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:hint="@string/lastName"
+            android:inputType="text"
+            android:textSize="15sp"
+            android:textColorHint="@color/grey05"
+            android:textColor="@color/Text_title"
+            android:theme="@style/EditTextTheme"
+
+
+
+            />
+        <EditText
+            android:id="@+id/emailAddress"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textSize="15sp"
+            android:textColor="@color/Text_title"
+            android:textColorHint="@color/grey05"
+            android:hint="@string/emailAddress"
+            android:inputType="textEmailAddress"
+            android:theme="@style/EditTextTheme"
+            />
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

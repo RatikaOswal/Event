@@ -50,6 +50,14 @@
     <string name="saved">Saved</string>
 
     <string name="title_activity_contact_organizer">Contact Organizer</string>
+    <string name="action_logout">logout</string>
+    <string name="EditProfile">EditProfile</string>
+    <string name="title_activity_edit_profile">EditProfileActivity</string>
+    <string name="title_activity_settings__user_profile">settings_User_profileActivity</string>
+    <string name="save">save</string>
+    <string name="firstName">First Name</string>
+    <string name="lastName">Last Name</string>
+    <string name="emailAddress">Email Address</string>
 
 
 </resources>

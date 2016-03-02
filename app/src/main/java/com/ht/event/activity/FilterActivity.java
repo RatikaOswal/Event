@@ -67,11 +67,11 @@ public class FilterActivity extends AppCompatActivity {
 
         // Adding child data
         List<String> Dates = new ArrayList<String>();
-        Dates.add("All dates");
-        Dates.add("Today");
+        Dates.add(" title");
+        /*Dates.add("Today");
         Dates.add("Tomorrow");
         Dates.add("Weekend");
-        Dates.add("Week Days");
+        Dates.add("Week Days"); */
 
         List<String> EventTopics = new ArrayList<String>();
 

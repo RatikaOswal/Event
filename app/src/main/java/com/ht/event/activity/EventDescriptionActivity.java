@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.ht.event.R;
 import com.ht.event.model.Item;
 
-public class EventDescription extends AppCompatActivity {
+public class EventDescriptionActivity extends AppCompatActivity {
 
     Item itemobjects;
     TextView discription;

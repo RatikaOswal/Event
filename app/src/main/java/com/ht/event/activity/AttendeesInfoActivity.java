@@ -7,32 +7,38 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.ht.event.R;
-import com.ht.event.dialog.DiscardMessage;
 
-public class ContactOrganizer extends AppCompatActivity {
-    DiscardMessage discardMessage;
+public class AttendeesInfoActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contact_organizer);
+        setContentView(R.layout.activity_attendees_info);
 
-        discardMessage = new DiscardMessage(this);
 
-        //Setting toolbar
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.organiserBar);
+//setting the toolbar
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.attendeebar);
         setSupportActionBar(mToolbar);
+
+//setting the icon
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
 
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_attendees_info, menu);
+        return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
-        if (id == android.R.id.home) {
-            discardMessage.show(this.getFragmentManager(),"discard ");
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
             return true;
         }
 

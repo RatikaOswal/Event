@@ -58,6 +58,7 @@
     <string name="firstName">First Name</string>
     <string name="lastName">Last Name</string>
     <string name="emailAddress">Email Address</string>
+        <string name="title_activity_attendees_info">Attendees</string>
 
 
 </resources>

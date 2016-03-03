@@ -5,7 +5,6 @@ import android.content.Intent;
 
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -102,7 +101,7 @@ public class DiscriptionItemListActivity extends AppCompatActivity implements Da
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(DiscriptionItemListActivity.this, EventDescription.class);
+                Intent intent = new Intent(DiscriptionItemListActivity.this, EventDescriptionActivity.class);
                 intent.putExtra("Item", itemObjects);
                 startActivity(intent);
             }
@@ -125,7 +124,7 @@ public class DiscriptionItemListActivity extends AppCompatActivity implements Da
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(DiscriptionItemListActivity.this, MapLocation.class);
+                Intent intent = new Intent(DiscriptionItemListActivity.this, MapLocationActivity.class);
                 intent.putExtra("Item", itemObjects);
                 intent.putExtra("Latitude", latitude);
                 intent.putExtra("Longitude", longitude);
@@ -137,7 +136,7 @@ public class DiscriptionItemListActivity extends AppCompatActivity implements Da
     }
         public void contactInfo(View view)
     {
-        Intent intent =new Intent(DiscriptionItemListActivity.this,ContactOrganizer.class);
+        Intent intent =new Intent(DiscriptionItemListActivity.this,ContactOrganizerActivity.class);
         startActivity(intent);
 
 

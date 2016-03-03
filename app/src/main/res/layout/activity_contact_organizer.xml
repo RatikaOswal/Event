@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context="com.ht.event.activity.ContactOrganizer">
+    tools:context="com.ht.event.activity.ContactOrganizerActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/organiserBar"

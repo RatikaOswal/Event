@@ -9,12 +9,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.ht.event.R;
 import com.ht.event.adapter.ProfilePagerAdapter;
+import com.ht.event.model.User;
+import com.ht.event.utils.EventsPreferences;
 
 public class UserProfileActivity extends AppCompatActivity {
+
+    TextView userName;
 
 
     @Override
@@ -28,13 +33,20 @@ public class UserProfileActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
         TabLayout tabLayout = (TabLayout) findViewById(R.id.ProfileTabLayout);
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
 
-
         viewPager.setAdapter(new ProfilePagerAdapter(getSupportFragmentManager()));
         tabLayout.setupWithViewPager(viewPager);
+
+        userName = (TextView)findViewById(R.id.ProfileUserName);
+        User user = EventsPreferences.getUser(this);
+        
+        if(user != null){
+            userName.setText(user.getName());
+
+        }
+
     }
 
 

@@ -20,7 +20,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.ht.event.model.Item;
 
-public class MapLocation extends AppCompatActivity implements GoogleMap.OnInfoWindowClickListener {
+public class MapLocationActivity extends AppCompatActivity implements GoogleMap.OnInfoWindowClickListener {
 
     private GoogleMap map;
     private int zoomLevel = 15;
@@ -100,7 +100,7 @@ public class MapLocation extends AppCompatActivity implements GoogleMap.OnInfoWi
 
     @Override
     public void onInfoWindowClick(Marker marker) {
-        Intent intent = new Intent(this, MapLocation.class);
+        Intent intent = new Intent(this, MapLocationActivity.class);
         intent.putExtra("snippet", marker.getSnippet());
         intent.putExtra("title", marker.getTitle());
         intent.putExtra("position", marker.getPosition());

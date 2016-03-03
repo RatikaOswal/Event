@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -27,6 +28,9 @@ import com.ht.event.fragments.MyScheduleFragment;
 import com.ht.event.fragments.NaviMapFragment;
 
 import com.ht.event.fragments.SettingsFragment;
+import com.ht.event.model.User;
+import com.ht.event.utils.EventsPreferences;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
@@ -42,6 +46,7 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
     public FragmentTransaction fragmentTransaction;
     public CircleImageView profileImage;
     public View headerView;
+    public TextView userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,7 +89,15 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
                 startActivity(intent);
             }
         });
+        //Setting User name
+        headerView=mNvDrawer.getHeaderView(0);
+        userName = (TextView) headerView.findViewById(R.id.textViewUserName);
 
+        User user = EventsPreferences.getUser(this);
+        if(user != null){
+            userName.setText(user.getName());
+
+        }
 
 
     }

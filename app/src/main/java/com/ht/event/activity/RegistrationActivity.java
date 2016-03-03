@@ -3,8 +3,10 @@ package com.ht.event.activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -22,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
@@ -38,6 +41,8 @@ import com.facebook.FacebookSdk;
 import com.facebook.Profile;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.ht.event.model.User;
+import com.ht.event.utils.EventsPreferences;
 
 import java.io.InputStream;
 
@@ -50,6 +55,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     public ImageView imgProfilePic;
     public TextView txtName, txtEmail, info;
     public LinearLayout llProfileLayout;
+    public LoginButton logInButton;
     public static final String TAG = "MainActivity";
     // Profile pic image size in pixels
     public static final int PROFILE_PIC_SIZE = 400;
@@ -58,6 +64,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     public boolean mIntentInProgress;
     public boolean mSignInClicked;
     public ConnectionResult mConnectionResult;
+    public User userinfo;
 
 
     @Override
@@ -97,7 +104,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 .build();
 
         //setting  facebook loginButton
-        LoginButton logInButton = (LoginButton) findViewById(R.id.login_button);
+        logInButton = (LoginButton) findViewById(R.id.login_button);
         logInButton.setReadPermissions("user_friends");
         logInButton.registerCallback(mcallbackManager, new FacebookCallback<LoginResult>() {
             @Override
@@ -183,7 +190,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        System.out.println("onActivityResult"+requestCode+"resultCode"+resultCode);
+        mcallbackManager.onActivityResult(requestCode, resultCode, data);
+        //System.out.println("onActivityResult" + requestCode + "resultCode" + resultCode);
         mcallbackManager.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_RESOLVE_ERR) {
             if (resultCode != RESULT_OK) {
@@ -231,37 +239,33 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 //
 //    }
 
-    /**
-     * Updating the UI, showing/hiding buttons and profile layout
-     */
-    private void updateUI(boolean isSignedIn) {
-        if (isSignedIn) {
-            btnSignIn.setVisibility(View.GONE);
-            info.setVisibility(View.GONE);
-            llProfileLayout.setVisibility(View.VISIBLE);
-        } else {
-            btnSignIn.setVisibility(View.VISIBLE);
-            info.setVisibility(View.VISIBLE);
-            llProfileLayout.setVisibility(View.GONE);
-        }
-    }
+
+
 
     /**
      * Fetching user's information name, email, profile pic
      */
     private void getProfileInformation(GoogleSignInResult result) {
         try {
+
+
             if (result.isSuccess()){
-                String personName = result.getSignInAccount().getDisplayName();
-                String personPhotoUrl =  result.getSignInAccount().getPhotoUrl().toString();
-                String email = result.getSignInAccount().getEmail();
+                GoogleSignInAccount acct = result.getSignInAccount();
+                String personName = acct.getDisplayName();
+               Uri personPhotoUrl =  acct.getPhotoUrl();
+                String email = acct.getEmail();
+
 
                 Log.e(TAG, "Name: " + personName + ", plusProfile: "
-                         + ", email: " + email
+                        + ", email: " + email
                         + ", Image: " + result.getSignInAccount().getPhotoUrl());
 
-                txtName.setText(personName);
-                txtEmail.setText(email);
+                User user = new User();
+                user.setEmail(email);
+                user.setName(personName);
+                EventsPreferences.saveUser(this, user);
+
+
                 // by default the profile url gives 50x50 px image only
                 // we can replace the value with whatever dimension we want by
                 // replacing sz=X
@@ -269,10 +273,14 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 //                        personPhotoUrl.length() - 2)
 //                        + PROFILE_PIC_SIZE;
                 if(personPhotoUrl != null) {
-                    new LoadProfileImage(imgProfilePic).execute(personPhotoUrl);
+                    new LoadProfileImage(imgProfilePic);
                 }
+                    else {
 
-                updateUI(true);
+
+                }
+              Intent intent =new Intent(this,AttendeesInfoActivity.class);
+                startActivity(intent);
             } else {
                 Toast.makeText(getApplicationContext(),
                         "Person information is null", Toast.LENGTH_LONG).show();

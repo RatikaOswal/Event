@@ -1,6 +1,7 @@
 package com.ht.event.activity;
 
 
+import android.content.Context;
 import android.content.Intent;
 
 import android.os.Handler;
@@ -28,7 +29,9 @@ import com.ht.event.dialog.ConnectionDetector;
 import com.ht.event.dialog.ConnectionFragment;
 import com.ht.event.model.GeocoderLocation;
 import com.ht.event.model.Item;
+import com.ht.event.model.User;
 import com.ht.event.utils.Config;
+import com.ht.event.utils.EventsPreferences;
 
 import java.util.HashMap;
 
@@ -109,10 +112,20 @@ public class DiscriptionItemListActivity extends AppCompatActivity implements Da
 
         registerbut.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(  View v) {
+                User user = EventsPreferences.getUser(DiscriptionItemListActivity.this);
 
-                Intent intent = new Intent(DiscriptionItemListActivity.this, RegistrationActivity.class);
-                startActivity(intent);
+                if(user == null){
+                    Intent intent = new Intent(DiscriptionItemListActivity.this, RegistrationActivity.class);
+                    startActivity(intent);
+                }
+                else
+                {
+                    Intent intent = new Intent(DiscriptionItemListActivity.this,AttendeesInfoActivity.class);
+                    startActivity(intent);
+                }
+
+
             }
         });
 

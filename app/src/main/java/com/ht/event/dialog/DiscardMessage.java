@@ -17,7 +17,7 @@ import com.ht.event.R;
 public class DiscardMessage extends DialogFragment implements
         android.view.View.OnClickListener {
     public Activity c;
-    public TextView delete,cancel;
+    public TextView yes,no;
 
     public DiscardMessage(Activity c) {
         this.c = c;
@@ -29,10 +29,10 @@ public class DiscardMessage extends DialogFragment implements
         Dialog d = new Dialog(c);
         d.requestWindowFeature(Window.FEATURE_NO_TITLE);
         d.setContentView(R.layout.fragment_discard_message);
-        delete =(TextView)d.findViewById(R.id.delete);
-        cancel =(TextView)d.findViewById(R.id.cancel);
-        delete.setOnClickListener(this);
-        cancel.setOnClickListener(this);
+        yes =(TextView)d.findViewById(R.id.yes);
+        no =(TextView)d.findViewById(R.id.no);
+        yes.setOnClickListener(this);
+        no.setOnClickListener(this);
 
         return d ;
     }
@@ -40,10 +40,10 @@ public class DiscardMessage extends DialogFragment implements
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.delete:
+            case R.id.yes:
                 c.onBackPressed();
                 break;
-            case R.id.cancel:
+            case R.id.no:
                 getDialog().dismiss();
                 break;
             default:

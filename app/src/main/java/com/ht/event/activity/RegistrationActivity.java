@@ -94,7 +94,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         // Button click listeners
         btnSignIn.setOnClickListener(this);
 
-        //setting google+
+        //setting google
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
@@ -200,6 +200,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             else{
                 GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
                 getProfileInformation(result);
+                this.finish();
             }
 
             mIntentInProgress = false;
@@ -281,6 +282,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 }
               Intent intent =new Intent(this,AttendeesInfoActivity.class);
                 startActivity(intent);
+
             } else {
                 Toast.makeText(getApplicationContext(),
                         "Person information is null", Toast.LENGTH_LONG).show();

@@ -5,12 +5,18 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.ht.event.R;
 import com.ht.event.dialog.DiscardMessage;
+import com.ht.event.model.User;
+import com.ht.event.utils.EventsPreferences;
+
+import org.w3c.dom.Text;
 
 public class ContactOrganizerActivity extends AppCompatActivity {
     DiscardMessage discardMessage;
+    TextView userName,userEmail,userMessage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +30,17 @@ public class ContactOrganizerActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        userName = (TextView)findViewById(R.id.userName);
+        userEmail =(TextView)findViewById(R.id.userEmail);
+        userMessage = (TextView)findViewById(R.id.message);
+
+        User user = EventsPreferences.getUser(this);
+
+        if(user != null){
+            userName.setText(user.getName());
+            userEmail.setText(user.getEmail());
+
+        }
 
     }
 

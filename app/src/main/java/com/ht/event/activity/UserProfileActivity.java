@@ -42,7 +42,7 @@ public class UserProfileActivity extends AppCompatActivity {
         userName = (TextView)findViewById(R.id.ProfileUserName);
         User user = EventsPreferences.getUser(this);
         
-        if(user != null){
+        if(user.getEmail() != null){
             userName.setText(user.getName());
 
         }

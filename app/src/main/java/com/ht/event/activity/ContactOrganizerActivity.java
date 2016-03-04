@@ -36,7 +36,7 @@ public class ContactOrganizerActivity extends AppCompatActivity {
 
         User user = EventsPreferences.getUser(this);
 
-        if(user != null){
+        if(user.getEmail()!= null){
             userName.setText(user.getName());
             userEmail.setText(user.getEmail());
 

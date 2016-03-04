@@ -65,7 +65,7 @@
         android:layout_below="@+id/test_image">
 
         <EditText
-            android:id="@+id/firstName"
+            android:id="@+id/Name"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
@@ -83,14 +83,14 @@
 
             />
         <EditText
-            android:id="@+id/lastName"
+            android:id="@+id/emailAddress"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="5dp"
-            android:hint="@string/lastName"
-            android:inputType="text"
+            android:hint="@string/emailAddress"
+            android:inputType="textEmailAddress"
             android:textSize="15sp"
             android:textColorHint="@color/grey05"
             android:textColor="@color/Text_title"
@@ -100,15 +100,44 @@
 
             />
         <EditText
-            android:id="@+id/emailAddress"
+            android:id="@+id/phoneNo"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
             android:textSize="15sp"
             android:textColor="@color/Text_title"
             android:textColorHint="@color/grey05"
-            android:hint="@string/emailAddress"
+            android:hint="@string/phoneNo"
+            android:inputType="number"
+            android:theme="@style/EditTextTheme"
+            />
+        <EditText
+            android:id="@+id/orgName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="15sp"
+            android:textColor="@color/Text_title"
+            android:textColorHint="@color/grey05"
+            android:hint="@string/organization"
+            android:inputType="text"
+            android:theme="@style/EditTextTheme"
+            />
+        <EditText
+            android:id="@+id/orgWebsite"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="15sp"
+            android:textColor="@color/Text_title"
+            android:textColorHint="@color/grey05"
+            android:hint="@string/organizationwebsite"
             android:inputType="textEmailAddress"
             android:theme="@style/EditTextTheme"
             />

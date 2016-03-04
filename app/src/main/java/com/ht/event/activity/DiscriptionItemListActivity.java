@@ -114,8 +114,7 @@ public class DiscriptionItemListActivity extends AppCompatActivity implements Da
             @Override
             public void onClick(  View v) {
                 User user = EventsPreferences.getUser(DiscriptionItemListActivity.this);
-
-                if(user == null){
+                if(user.getEmail() == null){
                     Intent intent = new Intent(DiscriptionItemListActivity.this, RegistrationActivity.class);
                     startActivity(intent);
                 }

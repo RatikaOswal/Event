@@ -40,7 +40,7 @@
                 android:textSize="15sp"
                 android:textAllCaps="true"
                 android:textStyle="bold"
-                android:layout_toLeftOf="@+id/cancel"
+                android:layout_toLeftOf="@+id/no"
                 android:layout_marginBottom="10dp"
                 android:layout_marginRight="10dp"
                 />

@@ -29,7 +29,7 @@
         >
 
         <TextView
-            android:id="@+id/continueBut"
+            android:id="@+id/continuetext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/attendeecontinue"
@@ -157,13 +157,13 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:hint="@string/editHint"
-        android:inputType="text"
+        android:inputType="number"
         android:textSize="20sp"
         android:textColor="@color/Text_title"
         android:background="@color/white"
         android:textColorHint="@color/Text_venue"
         android:theme="@style/EditTextTheme"
-        android:layout_marginBottom="2dp"/>
+        android:layout_marginBottom="5dp"/>
 
    <TextView
         android:layout_width="match_parent"
@@ -191,7 +191,8 @@
         android:textColor="@color/Text_title"
         android:background="@color/white"
         android:textColorHint="@color/Text_venue"
-        android:theme="@style/EditTextTheme"/>
+        android:theme="@style/EditTextTheme"
+        android:layout_marginBottom="5dp"/>
 
     <TextView
     android:layout_width="match_parent"
@@ -214,12 +215,13 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:hint="@string/editHint2"
-        android:inputType="text"
+        android:inputType="textEmailAddress"
         android:textSize="20sp"
         android:textColor="@color/Text_title"
         android:background="@color/white"
         android:textColorHint="@color/Text_venue"
-        android:theme="@style/EditTextTheme"/>
+        android:theme="@style/EditTextTheme"
+        android:layout_marginBottom="5dp"/>
 
 
 

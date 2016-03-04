@@ -104,6 +104,10 @@
             android:name=".activity.AttendeesInfoActivity"
             android:label="@string/title_activity_attendees_info" >
         </activity>
+        <activity
+            android:name=".activity.OrderBreakdownActivity"
+            android:label="@string/title_activity_order_breakdown" >
+        </activity>
     </application>
 
 </manifest>

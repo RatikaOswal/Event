@@ -58,6 +58,17 @@
     <string name="firstName">First Name</string>
     <string name="lastName">Last Name</string>
     <string name="emailAddress">Email Address</string>
+    <string name="registrationinfo">Registration Information</string>
+    <string name="ticket">Ticket Buyer</string>
+    <string name="name">Name</string>
+    <string name="getname">User Name</string>
+    <string name="contactnumber">Contact Number</string>
+    <string name="editHint">Tap to enter</string>
+    <string name="organization">Organization</string>
+    <string name="editHint1">Tap to enter</string>
+    <string name="organizationwebsite">Organization Website</string>
+    <string name="editHint2">Tap to enter</string>
+    <string name="attendeecontinue">CONTINUE</string>
         <string name="title_activity_attendees_info">Attendees</string>
 
 

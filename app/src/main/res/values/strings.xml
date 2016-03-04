@@ -1,7 +1,7 @@
 <resources>
     <string name="discardMessage">Are you sure you want to discard this message?</string>
-    <string name="delete">Delete</string>
-    <string name="cancel">cancel</string>
+    <string name="delete">Yes</string>
+    <string name="cancel">No</string>
     <string name="price">Price</string>
     <string name="organisationTitle">Organisation Name</string>
     <string name="contact">Contact</string>

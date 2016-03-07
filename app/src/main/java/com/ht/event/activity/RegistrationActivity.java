@@ -41,7 +41,9 @@ import com.facebook.FacebookSdk;
 import com.facebook.Profile;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.ht.event.model.Item;
 import com.ht.event.model.User;
+import com.ht.event.utils.Config;
 import com.ht.event.utils.EventsPreferences;
 
 import java.io.InputStream;
@@ -65,7 +67,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     public boolean mSignInClicked;
     public ConnectionResult mConnectionResult;
     public User userinfo;
-
+    Item itemIntentObject;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -90,6 +92,9 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         txtEmail = (TextView) findViewById(R.id.txtEmail);
         llProfileLayout = (LinearLayout) findViewById(R.id.llProfile);
         info = (TextView) findViewById(R.id.info);
+        if (getIntent().hasExtra(Config.ITEM_INTENT_OBJECT)){
+            itemIntentObject = (Item) getIntent().getSerializableExtra(Config.ITEM_INTENT_OBJECT);
+        }
 
         // Button click listeners
         btnSignIn.setOnClickListener(this);
@@ -281,6 +286,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
                 }
               Intent intent =new Intent(this,AttendeesInfoActivity.class);
+                intent.putExtra(Config.ITEM_INTENT_OBJECT,itemIntentObject);
                 startActivity(intent);
 
             } else {

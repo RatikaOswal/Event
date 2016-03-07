@@ -1,7 +1,6 @@
 package com.ht.event.activity;
 
 
-import android.content.Context;
 import android.content.Intent;
 
 import android.os.Handler;
@@ -9,6 +8,7 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -36,7 +36,7 @@ import com.ht.event.utils.EventsPreferences;
 import java.util.HashMap;
 
 
-public class DiscriptionItemListActivity extends AppCompatActivity implements DataHandler {
+public class EventDetailActivity extends AppCompatActivity implements DataHandler {
 
     public ImageView imageView;
     private GoogleMap map;
@@ -74,7 +74,7 @@ public class DiscriptionItemListActivity extends AppCompatActivity implements Da
         organisationName = (TextView) findViewById(R.id.organisationName);
 
 
-        itemObjects = (Item) getIntent().getSerializableExtra("Item");
+        itemObjects = (Item) getIntent().getSerializableExtra(Config.ITEM_INTENT_OBJECT);
         imageView.setImageResource(itemObjects.getImage());
         time.setText(itemObjects.getTime());
         title.setText(itemObjects.getTitle());
@@ -104,8 +104,8 @@ public class DiscriptionItemListActivity extends AppCompatActivity implements Da
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(DiscriptionItemListActivity.this, EventDescriptionActivity.class);
-                intent.putExtra("Item", itemObjects);
+                Intent intent = new Intent(EventDetailActivity.this, EventDescriptionActivity.class);
+                intent.putExtra(Config.ITEM_INTENT_OBJECT, itemObjects);
                 startActivity(intent);
             }
         });
@@ -113,14 +113,22 @@ public class DiscriptionItemListActivity extends AppCompatActivity implements Da
         registerbut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(  View v) {
-                User user = EventsPreferences.getUser(DiscriptionItemListActivity.this);
+                User user = EventsPreferences.getUser(EventDetailActivity.this);
                 if(user.getEmail() == null){
-                    Intent intent = new Intent(DiscriptionItemListActivity.this, RegistrationActivity.class);
+                    Intent intent = new Intent(EventDetailActivity.this, RegistrationActivity.class);
+                    intent.putExtra(Config.ITEM_INTENT_OBJECT, itemObjects);
                     startActivity(intent);
+                } else if (TextUtils.isEmpty(user.getPhoneNo())){
+
+                    Intent intent = new Intent(EventDetailActivity.this, AttendeesInfoActivity.class);
+                    intent.putExtra(Config.ITEM_INTENT_OBJECT, itemObjects);
+                    startActivity(intent);
+
                 }
                 else
                 {
-                    Intent intent = new Intent(DiscriptionItemListActivity.this,AttendeesInfoActivity.class);
+                    Intent intent = new Intent(EventDetailActivity.this,OrderBreakdownActivity.class);
+                    intent.putExtra(Config.ITEM_INTENT_OBJECT, itemObjects);
                     startActivity(intent);
                 }
 
@@ -136,7 +144,7 @@ public class DiscriptionItemListActivity extends AppCompatActivity implements Da
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(DiscriptionItemListActivity.this, MapLocationActivity.class);
+                Intent intent = new Intent(EventDetailActivity.this, EventVenueLocationActivity.class);
                 intent.putExtra("Item", itemObjects);
                 intent.putExtra("Latitude", latitude);
                 intent.putExtra("Longitude", longitude);
@@ -148,7 +156,7 @@ public class DiscriptionItemListActivity extends AppCompatActivity implements Da
     }
         public void contactInfo(View view)
     {
-        Intent intent =new Intent(DiscriptionItemListActivity.this,ContactOrganizerActivity.class);
+        Intent intent =new Intent(EventDetailActivity.this,ContactOrganizerActivity.class);
         startActivity(intent);
 
 
@@ -283,7 +291,7 @@ public class DiscriptionItemListActivity extends AppCompatActivity implements Da
                     {
                         ConnectionFragment  cFragment = new ConnectionFragment();
                         // Show DialogFragment
-                        cFragment.show(DiscriptionItemListActivity.this,"No Internet Connection","You don't have internet connection.",false);
+                        cFragment.show(EventDetailActivity.this,"No Internet Connection","You don't have internet connection.",false);
 
                     }
 

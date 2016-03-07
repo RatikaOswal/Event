@@ -32,9 +32,9 @@ public static void  saveUser(Context context,User user){
 
         String name = user.getName();
         String email = user.getEmail();
-        String phoneno = user.getPhoneNo();
-        String orgName  = user.getOrganisation();
-        String orgWebsite = user.getOrgWebsite();
+        String Phoneno = user.getPhoneNo();
+        String OrgName  = user.getOrganisation();
+        String OrgWebsite = user.getOrgWebsite();
 
 
         if (name != null) {
@@ -43,15 +43,15 @@ public static void  saveUser(Context context,User user){
         if (email != null) {
             editor.putString(EMAIL, email);
             }
-        if (phoneno != null){
-            editor.putString(PHONENO, phoneno);
+        if (Phoneno != null){
+            editor.putString(PHONENO, Phoneno);
         }
 
-        if ( orgWebsite!= null){
-            editor.putString(ORGWEBSITE, orgWebsite);
+        if ( OrgWebsite!= null){
+            editor.putString(ORGWEBSITE, OrgWebsite);
         }
-        if (orgName != null){
-            editor.putString(ORGANIZATIONNAME, orgName);
+        if (OrgName != null){
+            editor.putString(ORGANIZATIONNAME, OrgName);
         }
         editor.commit();
     }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ht.event" >
+    package="com.ht.event">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -20,7 +20,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/app_id" />
@@ -33,7 +33,7 @@
             android:label="@string/app_name" />
         <activity
             android:name=".Splash"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -42,19 +42,16 @@
         </activity>
         <activity
             android:name=".activity.EventDetailActivity"
-            android:label="" >
-        </activity>
+            android:label=""></activity>
         <activity
             android:name=".activity.RegistrationActivity"
             android:label="@string/title_activity_registration"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-        </activity>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
         <activity
             android:name=".activity.FilterActivity"
             android:label=""
@@ -102,12 +99,11 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".activity.AttendeesInfoActivity"
-            android:label="@string/title_activity_attendees_info" >
-        </activity>
+            android:label="@string/title_activity_attendees_info"></activity>
         <activity
             android:name=".activity.OrderBreakdownActivity"
-            android:label="@string/title_activity_order_breakdown" >
-        </activity>
+            android:label="@string/title_activity_order_breakdown"></activity>
+        <activity android:name=".activity.OrderCompletedActivity"></activity>
     </application>
 
 </manifest>

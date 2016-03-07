@@ -1,10 +1,12 @@
 package com.ht.event.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.ht.event.R;
@@ -16,7 +18,7 @@ import com.ht.event.utils.EventsPreferences;
 public class OrderBreakdownActivity extends AppCompatActivity {
 
     public Item item;
-    public TextView venue,time,price,name,email,OrgName,phoneNo;
+    public TextView venue,time,price,name,email,OrgName,phoneNo, continuetext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +52,21 @@ public class OrderBreakdownActivity extends AppCompatActivity {
         OrgName.setText(user.getOrganisation());
 
 
+        continuetext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(OrderBreakdownActivity.this,OrderCompletedActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
+
+
+
+
+
 
 
     @Override

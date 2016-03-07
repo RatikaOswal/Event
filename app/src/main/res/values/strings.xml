@@ -7,6 +7,8 @@
     <string name="cancel">No</string>
     <string name="Cancel">Cancel</string>
     <string name="price">Price</string>
+    <string name="done">DONE</string>
+    <string name="orderCompleted">ORDER COMPLETED</string>
     <string name="phoneNo">Phone Number</string>
     <string name="organisationTitle">Organisation Name</string>
     <string name="contact">Contact</string>
@@ -74,8 +76,8 @@
     <string name="organization">Organization Name</string>
     <string name="organizationwebsite">Organization Website</string>
     <string name="attendeecontinue">CONTINUE</string>
-        <string name="title_activity_attendees_info">Attendees</string>
-        <string name="title_activity_order_breakdown">Order Breakdown</string>
+    <string name="title_activity_attendees_info">Attendees</string>
+    <string name="title">Title</string>
 
 
 </resources>

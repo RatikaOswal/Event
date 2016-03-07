@@ -41,7 +41,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.DiscriptionItemListActivity"
+            android:name=".activity.EventDetailActivity"
             android:label="" >
         </activity>
         <activity
@@ -72,7 +72,7 @@
         <!-- android:name="com.google.android.gms.version" -->
         <!-- android:value="@integer/google_play_services_version" /> -->
         <activity
-            android:name=".activity.MapLocationActivity"
+            android:name=".activity.EventVenueLocationActivity"
             android:label="@string/title_activity_map_location" />
         <activity
             android:name=".activity.EventDescriptionActivity"

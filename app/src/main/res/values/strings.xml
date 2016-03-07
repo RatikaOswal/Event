@@ -1,4 +1,7 @@
 <resources>
+    <string name="Total">Total</string>
+    <string name="MoreDetail">More Detail</string>
+    <string name="time">Time</string>
     <string name="discardMessage">Are you sure you want to discard this message?</string>
     <string name="delete">Yes</string>
     <string name="cancel">No</string>
@@ -66,12 +69,10 @@
     <string name="contactnumber">Contact Number</string>
     <string name="editHint">Tap to enter</string>
     <string name="organization">Organization Name</string>
-    <string name="editHint1">Tap to enter</string>
     <string name="organizationwebsite">Organization Website</string>
-    <string name="editHint2">Tap to enter</string>
     <string name="attendeecontinue">CONTINUE</string>
         <string name="title_activity_attendees_info">Attendees</string>
-        <string name="title_activity_order_breakdown">OrderBreakdownActivity</string>
+        <string name="title_activity_order_breakdown">Order Breakdown</string>
 
 
 </resources>

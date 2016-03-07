@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 
 import com.ht.event.R;
@@ -14,8 +16,8 @@ import com.ht.event.utils.EventsPreferences;
 
 public class UserProfileEditActivity extends AppCompatActivity {
 
-    EditText name,email,phoneNo,orgName,orgWebsite;
-
+    EditText name,phoneNo,orgName,orgWebsite;
+    TextView email,save;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,21 +28,40 @@ public class UserProfileEditActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        name = (EditText)findViewById(R.id.Name);
-        email = (EditText) findViewById(R.id.emailAddress);
+        name = (EditText)findViewById(R.id.name);
+        email = (TextView) findViewById(R.id.emailAddress);
         phoneNo = (EditText) findViewById(R.id.phoneNo);
         orgName = (EditText) findViewById(R.id.orgName);
         orgWebsite = (EditText)findViewById(R.id.orgWebsite);
+        save = (TextView)findViewById(R.id.save);
 
-        User user = EventsPreferences.getUser(this);
-        if (user!=null){
-            name.setText(user.getName());
-            email.setText(user.getEmail());
-            phoneNo.setText(user.getPhoneNo());
-            orgName.setText(user.getOrganisation());
-            orgWebsite.setText(user.getOrgWebsite());
+        final User user = EventsPreferences.getUser(UserProfileEditActivity.this);
 
+        if (user.getEmail() != null) {
+        email.setText(user.getEmail());
+        name.setText(user.getName());
+        phoneNo.setText(user.getPhoneNo());
+        orgName.setText(user.getOrganisation());
+        orgWebsite.setText(user.getOrgWebsite());
         }
+
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+//                    name.setText(name.getText().toString());
+//                    phoneNo.setText(phoneNo.getText().toString());
+//                    orgName.setText(orgName.getText().toString());
+//                    orgWebsite.setText(orgWebsite.getText().toString());
+                user.setPhoneNo(phoneNo.getText().toString());
+                user.setName(name.getText().toString());
+                user.setOrganisation(orgName.getText().toString());
+                user.setOrgWebsite(orgWebsite.getText().toString());
+                EventsPreferences.saveUser(UserProfileEditActivity.this, user);
+            }
+        });
+
+
     }
 
 

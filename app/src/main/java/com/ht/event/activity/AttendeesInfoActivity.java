@@ -11,14 +11,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.ht.event.R;
+import com.ht.event.model.Item;
 import com.ht.event.model.User;
+import com.ht.event.utils.Config;
 import com.ht.event.utils.EventsPreferences;
 
 public class AttendeesInfoActivity extends AppCompatActivity {
     private EditText phoneNo, orgName, orgWebsite;
-    private TextView register;
+    private TextView register, userName, email;
     private String PhoneNo,OrgName,OrgWebsite;
-
+    public Item itemObjects;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,25 +34,40 @@ public class AttendeesInfoActivity extends AppCompatActivity {
 //setting the icon
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        if(getIntent().hasExtra(Config.ITEM_INTENT_OBJECT)) {
+            itemObjects = (Item) getIntent().getSerializableExtra(Config.ITEM_INTENT_OBJECT);
+        }
+        userName = (TextView)findViewById(R.id.getuserName);
+        email = (TextView)findViewById(R.id.attendeeEmail);
         phoneNo = (EditText)findViewById(R.id.contactNumber);
-        phoneNo.getText().toString();
-        orgName = (EditText)findViewById(R.id.company);
-        orgName.getText().toString();
         orgWebsite = (EditText)findViewById(R.id.companywebsite);
-        orgWebsite.getText().toString();
-
+        orgName = (EditText)findViewById(R.id.company);
         register = (TextView)findViewById(R.id.continuetext);
+
+
+
+        final User user = EventsPreferences.getUser(AttendeesInfoActivity.this);
+        userName.setText(user.getName());
+        email.setText(user.getEmail());
+
+
+
         register.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                User user = EventsPreferences.getUser(AttendeesInfoActivity.this);
+
+                PhoneNo = phoneNo.getText().toString();
+                OrgName = orgName.getText().toString();
+                OrgWebsite = orgWebsite.getText().toString();
+
                 user.setPhoneNo(PhoneNo);
                 user.setOrgWebsite(OrgWebsite);
                 user.setOrganisation(OrgName);
-                EventsPreferences.saveUser(AttendeesInfoActivity.this, user);
 
+                EventsPreferences.saveUser(AttendeesInfoActivity.this, user);
                 Intent intent = new Intent(AttendeesInfoActivity.this,OrderBreakdownActivity.class);
+                intent.putExtra(Config.ITEM_INTENT_OBJECT, itemObjects);
                 startActivity(intent);
                 AttendeesInfoActivity.this.finish();
             }
@@ -62,12 +79,6 @@ public class AttendeesInfoActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_attendees_info, menu);
-        return true;
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

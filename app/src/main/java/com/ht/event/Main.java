@@ -92,9 +92,8 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
         //Setting User name
         headerView=mNvDrawer.getHeaderView(0);
         userName = (TextView) headerView.findViewById(R.id.textViewUserName);
-
         User user = EventsPreferences.getUser(this);
-        if(user != null){
+        if(user.getEmail()!= null){
             userName.setText(user.getName());
 
         }

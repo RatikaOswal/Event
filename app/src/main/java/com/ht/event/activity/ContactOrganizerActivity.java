@@ -49,7 +49,7 @@ public class ContactOrganizerActivity extends AppCompatActivity {
 
         int id = item.getItemId();
         if (id == android.R.id.home) {
-            discardMessage.show(this.getFragmentManager(),"discard ");
+            discardMessage.show(this.getFragmentManager(),"logout ");
             return true;
         }
 

@@ -14,18 +14,25 @@ import android.widget.TextView;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.ht.event.R;
 import com.ht.event.adapter.ProfilePagerAdapter;
+import com.ht.event.dialog.DiscardMessage;
+import com.ht.event.dialog.LogoutMessage;
+import com.ht.event.model.Item;
 import com.ht.event.model.User;
 import com.ht.event.utils.EventsPreferences;
 
 public class UserProfileActivity extends AppCompatActivity {
 
     TextView userName;
+    LogoutMessage logoutMessage;
+    public Item bookmarkedinfo;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_page);
+        logoutMessage = new LogoutMessage(this);
 
 //setting up toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.profileToolbar);
@@ -39,9 +46,11 @@ public class UserProfileActivity extends AppCompatActivity {
         viewPager.setAdapter(new ProfilePagerAdapter(getSupportFragmentManager()));
         tabLayout.setupWithViewPager(viewPager);
 
+
+
         userName = (TextView)findViewById(R.id.ProfileUserName);
         User user = EventsPreferences.getUser(this);
-        
+
         if(user.getEmail() != null){
             userName.setText(user.getName());
 
@@ -68,6 +77,9 @@ public class UserProfileActivity extends AppCompatActivity {
                 intent = new Intent(this, UserProfileSettingsActivity.class);
                 startActivity(intent);
                 return true;
+
+            case R.id.action_logout:
+                logoutMessage.show(this.getFragmentManager(), "discard");
 
 
 

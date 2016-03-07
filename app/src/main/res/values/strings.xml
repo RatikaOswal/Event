@@ -5,6 +5,7 @@
     <string name="discardMessage">Are you sure you want to discard this message?</string>
     <string name="delete">Yes</string>
     <string name="cancel">No</string>
+    <string name="Cancel">Cancel</string>
     <string name="price">Price</string>
     <string name="phoneNo">Phone Number</string>
     <string name="organisationTitle">Organisation Name</string>
@@ -55,7 +56,9 @@
 
     <string name="title_activity_contact_organizer">Contact Organizer</string>
     <string name="action_logout">logout</string>
-    <string name="EditProfile">EditProfile</string>
+    <string name="EditProfile">Edit Profile</string>
+    <string name="Logout">Log Out</string>
+    <string name="logoutMsg">Are you sure you want to Log out?</string>
     <string name="title_activity_edit_profile">EditProfileActivity</string>
     <string name="title_activity_settings__user_profile">settings_User_profileActivity</string>
     <string name="save">save</string>

@@ -38,6 +38,7 @@ public class OrderBreakdownActivity extends AppCompatActivity {
         email = (TextView)findViewById(R.id.RegUserEmail);
         OrgName = (TextView)findViewById(R.id.RegUserOrg);
         phoneNo = (TextView)findViewById(R.id.RegUserPhone);
+        continuetext = (TextView)findViewById(R.id.continuetext);
 
         item = (Item) getIntent().getSerializableExtra(Config.ITEM_INTENT_OBJECT);
 //        System.out.println("krlrk" + getIntent().getStringExtra("title"));
@@ -62,9 +63,6 @@ public class OrderBreakdownActivity extends AppCompatActivity {
 
 
     }
-
-
-
 
 
 

@@ -99,11 +99,17 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".activity.AttendeesInfoActivity"
-            android:label="@string/title_activity_attendees_info"></activity>
+            android:label="@string/title_activity_attendees_info">
+
+        </activity>
         <activity
             android:name=".activity.OrderBreakdownActivity"
-            android:label="@string/title_activity_order_breakdown"></activity>
-        <activity android:name=".activity.OrderCompletedActivity"></activity>
+            android:label="@string/title_activity_order_breakdown">
+
+        </activity>
+        <activity android:name=".activity.OrderCompletedActivity">
+
+        </activity>
     </application>
 
 </manifest>

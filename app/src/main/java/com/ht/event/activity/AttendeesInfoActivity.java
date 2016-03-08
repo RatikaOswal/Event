@@ -51,7 +51,6 @@ public class AttendeesInfoActivity extends AppCompatActivity {
         email.setText(user.getEmail());
 
 
-
         register.setOnClickListener(new View.OnClickListener() {
 
             @Override

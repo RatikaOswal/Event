@@ -66,8 +66,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     public boolean mIntentInProgress;
     public boolean mSignInClicked;
     public ConnectionResult mConnectionResult;
-    public User userinfo;
-    Item itemIntentObject;
+    public Item itemIntentObject;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -261,7 +260,6 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                Uri personPhotoUrl =  acct.getPhotoUrl();
                 String email = acct.getEmail();
 
-
                 Log.e(TAG, "Name: " + personName + ", plusProfile: "
                         + ", email: " + email
                         + ", Image: " + result.getSignInAccount().getPhotoUrl());
@@ -270,6 +268,9 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 user.setEmail(email);
                 user.setName(personName);
                 EventsPreferences.saveUser(this, user);
+
+                Toast.makeText(this, personName + " is connected.", Toast.LENGTH_LONG)
+                        .show();
 
 
                 // by default the profile url gives 50x50 px image only
@@ -318,9 +319,9 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void signInWithGplus() {
-        System.out.println("signInWithGplus called");
+
          if(!mGoogleApiClient.isConnected()){
-            System.out.println("mGoogleApiClient connected");
+
             mGoogleApiClient.connect();
         }
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);

@@ -10,14 +10,12 @@ import android.view.Window;
 import android.widget.TextView;
 
 import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.ht.event.R;
 
-/**
- * Created by hp on 3/7/2016.
- */
 public class LogoutMessage extends DialogFragment implements
         android.view.View.OnClickListener {
     public Activity c;
@@ -38,6 +36,12 @@ public class LogoutMessage extends DialogFragment implements
         logout = (TextView) d.findViewById(R.id.logout);
         logout.setOnClickListener(this);
         cancel.setOnClickListener(this);
+
+        //setting google
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
         return d;
     }
 
@@ -64,7 +68,6 @@ public class LogoutMessage extends DialogFragment implements
     private void signOut(){
         if(mGoogleApiClient.isConnected()){
             mGoogleApiClient.disconnect();
-
         }
 
     }

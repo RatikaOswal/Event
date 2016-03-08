@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/fragment_backgrnd"
+    android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.ht.event.activity.OrderCompletedActivity">
 
@@ -33,17 +34,24 @@
         android:layout_alignParentRight="true"
         />
 
+    <RelativeLayout
+        android:layout_below="@+id/ordercompbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:background="@color/fragment_backgrnd"
+    >
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/orderCompleted"
-        android:layout_below="@+id/ordercompbar"
         android:background="@color/white"
         android:paddingTop="30dp"
         android:gravity="center"
+        android:paddingBottom="10dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:paddingBottom="10dp"
         android:textColor="@color/Text_title"
         android:layout_marginTop="10dp"
         android:id="@+id/ordercomp"/>
@@ -64,30 +72,138 @@
         android:textColor="@color/Text_title"
         android:layout_marginBottom="1dp"
         />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:layout_below="@+id/compTitle"
-        android:text="@string/time"
-        android:textColor="@color/Text_title"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginBottom="1dp"
-        />
-
-    <ImageView
+    <RelativeLayout
+        android:id="@+id/addC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/ic_calendar_icon"
         android:layout_below="@+id/compTitle"
-        android:paddingBottom="10dp"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        android:id="@+id/imageView2">
+        android:background="@color/white"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingRight="20dp"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_calendar_icon"
+            android:id="@+id/cal"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/timeComp"
+            android:text="@string/time"
+            android:textAllCaps="true"
+            android:layout_toRightOf="@+id/cal"
+            android:textColor="@color/Text_title"
+            android:layout_centerVertical="true"
+
+             />
+
+        <TextView
+            android:id="@+id/add"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/orange6"
+            android:text="@string/add"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_marginTop="1dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addC"
+        android:background="@color/white"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingRight="20dp"
+        android:layout_marginBottom="1dp"
+        android:id="@+id/viewc"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_ticket"
+            android:id="@+id/tick"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/ticketComp"
+            android:text="@string/tickets"
+            android:textAllCaps="true"
+            android:layout_toRightOf="@+id/tick"
+            android:textColor="@color/Text_title"
+            android:layout_centerVertical="true"
+
+            />
+
+        <TextView
+            android:id="@+id/view"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/orange6"
+            android:text="@string/view"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/viewc"
+        android:background="@color/white"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingRight="20dp"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/invite"
+            android:text="@string/invite"
+            android:textAllCaps="true"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:textColor="@color/Text_title"
+            android:paddingLeft="71dp"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_share_org"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
 
 
-    </ImageView>
-
+    </RelativeLayout>
 
 </RelativeLayout>
+
+
+    </RelativeLayout>

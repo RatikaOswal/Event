@@ -54,10 +54,9 @@ public class EventsPreferences {
             }
             if (orgName != null) {
                 editor.putString(ORGANIZATIONNAME, orgName);
-
-                editor.commit();
-
             }
+            editor.commit();
+
         }
 
         catch(Exception e){

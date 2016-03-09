@@ -10,12 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.ht.event.R;
 import com.ht.event.activity.EventDetailActivity;
 import com.ht.event.model.Item;
 import com.ht.event.utils.Config;
+import com.ht.event.utils.EventsPreferences;
 
 import java.util.ArrayList;
 
@@ -53,13 +55,15 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
 
 //bookmark
         final ImageView mStar=(ImageView)view.findViewById(R.id.bookmark);
-        mStar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                
-
-            }
-        });
+//        mStar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Item item = new Item();
+//
+//
+//
+//            }
+//        });
 
 
         return viewHolderExploreList;
@@ -85,6 +89,9 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
                 if (!current.is_bookmarked()) {
                     holder.star.setImageResource(R.drawable.ic_starfill);
                     current.setIs_bookmarked(true);
+                    EventsPreferences.saveBookmarked(ExploreItemListAdp.this.context, current);
+
+
 
                 } else {
                     holder.star.setImageResource(R.drawable.ic_sstar);
@@ -115,7 +122,7 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
     @Override
     public int getItemCount() {
 
-        return 5;
+        return this.eventitem.size();
         //back data.getSize();
 
     }

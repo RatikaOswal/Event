@@ -11,15 +11,17 @@ import com.ht.event.model.Item;
 import com.ht.event.model.ItemList;
 import com.ht.event.model.User;
 
+import java.util.ArrayList;
+
 public class EventsPreferences {
     public static final String USER_INFO = "userInfo";
     public static final String BOOKMARKED_INFO = "bookmarkedInfo";
+    public static final String BOOKMARKED_LIST = "bookmarkedList";
     public static final String NAME = "name";
     public static final String EMAIL = "email";
     public static final String ORGANIZATIONNAME = "orgName" ;
     public static final String PHONENO = "phoneno";
     public static final String ORGWEBSITE = "orgWebsite";
-    public static final String BOOKMARKED = "bookmarked";
 
     public static void saveUser(Context context, User user) {
         try {
@@ -75,7 +77,7 @@ public class EventsPreferences {
             user.setName(mPref.getString(NAME, null));
             user.setPhoneNo(mPref.getString(PHONENO, null));
             user.setOrganisation(mPref.getString(ORGANIZATIONNAME, null));
-            user.setOrgWebsite(mPref.getString(ORGWEBSITE,null));
+            user.setOrgWebsite(mPref.getString(ORGWEBSITE, null));
             return user;
 
 
@@ -86,33 +88,50 @@ public class EventsPreferences {
         return null;
     }
 
-    public static boolean saveBookmarked(String[] array, String arrayName, Context context) {
 
-        try{
+
+
+    public static void saveBookmarked(Context context,Item item) {
+
+        String dataListInStr = getBookmarked(context);
+        Gson gson = new Gson();
+
+        if(dataListInStr == null){
+            ArrayList<Item> bookmarkedItemArrayList = new ArrayList<Item>();
+            bookmarkedItemArrayList.add(item);
+            ItemList itemList = new ItemList();
+            itemList.setData(bookmarkedItemArrayList);
+            String itemListInString = gson.toJson(itemList);
             SharedPreferences mPrefs = context.getSharedPreferences(BOOKMARKED_INFO, 0);
             SharedPreferences.Editor editor = mPrefs.edit();
-            editor.putInt(arrayName +"_size", array.length);
-            for(int i=0;i<array.length;i++)
-                editor.putString(arrayName + "_" + i, array[i]);
-            return editor.commit();
+            editor.putString(BOOKMARKED_LIST,itemListInString);
+            editor.commit();
+        }
+        else {
+            ItemList itemList = gson.fromJson(dataListInStr,ItemList.class);
+            ArrayList<Item> itemArrayList = itemList.getData();
+            itemArrayList.add(item);
+            itemList.setData(itemArrayList);
+
+            String itemListInString = gson.toJson(itemList);
+            SharedPreferences mPrefs = context.getSharedPreferences(BOOKMARKED_INFO, 0);
+            SharedPreferences.Editor editor = mPrefs.edit();
+            editor.putString(BOOKMARKED_LIST,itemListInString);
+            editor.commit();
 
         }
-        catch (Exception e){
-            e.printStackTrace();
-        }
 
-            return true;
+
     }
 
 
-       public String[] loadArray(String arrayName,Context context){
-           SharedPreferences mPrefs = context.getSharedPreferences(BOOKMARKED_INFO, 0);
-           int size = mPrefs.getInt(arrayName + "_size", 0);
-           String array[] = new String[size];
-           for(int i=0;i<size;i++)
-               array[i] = mPrefs.getString(arrayName + "_" + i, null);
-           return array;
 
-       }
+    public static String getBookmarked(Context context) {
+
+
+        SharedPreferences mPrefs = context.getSharedPreferences(BOOKMARKED_INFO,0);
+        return mPrefs.getString(BOOKMARKED_LIST,null);
 
     }
+
+}

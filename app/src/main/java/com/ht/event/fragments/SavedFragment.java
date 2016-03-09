@@ -2,19 +2,37 @@ package com.ht.event.fragments;
 
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.gson.Gson;
 import com.ht.event.R;
+import com.ht.event.adapter.ExploreItemListAdp;
+import com.ht.event.model.Item;
+import com.ht.event.model.ItemList;
+import com.ht.event.utils.EventsPreferences;
+
+import java.util.ArrayList;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class SavedFragment extends Fragment {
+    private RecyclerView mListView;
+    private RecyclerView.Adapter ExploreItemList;
+    public ArrayList<Item> eventitem;
+    private View view;
+    String dataListInStr;
+    public static final String BOOKMARKED_INFO = "bookmarkedInfo";
+    public static final String BOOKMARKED_LIST = "bookmarkedList";
+
 
 
     public SavedFragment() {
@@ -34,8 +52,34 @@ public class SavedFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_saved, container, false);
+        view= inflater.inflate(R.layout.fragment_saved, container, false);
+        mListView = (RecyclerView) view.findViewById(R.id.saved_bookmark);
+        eventitem = new ArrayList();
+        mListView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+
+
+
+        Gson gson = new Gson();
+        String item =EventsPreferences.getBookmarked(getActivity());
+        ItemList itemList = gson.fromJson(item, ItemList.class);
+
+
+      // ArrayList<Item> itemArrayList = itemList.getData();
+        //ItemList itemList = gson.fromJson, ItemList.class);
+
+
+        ExploreItemList = new ExploreItemListAdp(getActivity(), itemList.getData());
+        mListView.setAdapter(ExploreItemList);
+
+
+
+
+
+
+        return view;
     }
 
     @Override

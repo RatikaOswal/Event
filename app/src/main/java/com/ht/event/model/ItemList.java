@@ -11,11 +11,11 @@ public class ItemList implements Serializable {
 
     private ArrayList<Item> data;
 
-    public ArrayList<com.ht.event.model.Item> getData() {
+    public ArrayList<Item> getData() {
         return data;
     }
 
-    public void setData(ArrayList<com.ht.event.model.Item> data) {
+    public void setData(ArrayList<Item> data) {
         this.data = data;
     }
 }

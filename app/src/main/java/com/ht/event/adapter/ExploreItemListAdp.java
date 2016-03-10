@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.ht.event.R;
 import com.ht.event.activity.EventDetailActivity;
-import com.ht.event.model.Item;
+import com.ht.event.model.Event;
 import com.ht.event.utils.Config;
 
 import java.util.ArrayList;
@@ -23,12 +23,11 @@ import java.util.ArrayList;
 public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.ViewHolderExploreList>{
 
     private LayoutInflater layoutInflater;
-    public ArrayList<Item> eventitem ;
+    public ArrayList<Event> eventitem ;
     public Context context;
-   // public ViewHolderExploreList.ClickListener clickListener;
 
 
-    public ExploreItemListAdp(Context context, ArrayList<Item> eventitem){
+    public ExploreItemListAdp(Context context, ArrayList<Event> eventitem){
 
         this.context=context;
         layoutInflater=LayoutInflater.from(context);
@@ -36,7 +35,7 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
 
     }
 
-    public void setEventitem(ArrayList<Item>eventitem){
+    public void setEventitem(ArrayList<Event>eventitem){
 
         notifyItemRangeChanged(0,eventitem.size());
 
@@ -69,7 +68,7 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
 
     @Override
     public void onBindViewHolder(final ViewHolderExploreList holder, int position) {
-        final Item current = eventitem.get(position);
+        final Event current = eventitem.get(position);
         holder.time.setText(current.time);
         holder.title.setText(current.title);
         holder.venue.setText(current.venue);
@@ -129,10 +128,10 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
          private Context context;
          // public ClickListener clickListener;
 
-        ArrayList<Item>eventitem=new ArrayList<Item>();
+        ArrayList<Event>eventitem=new ArrayList<Event>();
 
 
-         public ViewHolderExploreList(View itemView,Context context,ArrayList<Item>eventitem)
+         public ViewHolderExploreList(View itemView,Context context,ArrayList<Event>eventitem)
          {
              super(itemView);
              this.eventitem=eventitem;
@@ -156,16 +155,16 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
          public void onClick(View v) {
 
              int position=getAdapterPosition();
-             Item item=this.eventitem.get(position);
+             Event event =this.eventitem.get(position);
              Intent intent=new Intent(this.context, EventDetailActivity.class);
-             intent.putExtra(Config.ITEM_INTENT_OBJECT,item);
+             intent.putExtra(Config.ITEM_INTENT_OBJECT, event);
 
-            /* intent.putExtra("CoverImg",item.getImage());
-             intent.putExtra("Time",item.getTime());
-             intent.putExtra("Title",item.getTitle());
-             intent.putExtra("Price",item.getPrice());
-             intent.putExtra("venue",item.getVenue());
-             intent.putExtra("VenueAddress",item.getVenueAddress());*/
+            /* intent.putExtra("CoverImg",event.getImage());
+             intent.putExtra("Time",event.getTime());
+             intent.putExtra("Title",event.getTitle());
+             intent.putExtra("Price",event.getPrice());
+             intent.putExtra("venue",event.getVenue());
+             intent.putExtra("VenueAddress",event.getVenueAddress());*/
              this.context.startActivity(intent);
 
 

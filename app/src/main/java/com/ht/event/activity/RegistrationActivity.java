@@ -1,16 +1,11 @@
 package com.ht.event.activity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentSender;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -28,11 +23,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.plus.Plus;
-import com.google.android.gms.plus.model.people.Person;
 import com.ht.event.R;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -41,7 +33,7 @@ import com.facebook.FacebookSdk;
 import com.facebook.Profile;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import com.ht.event.model.Item;
+import com.ht.event.model.Event;
 import com.ht.event.model.User;
 import com.ht.event.utils.Config;
 import com.ht.event.utils.EventsPreferences;
@@ -66,7 +58,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     public boolean mIntentInProgress;
     public boolean mSignInClicked;
     public ConnectionResult mConnectionResult;
-    public Item itemIntentObject;
+    public Event eventIntentObject;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -92,7 +84,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         llProfileLayout = (LinearLayout) findViewById(R.id.llProfile);
         info = (TextView) findViewById(R.id.info);
         if (getIntent().hasExtra(Config.ITEM_INTENT_OBJECT)){
-            itemIntentObject = (Item) getIntent().getSerializableExtra(Config.ITEM_INTENT_OBJECT);
+            eventIntentObject = (Event) getIntent().getSerializableExtra(Config.ITEM_INTENT_OBJECT);
         }
 
         // Button click listeners
@@ -218,7 +210,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
+        // Handle action bar event clicks here. The action bar will
         int id = item.getItemId();
 
         if (id == android.R.id.home) {
@@ -287,7 +279,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
                 }
               Intent intent =new Intent(this,AttendeesInfoActivity.class);
-                intent.putExtra(Config.ITEM_INTENT_OBJECT,itemIntentObject);
+                intent.putExtra(Config.ITEM_INTENT_OBJECT, eventIntentObject);
                 startActivity(intent);
 
             } else {

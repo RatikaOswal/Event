@@ -1,9 +1,10 @@
 package com.ht.event.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 
-public class Item implements Serializable
+public class Event implements Serializable
 
 {   public String tag2;
     public String tag1;
@@ -18,6 +19,34 @@ public class Item implements Serializable
     public String discription;
     public String organisationName;
     private boolean is_bookmarked;
+    public String startTime;
+    public String endTime;
+    public ArrayList<Session>sessions;
+
+    public ArrayList<Session> getSessions() {
+        return sessions;
+    }
+
+    public void setSessions(ArrayList<Session> sessions) {
+        this.sessions = sessions;
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
+    }
+
 
     public String getOrganisationName() {
         return organisationName;

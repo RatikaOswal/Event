@@ -8,12 +8,12 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.ht.event.R;
-import com.ht.event.model.Item;
+import com.ht.event.model.Event;
 import com.ht.event.utils.Config;
 
 public class EventDescriptionActivity extends AppCompatActivity {
 
-    Item itemobjects;
+    Event itemobjects;
     TextView discription;
 
     @Override
@@ -31,7 +31,7 @@ public class EventDescriptionActivity extends AppCompatActivity {
 
         discription=(TextView)findViewById(R.id.descriptionExtend);
 
-        itemobjects = (Item) getIntent().getSerializableExtra(Config.ITEM_INTENT_OBJECT);
+        itemobjects = (Event) getIntent().getSerializableExtra(Config.ITEM_INTENT_OBJECT);
         discription.setText(itemobjects.getDiscription());
 
 

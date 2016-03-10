@@ -3,12 +3,8 @@ package com.ht.event.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import com.google.gson.Gson;
-import com.ht.event.application.AppController;
-import com.ht.event.model.Item;
-import com.ht.event.model.ItemList;
 import com.ht.event.model.User;
 
 public class EventsPreferences {

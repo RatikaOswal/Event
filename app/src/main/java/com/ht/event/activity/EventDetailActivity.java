@@ -27,8 +27,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.ht.event.Interface.DataHandler;
 import com.ht.event.dialog.ConnectionDetector;
 import com.ht.event.dialog.ConnectionFragment;
+import com.ht.event.model.Event;
 import com.ht.event.model.GeocoderLocation;
-import com.ht.event.model.Item;
 import com.ht.event.model.User;
 import com.ht.event.utils.Config;
 import com.ht.event.utils.EventsPreferences;
@@ -41,7 +41,7 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
     public ImageView imageView;
     private GoogleMap map;
     public MenuItem BookmarkItem;
-    public Item itemObjects;
+    public Event eventObjects;
     public TextView time, registerbut, description,organisationName;
     public TextView title, price, venue, venueAddress;
     private boolean bookmarked;
@@ -74,16 +74,16 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
         organisationName = (TextView) findViewById(R.id.organisationName);
 
 
-        itemObjects = (Item) getIntent().getSerializableExtra(Config.ITEM_INTENT_OBJECT);
-        imageView.setImageResource(itemObjects.getImage());
-        time.setText(itemObjects.getTime());
-        title.setText(itemObjects.getTitle());
-        price.setText(itemObjects.getPrice());
-        venue.setText(itemObjects.getVenue());
-        description.setText(itemObjects.getDiscription());
-        venueAddress.setText(itemObjects.getVenueAddress());
-        organisationName.setText(itemObjects.getOrganisationName());
-        String address = itemObjects.getVenueAddress();
+        eventObjects = (Event) getIntent().getSerializableExtra(Config.ITEM_INTENT_OBJECT);
+        imageView.setImageResource(eventObjects.getImage());
+        time.setText(eventObjects.getTime());
+        title.setText(eventObjects.getTitle());
+        price.setText(eventObjects.getPrice());
+        venue.setText(eventObjects.getVenue());
+        description.setText(eventObjects.getDiscription());
+        venueAddress.setText(eventObjects.getVenueAddress());
+        organisationName.setText(eventObjects.getOrganisationName());
+        String address = eventObjects.getVenueAddress();
 
 
         //GeoCoder
@@ -105,7 +105,7 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
             public void onClick(View v) {
 
                 Intent intent = new Intent(EventDetailActivity.this, EventDescriptionActivity.class);
-                intent.putExtra(Config.ITEM_INTENT_OBJECT, itemObjects);
+                intent.putExtra(Config.ITEM_INTENT_OBJECT, eventObjects);
                 startActivity(intent);
             }
         });
@@ -116,19 +116,19 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
                 User user = EventsPreferences.getUser(EventDetailActivity.this);
                 if(user.getEmail() == null){
                     Intent intent = new Intent(EventDetailActivity.this, RegistrationActivity.class);
-                    intent.putExtra(Config.ITEM_INTENT_OBJECT, itemObjects);
+                    intent.putExtra(Config.ITEM_INTENT_OBJECT, eventObjects);
                     startActivity(intent);
                 } else if (TextUtils.isEmpty(user.getPhoneNo())){
 
                     Intent intent = new Intent(EventDetailActivity.this, AttendeesInfoActivity.class);
-                    intent.putExtra(Config.ITEM_INTENT_OBJECT, itemObjects);
+                    intent.putExtra(Config.ITEM_INTENT_OBJECT, eventObjects);
                     startActivity(intent);
 
                 }
                 else
                 {
                     Intent intent = new Intent(EventDetailActivity.this,OrderBreakdownActivity.class);
-                    intent.putExtra(Config.ITEM_INTENT_OBJECT, itemObjects);
+                    intent.putExtra(Config.ITEM_INTENT_OBJECT, eventObjects);
                     startActivity(intent);
                 }
 
@@ -145,7 +145,7 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
             public void onClick(View v) {
 
                 Intent intent = new Intent(EventDetailActivity.this, EventVenueLocationActivity.class);
-                intent.putExtra("Item", itemObjects);
+                intent.putExtra("Event", eventObjects);
                 intent.putExtra("Latitude", latitude);
                 intent.putExtra("Longitude", longitude);
                 startActivity(intent);
@@ -260,9 +260,9 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
 
     @Override
     public void onSuccess(HashMap<String, Object> map) {
-        Item item = (Item) map.get(Config.KEY_DATA);
-        item.getLat();
-        item.getLng();
+        Event event = (Event) map.get(Config.KEY_DATA);
+        event.getLat();
+        event.getLng();
 
     }
 

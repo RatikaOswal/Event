@@ -1,6 +1,7 @@
 package com.ht.event.adapter;
 
 
+import android.content.ClipData;
 import android.content.Context;
 
 import android.content.Intent;
@@ -13,9 +14,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.google.gson.Gson;
 import com.ht.event.R;
 import com.ht.event.activity.EventDetailActivity;
 import com.ht.event.model.Event;
+import com.ht.event.model.EventList;
 import com.ht.event.utils.Config;
 import com.ht.event.utils.EventsPreferences;
 
@@ -27,6 +30,7 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
     private LayoutInflater layoutInflater;
     public ArrayList<Event> eventitem ;
     public Context context;
+    private ArrayList<Event> bookmarkedArrayList;
 
 
     public ExploreItemListAdp(Context context, ArrayList<Event> eventitem){
@@ -34,7 +38,12 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
         this.context=context;
         layoutInflater=LayoutInflater.from(context);
         this.eventitem=eventitem;
-
+        String eventsInStr = EventsPreferences.getBookmarked(context);
+        if(eventsInStr!=null) {
+            Gson gson = new Gson();
+            EventList eventList = gson.fromJson(eventsInStr, EventList.class);
+            bookmarkedArrayList = eventList.getData();
+        }
     }
 
     public void setEventitem(ArrayList<Event>eventitem){
@@ -60,6 +69,12 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
     @Override
     public void onBindViewHolder(final ViewHolderExploreList holder, int position) {
         final Event current = eventitem.get(position);
+
+        if(bookmarkedArrayList!=null && bookmarkedArrayList.contains(current)) {
+            holder.star.setImageResource(R.drawable.ic_starfill);
+            current.setIs_bookmarked(true);
+
+        }
         holder.time.setText(current.time);
         holder.title.setText(current.title);
         holder.venue.setText(current.venue);
@@ -79,10 +94,10 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
                     EventsPreferences.saveBookmarked(ExploreItemListAdp.this.context, current);
 
 
-
                 } else {
                     holder.star.setImageResource(R.drawable.ic_sstar);
                     current.setIs_bookmarked(false);
+                    EventsPreferences.saveBookmarked(ExploreItemListAdp.this.context, current);
                 }
 
             }

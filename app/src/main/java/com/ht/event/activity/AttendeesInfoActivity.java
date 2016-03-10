@@ -4,14 +4,13 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.ht.event.R;
-import com.ht.event.model.Item;
+import com.ht.event.model.Event;
 import com.ht.event.model.User;
 import com.ht.event.utils.Config;
 import com.ht.event.utils.EventsPreferences;
@@ -20,7 +19,7 @@ public class AttendeesInfoActivity extends AppCompatActivity {
     private EditText phoneNo, orgName, orgWebsite;
     private TextView register, userName, email;
     private String PhoneNo,OrgName,OrgWebsite;
-    public Item itemObjects;
+    public Event eventObjects;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +34,7 @@ public class AttendeesInfoActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         if(getIntent().hasExtra(Config.ITEM_INTENT_OBJECT)) {
-            itemObjects = (Item) getIntent().getSerializableExtra(Config.ITEM_INTENT_OBJECT);
+            eventObjects = (Event) getIntent().getSerializableExtra(Config.ITEM_INTENT_OBJECT);
         }
         userName = (TextView)findViewById(R.id.getuserName);
         email = (TextView)findViewById(R.id.attendeeEmail);
@@ -66,7 +65,7 @@ public class AttendeesInfoActivity extends AppCompatActivity {
 
                 EventsPreferences.saveUser(AttendeesInfoActivity.this, user);
                 Intent intent = new Intent(AttendeesInfoActivity.this,OrderBreakdownActivity.class);
-                intent.putExtra(Config.ITEM_INTENT_OBJECT, itemObjects);
+                intent.putExtra(Config.ITEM_INTENT_OBJECT, eventObjects);
                 startActivity(intent);
                 AttendeesInfoActivity.this.finish();
             }

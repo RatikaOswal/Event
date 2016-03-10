@@ -7,7 +7,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.ht.event.Interface.DataHandler;
 import com.ht.event.application.AppController;
-import com.ht.event.model.Item;
+import com.ht.event.model.Event;
 import com.ht.event.utils.Config;
 
 import org.json.JSONException;
@@ -42,10 +42,10 @@ public class AddressHandler {
                                     .getJSONObject("geometry")
                                     .getJSONObject("location").getString("lng");
 
-                            Item item = new Item();
-                           // item.setLat();
-                            //item.setLng();
-                            map.put(Config.KEY_DATA,item);
+                            Event event = new Event();
+                           // event.setLat();
+                            //event.setLng();
+                            map.put(Config.KEY_DATA, event);
                             mDataHandler.onSuccess(map);
                         } catch (JSONException e) {
                             e.printStackTrace();

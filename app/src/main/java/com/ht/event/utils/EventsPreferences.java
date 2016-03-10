@@ -3,12 +3,10 @@ package com.ht.event.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import com.google.gson.Gson;
-import com.ht.event.application.AppController;
-import com.ht.event.model.Item;
-import com.ht.event.model.ItemList;
+import com.ht.event.model.Event;
+import com.ht.event.model.EventList;
 import com.ht.event.model.User;
 
 import java.util.ArrayList;
@@ -91,26 +89,26 @@ public class EventsPreferences {
 
 
 
-    public static void saveBookmarked(Context context,Item item) {
+    public static void saveBookmarked(Context context,Event event) {
 
         String dataListInStr = getBookmarked(context);
         Gson gson = new Gson();
 
         if(dataListInStr == null){
-            ArrayList<Item> bookmarkedItemArrayList = new ArrayList<Item>();
-            bookmarkedItemArrayList.add(item);
-            ItemList itemList = new ItemList();
-            itemList.setData(bookmarkedItemArrayList);
-            String itemListInString = gson.toJson(itemList);
+            ArrayList<Event> bookmarkedItemArrayList = new ArrayList<Event>();
+            bookmarkedItemArrayList.add(event);
+            EventList eventList = new EventList();
+            eventList.setData(bookmarkedItemArrayList);
+            String itemListInString = gson.toJson(eventList);
             SharedPreferences mPrefs = context.getSharedPreferences(BOOKMARKED_INFO, 0);
             SharedPreferences.Editor editor = mPrefs.edit();
             editor.putString(BOOKMARKED_LIST,itemListInString);
             editor.commit();
         }
         else {
-            ItemList itemList = gson.fromJson(dataListInStr,ItemList.class);
-            ArrayList<Item> itemArrayList = itemList.getData();
-            itemArrayList.add(item);
+            EventList itemList = gson.fromJson(dataListInStr,EventList.class);
+            ArrayList<Event> itemArrayList = itemList.getData();
+            itemArrayList.add(event);
             itemList.setData(itemArrayList);
 
             String itemListInString = gson.toJson(itemList);

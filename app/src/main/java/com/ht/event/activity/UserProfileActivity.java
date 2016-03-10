@@ -11,12 +11,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.ht.event.R;
 import com.ht.event.adapter.ProfilePagerAdapter;
-import com.ht.event.dialog.DiscardMessage;
 import com.ht.event.dialog.LogoutMessage;
-import com.ht.event.model.Item;
+import com.ht.event.model.Event;
 import com.ht.event.model.User;
 import com.ht.event.utils.EventsPreferences;
 
@@ -24,7 +22,7 @@ public class UserProfileActivity extends AppCompatActivity {
 
     TextView userName;
     LogoutMessage logoutMessage;
-    public Item bookmarkedinfo;
+    public Event bookmarkedinfo;
 
 
 

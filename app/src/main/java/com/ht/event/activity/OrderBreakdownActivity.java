@@ -1,24 +1,34 @@
 package com.ht.event.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.ht.event.R;
-import com.ht.event.model.Item;
+import com.ht.event.adapter.ExploreItemListAdp;
+import com.ht.event.adapter.SessionListAdapter;
+import com.ht.event.model.Event;
+import com.ht.event.model.EventList;
+import com.ht.event.model.SessionList;
 import com.ht.event.model.User;
 import com.ht.event.utils.Config;
 import com.ht.event.utils.EventsPreferences;
 
 public class OrderBreakdownActivity extends AppCompatActivity {
 
-    public Item item;
+    public Event event;
     public TextView venue,time,price,name,email,OrgName,phoneNo, continuetext;
+    public SessionListAdapter sessionListAdapter;
+    public RecyclerView mListView;
+    public View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +50,25 @@ public class OrderBreakdownActivity extends AppCompatActivity {
         phoneNo = (TextView)findViewById(R.id.RegUserPhone);
         continuetext = (TextView)findViewById(R.id.continuetext);
 
-        item = (Item) getIntent().getSerializableExtra(Config.ITEM_INTENT_OBJECT);
-//        System.out.println("krlrk" + getIntent().getStringExtra("title"));
-        venue.setText(item.getTitle());
-        time.setText(item.getTime());
-        price.setText(item.getPrice());
+        event = (Event) getIntent().getSerializableExtra(Config.ITEM_INTENT_OBJECT);
+        mListView = (RecyclerView) findViewById(R.id.session_list);
+        System.out.println(event+"eventd");
+        System.out.println(event.getSessions() + "eventd");
+        LinearLayoutManager lm = new LinearLayoutManager(this);
+        System.out.println(lm+ "eventss");
+        sessionListAdapter = new SessionListAdapter(this,event.getSessions());
+        System.out.println("ss" +
+                "eventss");
+
+        mListView.setLayoutManager(lm);
+
+        mListView.setAdapter(sessionListAdapter);
+        mListView.getAdapter().notifyDataSetChanged();
+
+
+        venue.setText(event.getTitle());
+        time.setText(event.getTime());
+        price.setText(event.getPrice());
 
         User user = EventsPreferences.getUser(this);
         name.setText(user.getName());
@@ -57,6 +81,7 @@ public class OrderBreakdownActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(OrderBreakdownActivity.this,OrderCompletedActivity.class);
+                intent.putExtra(Config.ITEM_INTENT_OBJECT, event);
                 startActivity(intent);
             }
         });
@@ -78,4 +103,6 @@ public class OrderBreakdownActivity extends AppCompatActivity {
 
         return true;
     }
+
+
 }

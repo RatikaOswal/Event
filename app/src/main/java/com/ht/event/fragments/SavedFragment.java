@@ -2,7 +2,6 @@ package com.ht.event.fragments;
 
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,8 +13,9 @@ import android.view.ViewGroup;
 import com.google.gson.Gson;
 import com.ht.event.R;
 import com.ht.event.adapter.ExploreItemListAdp;
+import com.ht.event.model.Event;
+import com.ht.event.model.EventList;
 import com.ht.event.model.Item;
-import com.ht.event.model.ItemList;
 import com.ht.event.utils.EventsPreferences;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ import java.util.ArrayList;
 public class SavedFragment extends Fragment {
     private RecyclerView mListView;
     private RecyclerView.Adapter ExploreItemList;
-    public ArrayList<Item> eventitem;
+    public ArrayList<Event> eventitem;
     private View view;
     String dataListInStr;
     public static final String BOOKMARKED_INFO = "bookmarkedInfo";
@@ -64,14 +64,14 @@ public class SavedFragment extends Fragment {
 
         Gson gson = new Gson();
         String item =EventsPreferences.getBookmarked(getActivity());
-        ItemList itemList = gson.fromJson(item, ItemList.class);
+        EventList eventList = gson.fromJson(item, EventList.class);
 
 
       // ArrayList<Item> itemArrayList = itemList.getData();
         //ItemList itemList = gson.fromJson, ItemList.class);
 
 
-        ExploreItemList = new ExploreItemListAdp(getActivity(), itemList.getData());
+        ExploreItemList = new ExploreItemListAdp(getActivity(), eventList.getData());
         mListView.setAdapter(ExploreItemList);
 
 

@@ -6,16 +6,16 @@ import java.util.ArrayList;
 /**
  * Created by RATIKA on 17-Feb-16.
  */
-public class ItemList implements Serializable {
+public class EventList implements Serializable {
 
 
-    private ArrayList<Item> data;
+    private ArrayList<Event> data;
 
-    public ArrayList<Item> getData() {
+    public ArrayList<Event> getData() {
         return data;
     }
 
-    public void setData(ArrayList<Item> data) {
+    public void setData(ArrayList<Event> data) {
         this.data = data;
     }
 }

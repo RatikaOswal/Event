@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.ht.event.R;
@@ -58,6 +59,7 @@ public class UserProfileEditActivity extends AppCompatActivity {
                 user.setOrganisation(orgName.getText().toString());
                 user.setOrgWebsite(orgWebsite.getText().toString());
                 EventsPreferences.saveUser(UserProfileEditActivity.this, user);
+                Toast.makeText(UserProfileEditActivity.this, "SAVED", Toast.LENGTH_SHORT).show();
             }
         });
 

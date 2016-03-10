@@ -8,7 +8,9 @@ import java.util.ArrayList;
 
 public class Event implements Serializable
 
-{   public String tag2;
+{
+    private int id;
+    public String tag2;
     public String tag1;
     public int image;
     public String time;
@@ -49,6 +51,13 @@ public class Event implements Serializable
         this.startTime = startTime;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getOrganisationName() {
         return organisationName;
@@ -176,8 +185,9 @@ public class Event implements Serializable
 
     @Override
     public boolean equals(Object o) {
-        Event event = new Event();
-
-        return true;
+        if( ((Event) o).getId() == this.id) {
+            return true;
+        }
+        return  false;
     }
 }

@@ -52,19 +52,6 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
         viewHolderExploreList = new ViewHolderExploreList(view,context,eventitem);
 
 
-//bookmark
-        final ImageView mStar=(ImageView)view.findViewById(R.id.bookmark);
-//        mStar.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Item item = new Item();
-//
-//
-//
-//            }
-//        });
-
-
         return viewHolderExploreList;
 
 
@@ -86,6 +73,7 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
             public void onClick(View v) {
 
                 if (!current.is_bookmarked()) {
+
                     holder.star.setImageResource(R.drawable.ic_starfill);
                     current.setIs_bookmarked(true);
                     EventsPreferences.saveBookmarked(ExploreItemListAdp.this.context, current);

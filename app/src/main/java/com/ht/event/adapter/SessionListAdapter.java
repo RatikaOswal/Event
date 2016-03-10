@@ -10,7 +10,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.ht.event.R;
-import com.ht.event.model.Event;
+import com.ht.event.dialog.MoreInfoMessage;
 import com.ht.event.model.Session;
 
 import java.util.ArrayList;
@@ -21,11 +21,16 @@ public class SessionListAdapter extends RecyclerView.Adapter<SessionListAdapter.
     public ArrayList<Session> session;
     public Context context;
 
+
     public SessionListAdapter(Context context, ArrayList<Session> session) {
-        System.out.print("sesss1");
+
         this.context = context;
         layoutInflater = LayoutInflater.from(context);
         this.session = session;
+//        DisplayMetrics d = context.getResources().getDisplayMetrics();
+//        itemWidth = d.widthPixels;
+//        System.out.println(itemWidth+"itemWidth");
+
     }
 
 
@@ -33,7 +38,7 @@ public class SessionListAdapter extends RecyclerView.Adapter<SessionListAdapter.
     public ViewHolderSessionList onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = layoutInflater.inflate(R.layout.session_list_layout, parent,false);
-        System.out.print("sesss2"+view);
+//        view.setLayoutParams(new RelativeLayout.LayoutParams(itemWidth,200));
         ViewHolderSessionList viewHolderSessionList;
         viewHolderSessionList = new ViewHolderSessionList(view);
         return viewHolderSessionList;
@@ -52,7 +57,6 @@ public class SessionListAdapter extends RecyclerView.Adapter<SessionListAdapter.
     public int getItemCount() {
 
         return session.size();
-        //back session.getSize();
 
     }
 
@@ -70,14 +74,19 @@ public class SessionListAdapter extends RecyclerView.Adapter<SessionListAdapter.
             title = (TextView)itemView.findViewById(R.id.sessionName);
             price = (TextView)itemView.findViewById(R.id.sessionPrice);
             checkBox = (CheckBox)itemView.findViewById(R.id.checkBox);
+
         }
 
         @Override
         public void onClick(View v) {
+            moreInfo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
+                }
+            });
         }
         public void bind(Session session){
-            System.out.println(session.getTitle() + "sesss");
             title.setText(session.getTitle());
             price.setText(session.getPrice());
         }

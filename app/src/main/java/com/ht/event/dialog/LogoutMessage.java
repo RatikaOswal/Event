@@ -45,9 +45,6 @@ public class LogoutMessage extends DialogFragment implements
         return d;
     }
 
-    {
-
-    }
 
     @Override
     public void onClick(View v) {

@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -52,13 +55,19 @@ public class OrderBreakdownActivity extends AppCompatActivity {
 
         event = (Event) getIntent().getSerializableExtra(Config.ITEM_INTENT_OBJECT);
         mListView = (RecyclerView) findViewById(R.id.session_list);
-        System.out.println(event+"eventd");
-        System.out.println(event.getSessions() + "eventd");
+
         LinearLayoutManager lm = new LinearLayoutManager(this);
-        System.out.println(lm+ "eventss");
+
+        int recyclerViewHeight = event.getSessions().size() * 137 ;
+        DisplayMetrics d = getResources().getDisplayMetrics();
+        int itemWidth = d.widthPixels;
+        System.out.println(itemWidth+"itemWidth");
+        LinearLayout.LayoutParams params = new
+                LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.height=recyclerViewHeight;
+        mListView.setLayoutParams(params);
         sessionListAdapter = new SessionListAdapter(this,event.getSessions());
-        System.out.println("ss" +
-                "eventss");
 
         mListView.setLayoutManager(lm);
 
@@ -88,8 +97,6 @@ public class OrderBreakdownActivity extends AppCompatActivity {
 
 
     }
-
-
 
 
     @Override

@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fragment_backgrnd"
-    android:paddingTop="5dp"
-    android:paddingBottom="5dp"
+    android:paddingTop="2dp"
+    android:paddingBottom="2dp"
 
     >
     <RelativeLayout

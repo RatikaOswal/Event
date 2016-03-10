@@ -103,6 +103,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         logInButton = (LoginButton) findViewById(R.id.login_button);
         logInButton.setReadPermissions("user_friends");
         logInButton.registerCallback(mcallbackManager, new FacebookCallback<LoginResult>() {
+
             @Override
             public void onSuccess(LoginResult loginResult) {
 

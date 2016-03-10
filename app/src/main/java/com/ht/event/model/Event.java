@@ -1,5 +1,7 @@
 package com.ht.event.model;
 
+import android.content.ClipData;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -170,5 +172,12 @@ public class Event implements Serializable
 
     public void setVenue(String venue) {
         this.venue = venue;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        Event event = new Event();
+
+        return true;
     }
 }

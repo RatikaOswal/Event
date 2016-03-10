@@ -64,20 +64,15 @@ public class SavedFragment extends Fragment {
         Gson gson = new Gson();
         String item =EventsPreferences.getBookmarked(getActivity());
         EventList eventList = gson.fromJson(item, EventList.class);
+                if(item != null){
+                    ExploreItemList = new ExploreItemListAdp(getActivity(), eventList.getData());
+                    mListView.setAdapter(ExploreItemList);
 
+
+                }
 
       // ArrayList<Item> itemArrayList = itemList.getData();
         //ItemList itemList = gson.fromJson, ItemList.class);
-
-
-        ExploreItemList = new ExploreItemListAdp(getActivity(), eventList.getData());
-        mListView.setAdapter(ExploreItemList);
-
-
-
-
-
-
         return view;
     }
 

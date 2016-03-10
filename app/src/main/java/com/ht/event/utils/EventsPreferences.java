@@ -20,6 +20,8 @@ public class EventsPreferences {
     public static final String ORGANIZATIONNAME = "orgName" ;
     public static final String PHONENO = "phoneno";
     public static final String ORGWEBSITE = "orgWebsite";
+    private static boolean is_bookmarked;
+
 
     public static void saveUser(Context context, User user) {
         try {
@@ -94,7 +96,7 @@ public class EventsPreferences {
         String dataListInStr = getBookmarked(context);
         Gson gson = new Gson();
 
-        if(dataListInStr == null){
+        if (dataListInStr == null) {
             ArrayList<Event> bookmarkedItemArrayList = new ArrayList<Event>();
             bookmarkedItemArrayList.add(event);
             EventList eventList = new EventList();
@@ -102,25 +104,27 @@ public class EventsPreferences {
             String itemListInString = gson.toJson(eventList);
             SharedPreferences mPrefs = context.getSharedPreferences(BOOKMARKED_INFO, 0);
             SharedPreferences.Editor editor = mPrefs.edit();
-            editor.putString(BOOKMARKED_LIST,itemListInString);
+            editor.putString(BOOKMARKED_LIST, itemListInString);
             editor.commit();
         }
-        else {
-            EventList itemList = gson.fromJson(dataListInStr,EventList.class);
-            ArrayList<Event> itemArrayList = itemList.getData();
-            itemArrayList.add(event);
-            itemList.setData(itemArrayList);
 
-            String itemListInString = gson.toJson(itemList);
-            SharedPreferences mPrefs = context.getSharedPreferences(BOOKMARKED_INFO, 0);
-            SharedPreferences.Editor editor = mPrefs.edit();
-            editor.putString(BOOKMARKED_LIST,itemListInString);
-            editor.commit();
+        else{
+                EventList eventList = gson.fromJson(dataListInStr, EventList.class);
+                ArrayList<Event> bookmarkedItemArrayList = eventList.getData();
+                bookmarkedItemArrayList.add(event);
+                eventList.setData(bookmarkedItemArrayList);
+
+                String itemListInString = gson.toJson(eventList);
+                SharedPreferences mPrefs = context.getSharedPreferences(BOOKMARKED_INFO, 0);
+                SharedPreferences.Editor editor = mPrefs.edit();
+                editor.putString(BOOKMARKED_LIST, itemListInString);
+                editor.commit();
+
+
 
         }
-
-
     }
+
 
 
 

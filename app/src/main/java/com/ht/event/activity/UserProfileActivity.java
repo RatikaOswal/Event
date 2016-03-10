@@ -22,9 +22,6 @@ public class UserProfileActivity extends AppCompatActivity {
 
     TextView userName;
     LogoutMessage logoutMessage;
-    public Event bookmarkedinfo;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +40,6 @@ public class UserProfileActivity extends AppCompatActivity {
 
         viewPager.setAdapter(new ProfilePagerAdapter(getSupportFragmentManager()));
         tabLayout.setupWithViewPager(viewPager);
-
-
 
         userName = (TextView)findViewById(R.id.ProfileUserName);
         User user = EventsPreferences.getUser(this);
@@ -77,7 +72,7 @@ public class UserProfileActivity extends AppCompatActivity {
                 return true;
 
             case R.id.action_logout:
-                logoutMessage.show(this.getFragmentManager(), "discard");
+                logoutMessage.show(this.getFragmentManager(), "logout");
 
 
 

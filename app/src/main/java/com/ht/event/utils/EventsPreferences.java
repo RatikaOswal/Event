@@ -106,12 +106,12 @@ public class EventsPreferences {
             editor.commit();
         }
         else {
-            EventList itemList = gson.fromJson(dataListInStr,EventList.class);
-            ArrayList<Event> itemArrayList = itemList.getData();
-            itemArrayList.add(event);
-            itemList.setData(itemArrayList);
+            EventList eventList = gson.fromJson(dataListInStr,EventList.class);
+            ArrayList<Event> bookmarkedItemArrayList = eventList.getData();
+            bookmarkedItemArrayList.add(event);
+            eventList.setData(bookmarkedItemArrayList);
 
-            String itemListInString = gson.toJson(itemList);
+            String itemListInString = gson.toJson(eventList);
             SharedPreferences mPrefs = context.getSharedPreferences(BOOKMARKED_INFO, 0);
             SharedPreferences.Editor editor = mPrefs.edit();
             editor.putString(BOOKMARKED_LIST,itemListInString);

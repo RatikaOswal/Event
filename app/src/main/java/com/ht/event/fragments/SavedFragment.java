@@ -15,7 +15,6 @@ import com.ht.event.R;
 import com.ht.event.adapter.ExploreItemListAdp;
 import com.ht.event.model.Event;
 import com.ht.event.model.EventList;
-import com.ht.event.model.Item;
 import com.ht.event.utils.EventsPreferences;
 
 import java.util.ArrayList;
@@ -65,20 +64,15 @@ public class SavedFragment extends Fragment {
         Gson gson = new Gson();
         String item =EventsPreferences.getBookmarked(getActivity());
         EventList eventList = gson.fromJson(item, EventList.class);
+                if(item != null){
+                    ExploreItemList = new ExploreItemListAdp(getActivity(), eventList.getData());
+                    mListView.setAdapter(ExploreItemList);
 
+
+                }
 
       // ArrayList<Item> itemArrayList = itemList.getData();
         //ItemList itemList = gson.fromJson, ItemList.class);
-
-
-        ExploreItemList = new ExploreItemListAdp(getActivity(), eventList.getData());
-        mListView.setAdapter(ExploreItemList);
-
-
-
-
-
-
         return view;
     }
 

@@ -72,7 +72,7 @@ public class UserProfileActivity extends AppCompatActivity {
                 return true;
 
             case R.id.action_logout:
-                logoutMessage.show(this.getFragmentManager(), "discard");
+                logoutMessage.show(this.getFragmentManager(), "logout");
 
 
 

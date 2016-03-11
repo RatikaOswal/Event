@@ -32,6 +32,7 @@ import com.ht.event.model.GeocoderLocation;
 import com.ht.event.model.User;
 import com.ht.event.utils.Config;
 import com.ht.event.utils.EventsPreferences;
+import com.ht.event.utils.Share;
 
 import java.util.HashMap;
 
@@ -234,11 +235,7 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
         switch (id) {
 
             case R.id.share_ic:
-                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-                sharingIntent.setType("text/plain");
-                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "");
-                sharingIntent.putExtra(Intent.EXTRA_TITLE, "Check Out: ");
-                startActivity(Intent.createChooser(sharingIntent, "Share via"));
+                Share.shareItem(this,"");
                 break;
 
             case R.id.bookmark_ic:

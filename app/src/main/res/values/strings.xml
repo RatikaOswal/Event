@@ -1,4 +1,11 @@
 <resources>
+    <string name="get">Get Going!</string>
+    <string name="gett">Save some events you find interesting </string>
+    <string name="gettt">and easily view them here later.</string>
+    <string name="discover">discover events</string>
+    <string name="tic">Lucky You!</string>
+    <string name="ticc">Your calender is wide open, and we have</string>
+    <string name="ticcc">got great events to help you fill it.</string>
     <string name="Session">Session</string>
     <string name="moreInfo">More Info</string>
     <string name="Total">Total</string>

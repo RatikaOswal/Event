@@ -54,6 +54,15 @@ public class SessionListAdapter extends RecyclerView.Adapter<SessionListAdapter.
         final Session current = session.get(position);
         System.out.println(session.size());
         holder.bind(current);
+        holder.moreInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Activity activity  =(Activity) context;
+                MoreInfoMessage moreInfoMessage = new MoreInfoMessage(activity);
+                moreInfoMessage.show(activity.getFragmentManager(),"Info");
+
+            }
+        });
     }
 
     @Override
@@ -82,14 +91,8 @@ public class SessionListAdapter extends RecyclerView.Adapter<SessionListAdapter.
 
         @Override
         public void onClick(View v) {
-            moreInfo.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                   Activity activity  =(Activity) context;
-                    MoreInfoMessage moreInfoMessage = new MoreInfoMessage(activity);
-                    moreInfoMessage.show(activity.getFragmentManager(),"sasas");
-                }
-            });
+
+
         }
         public void bind(Session session){
             title.setText(session.getTitle());

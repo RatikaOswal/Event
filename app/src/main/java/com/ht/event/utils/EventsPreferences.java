@@ -136,4 +136,25 @@ public class EventsPreferences {
 
     }
 
+
+
+    public static void removeBookmarked(Context context,Event event){
+        String dataListInStr = getBookmarked(context);
+        Gson gson = new Gson();
+        EventList eventList = gson.fromJson(dataListInStr, EventList.class);
+        ArrayList<Event> bookmarkedItemArrayList = eventList.getData();
+        bookmarkedItemArrayList.remove(event);
+
+        eventList.setData(bookmarkedItemArrayList);
+        String itemListInString = gson.toJson(eventList);
+        SharedPreferences mPrefs = context.getSharedPreferences(BOOKMARKED_INFO, 0);
+        SharedPreferences.Editor editor = mPrefs.edit();
+        if(bookmarkedItemArrayList.size() ==0) {
+            editor.putString(BOOKMARKED_LIST, null);
+        }
+        else {
+            editor.putString(BOOKMARKED_LIST, itemListInString);
+        }
+        editor.commit();
+    }
 }

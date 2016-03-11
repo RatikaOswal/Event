@@ -36,9 +36,7 @@ public class SavedFragment extends Fragment implements View.OnClickListener {
     private View view;
     private String item;
     private TextView discover;
-    String dataListInStr;
-    public static final String BOOKMARKED_INFO = "bookmarkedInfo";
-    public static final String BOOKMARKED_LIST = "bookmarkedList";
+    private ArrayList<Event> bookmarkedArrayList;
 
 
     public SavedFragment() {
@@ -70,20 +68,26 @@ public class SavedFragment extends Fragment implements View.OnClickListener {
         eventitem = new ArrayList();
         mListView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-
         Gson gson = new Gson();
         item = EventsPreferences.getBookmarked(getActivity());
         EventList eventList = gson.fromJson(item, EventList.class);
         if (item != null) {
             ExploreItemList = new ExploreItemListAdp(getActivity(), eventList.getData());
             mListView.setAdapter(ExploreItemList);
-            display();
+          //  display();
+            relativeLayout.setVisibility(View.GONE);
+            mListView.setVisibility(View.VISIBLE);
 
+        }
+        else {
+
+            relativeLayout.setVisibility(View.VISIBLE);
+            mListView.setVisibility(View.GONE);
         }
 
         // ArrayList<Item> itemArrayList = itemList.getData();
         //ItemList itemList = gson.fromJson, ItemList.class);
-        display();
+       // display();
         return view;
     }
 

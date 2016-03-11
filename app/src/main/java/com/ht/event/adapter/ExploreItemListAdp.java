@@ -47,11 +47,6 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
         }
     }
 
-    public void setEventitem(ArrayList<Event>eventitem){
-
-        notifyItemRangeChanged(0,eventitem.size());
-
-    }
 
 
     @Override
@@ -98,7 +93,7 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
                 } else {
                     holder.star.setImageResource(R.drawable.ic_sstar);
                     current.setIs_bookmarked(false);
-                    EventsPreferences.saveBookmarked(ExploreItemListAdp.this.context, current);
+                    EventsPreferences.removeBookmarked(ExploreItemListAdp.this.context, current);
                 }
 
             }

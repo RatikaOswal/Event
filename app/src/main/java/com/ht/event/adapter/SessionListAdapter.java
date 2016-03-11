@@ -52,7 +52,6 @@ public class SessionListAdapter extends RecyclerView.Adapter<SessionListAdapter.
     public void onBindViewHolder(final ViewHolderSessionList holder, int position) {
 
         final Session current = session.get(position);
-        System.out.println(session.size());
         holder.bind(current);
         holder.moreInfo.setOnClickListener(new View.OnClickListener() {
             @Override

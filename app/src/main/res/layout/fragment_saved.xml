@@ -6,21 +6,73 @@
     tools:context="com.ht.event.fragments.SavedFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:id="@+id/saveInfo"
+        >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Text_venue"
+        android:textSize="30sp"
+        android:text="@string/get"
+        android:textStyle="bold"
+        android:paddingBottom="10dp"
+        android:id="@+id/get"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textColor="@color/Text_title"
+        android:text="@string/gett"
+        android:id="@+id/gett"
+        android:layout_below="@+id/get"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:textSize="17sp"
+        android:layout_centerHorizontal="true"
          />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/Text_title"
+            android:text="@string/gettt"
+            android:layout_below="@+id/gett"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="50dp"
+            android:textSize="17sp"
+            android:id="@+id/gettt"
+            android:layout_centerHorizontal="true"
+            android:paddingBottom="50dp"
+            />
 
+    <TextView
+        android:id="@+id/discover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/overlayBlue"
+        android:layout_centerHorizontal="true"
+        android:text="@string/discover"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:layout_alignBottom="@+id/gettt"
+
+        />
+
+    </RelativeLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/saved_bookmark"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:listSelector="@android:color/transparent"
-        android:layout_marginTop="?attr/actionBarSize"
         android:paddingLeft="6dp"
         android:paddingRight="6dp"
         android:scrollbars="none"
+        android:visibility="gone"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
 

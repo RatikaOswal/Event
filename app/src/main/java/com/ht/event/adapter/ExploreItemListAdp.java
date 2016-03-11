@@ -21,6 +21,7 @@ import com.ht.event.model.Event;
 import com.ht.event.model.EventList;
 import com.ht.event.utils.Config;
 import com.ht.event.utils.EventsPreferences;
+import com.ht.event.utils.Share;
 
 import java.util.ArrayList;
 
@@ -108,13 +109,7 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
             @Override
             public void onClick(View v) {
 
-                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-                sharingIntent.setType("text/plain");
-                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "");
-                sharingIntent.putExtra(Intent.EXTRA_TITLE,"Check Out: ");
-                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Date: ");
-                sharingIntent.putExtra(Intent.EXTRA_TEXT,"Venue: ");
-                context.startActivity(Intent.createChooser(sharingIntent, "Share via"));
+                Share.shareItem(context,"");
             }
         });
 

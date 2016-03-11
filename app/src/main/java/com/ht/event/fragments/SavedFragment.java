@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.ht.event.Main;
 import com.ht.event.R;
+import com.ht.event.adapter.BookmarkedListAdap;
 import com.ht.event.adapter.ExploreItemListAdp;
 import com.ht.event.model.Event;
 import com.ht.event.model.EventList;
@@ -30,7 +31,7 @@ import java.util.ArrayList;
  */
 public class SavedFragment extends Fragment implements View.OnClickListener {
     private RecyclerView mListView;
-    private RecyclerView.Adapter ExploreItemList;
+    private BookmarkedListAdap bookmarkedListAdap;
     public ArrayList<Event> eventitem;
     private RelativeLayout relativeLayout;
     private View view;
@@ -72,8 +73,8 @@ public class SavedFragment extends Fragment implements View.OnClickListener {
         item = EventsPreferences.getBookmarked(getActivity());
         EventList eventList = gson.fromJson(item, EventList.class);
         if (item != null) {
-            ExploreItemList = new ExploreItemListAdp(getActivity(), eventList.getData());
-            mListView.setAdapter(ExploreItemList);
+            bookmarkedListAdap= new BookmarkedListAdap(getActivity(), eventList.getData());
+            mListView.setAdapter(bookmarkedListAdap);
           //  display();
             relativeLayout.setVisibility(View.GONE);
             mListView.setVisibility(View.VISIBLE);

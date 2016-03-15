@@ -1,12 +1,14 @@
 package com.ht.event.activity;
 
 
+import android.content.Context;
 import android.content.Intent;
 
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -17,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.ht.event.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -25,15 +28,20 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.ht.event.Interface.DataHandler;
+
+import com.ht.event.adapter.ExploreItemListAdp;
 import com.ht.event.dialog.ConnectionDetector;
 import com.ht.event.dialog.ConnectionFragment;
 import com.ht.event.model.Event;
+import com.ht.event.model.EventList;
 import com.ht.event.model.GeocoderLocation;
 import com.ht.event.model.User;
 import com.ht.event.utils.Config;
+
 import com.ht.event.utils.EventsPreferences;
 import com.ht.event.utils.Share;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 
@@ -48,9 +56,7 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
     private boolean bookmarked;
     private int zoomLevel = 12;
     public double latitude, longitude;
-
-
-
+    private ArrayList<Event> bookmarkedArrayList;
 
 
 
@@ -60,6 +66,7 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
 
 
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.discription_of_item);
 
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.address_frame);
@@ -99,6 +106,8 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
         // ab.setHomeAsUpIndicator(R.drawable.wbackk);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
 
 
         description.setOnClickListener(new View.OnClickListener() {
@@ -220,13 +229,29 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_discription_of_item, menu);
         BookmarkItem = menu.findItem(R.id.bookmark_ic);
+        String eventsInStr = EventsPreferences.getBookmarked(this);
+        if(eventsInStr!=null) {
+            Gson gson = new Gson();
+            EventList eventList = gson.fromJson(eventsInStr, EventList.class);
+            bookmarkedArrayList = eventList.getData();
+        }
+        if(bookmarkedArrayList!=null && bookmarkedArrayList.contains(eventObjects)) {
+            BookmarkItem.setIcon(R.drawable.ic_starfill);
+            eventObjects.setIs_bookmarked(true);
+
+        }
+
+
         return true;
+
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
+
+
         if (id == android.R.id.home) {
             onBackPressed();
             return true;
@@ -239,17 +264,23 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
                 break;
 
             case R.id.bookmark_ic:
+               if (!eventObjects.is_bookmarked()) {
+                   BookmarkItem.setIcon(R.drawable.ic_starfill);
+                   EventsPreferences.saveBookmarked(this, eventObjects);
+                   bookmarked = true;
 
-                if (!bookmarked) {
-
-                    BookmarkItem.setIcon(R.drawable.ic_starfill);
-                    bookmarked = true;
-
-                } else {
+               }
+                 else
+                 {
                     BookmarkItem.setIcon(R.drawable.ic_starw);
                     bookmarked = false;
+                    EventsPreferences.removeBookmarked(this,eventObjects);
+
+
                 }
                 break;
+
+
 
         }
         return super.onOptionsItemSelected(item);
@@ -318,7 +349,14 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
 
 
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 }
+
+
 
 
 

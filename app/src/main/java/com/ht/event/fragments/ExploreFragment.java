@@ -1,6 +1,7 @@
 package com.ht.event.fragments;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -69,6 +70,7 @@ public class ExploreFragment extends Fragment  {
     }
 
 
+
     public static String getData()
 
     {
@@ -133,6 +135,11 @@ public class ExploreFragment extends Fragment  {
         return jsonData;
 
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
     @Override

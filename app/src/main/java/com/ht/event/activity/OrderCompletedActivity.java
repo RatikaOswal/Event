@@ -9,8 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.ht.event.Main;
 import com.ht.event.R;
 import com.ht.event.model.Event;
+import com.ht.event.model.EventList;
 import com.ht.event.utils.Config;
 import com.ht.event.utils.EventsPreferences;
 import com.ht.event.utils.Share;
@@ -24,7 +27,8 @@ public class OrderCompletedActivity extends AppCompatActivity {
     private Event event;
     private ImageView share;
     private Context context;
-    public ArrayList<Event> eventitem ;
+    public ArrayList<Event> eventItem ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,14 +44,17 @@ public class OrderCompletedActivity extends AppCompatActivity {
         title.setText(event.getTitle());
         time.setText(event.getTime());
 
+
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-               // final Event current = eventitem.get(position);
-               // EventsPreferences.saveRegistered(OrderCompletedActivity.this.context,current);
-                //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                EventsPreferences.saveRegistered(OrderCompletedActivity.this, event);
                 Toast.makeText(OrderCompletedActivity.this, "Registration Completed", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(OrderCompletedActivity.this,Main.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+
             }
         });
 
@@ -76,6 +83,5 @@ public class OrderCompletedActivity extends AppCompatActivity {
         intent.putExtra("endTime", cal.getTimeInMillis()+60*60*1000);
         intent.putExtra("title", event.getTitle());
         intent.putExtra("location", event.getVenue());
-        startActivity(intent);
     }
 }

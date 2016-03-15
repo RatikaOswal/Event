@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:gravity="center"
+
+    >
+    <TextView
+        android:id="@+id/awesome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/awesome"
+        android:textColor="@color/Text_title"
+        android:textSize="30sp"
+        android:padding="20dp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        />
+
+        <TextView
+            android:id="@+id/awesomee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/awesomeMsg"
+            android:textColor="@color/Text_title"
+            android:textSize="17sp"
+            android:layout_below="@+id/awesome"
+            android:layout_centerHorizontal="true"
+
+            />
+    <TextView
+        android:id="@+id/awesomeee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/aww"
+        android:textColor="@color/Text_title"
+        android:textSize="17sp"
+        android:layout_below="@+id/awesomee"
+        android:layout_centerHorizontal="true"
+        android:paddingBottom="20dp"
+        />
+        <TextView
+            android:id="@+id/viewTicket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/viewTicket"
+            android:textColor="@color/overlayBlue"
+            android:textSize="20sp"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/awesomeee"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="20dp"
+            />
+</RelativeLayout>

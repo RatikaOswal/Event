@@ -23,6 +23,7 @@ public class Event implements Serializable
     public String discription;
     public String organisationName;
     private boolean is_bookmarked;
+    private boolean is_registered;
     public String startTime;
     public String endTime;
     public ArrayList<Session>sessions;
@@ -33,6 +34,14 @@ public class Event implements Serializable
 
     public void setSessions(ArrayList<Session> sessions) {
         this.sessions = sessions;
+    }
+
+    public boolean is_registered() {
+        return is_registered;
+    }
+
+    public void setIs_registered(boolean is_registered) {
+        this.is_registered = is_registered;
     }
 
     public String getEndTime() {

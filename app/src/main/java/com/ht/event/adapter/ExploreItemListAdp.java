@@ -1,6 +1,7 @@
 package com.ht.event.adapter;
 
 
+import android.app.Activity;
 import android.content.ClipData;
 import android.content.Context;
 
@@ -10,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +20,8 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.ht.event.R;
 import com.ht.event.activity.EventDetailActivity;
+import com.ht.event.dialog.MoreInfoMessage;
+import com.ht.event.dialog.RegisteredMessage;
 import com.ht.event.model.Event;
 import com.ht.event.model.EventList;
 import com.ht.event.utils.Config;
@@ -32,6 +37,8 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
     public ArrayList<Event> eventitem ;
     public Context context;
     private ArrayList<Event> bookmarkedArrayList;
+    private ArrayList<Event> registeredArrayList;
+
 
 
     public ExploreItemListAdp(Context context, ArrayList<Event> eventitem){
@@ -45,7 +52,16 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
             EventList eventList = gson.fromJson(eventsInStr, EventList.class);
             bookmarkedArrayList = eventList.getData();
         }
+
+        String registerInStr = EventsPreferences.getRegistered(context);
+        if(registerInStr!=null){
+            Gson gson = new Gson();
+            EventList regList = gson.fromJson(registerInStr, EventList.class);
+            registeredArrayList = regList.getData();
+
+        }
     }
+
 
 
 
@@ -70,6 +86,11 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
             holder.star.setImageResource(R.drawable.ic_starfill);
             current.setIs_bookmarked(true);
 
+        }
+
+        if(registeredArrayList !=null && registeredArrayList.contains(current))
+        {
+            current.setIs_registered(true);
         }
         holder.time.setText(current.time);
         holder.title.setText(current.title);
@@ -126,6 +147,7 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
          private TextView title,tag2,price;
          private TextView venue,tag1;
          private Context context;
+         private LinearLayout list;
          // public ClickListener clickListener;
 
         ArrayList<Event>eventitem=new ArrayList<Event>();
@@ -136,7 +158,7 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
              super(itemView);
              this.eventitem=eventitem;
              this.context=context;
-             itemView.setOnClickListener(this);
+             list = (LinearLayout)itemView.findViewById(R.id.list);
              cover = (ImageView) itemView.findViewById(R.id.CoverView);
              time = (TextView) itemView.findViewById(R.id.event_time);
              title = (TextView) itemView.findViewById(R.id.event_name);
@@ -146,6 +168,7 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
              star =(ImageView)itemView.findViewById(R.id.bookmark);
              share=(ImageView)itemView.findViewById(R.id.share);
              price=(TextView)itemView.findViewById(R.id.price);
+             list.setOnClickListener(this);
 
          }
 
@@ -153,20 +176,20 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
 
          @Override
          public void onClick(View v) {
+             int position = getAdapterPosition();
+             Event event = this.eventitem.get(position);
+           if(event.is_registered())
+           {
+               Activity activity  =(Activity) context;
+               RegisteredMessage registeredMessage = new RegisteredMessage(activity);
+               registeredMessage.show(activity.getFragmentManager(), "Registered Message");
 
-             int position=getAdapterPosition();
-             Event event =this.eventitem.get(position);
-             Intent intent=new Intent(this.context, EventDetailActivity.class);
-             intent.putExtra(Config.ITEM_INTENT_OBJECT, event);
-
-            /* intent.putExtra("CoverImg",event.getImage());
-             intent.putExtra("Time",event.getTime());
-             intent.putExtra("Title",event.getTitle());
-             intent.putExtra("Price",event.getPrice());
-             intent.putExtra("venue",event.getVenue());
-             intent.putExtra("VenueAddress",event.getVenueAddress());*/
-             this.context.startActivity(intent);
-
+           }
+             else{
+               Intent intent = new Intent(this.context, EventDetailActivity.class);
+               intent.putExtra(Config.ITEM_INTENT_OBJECT, event);
+               this.context.startActivity(intent);
+           }
 
          }
      }

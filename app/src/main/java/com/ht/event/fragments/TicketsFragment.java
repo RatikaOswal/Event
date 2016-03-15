@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,8 +15,16 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.ht.event.Main;
 import com.ht.event.R;
+import com.ht.event.adapter.BookmarkedListAdap;
+import com.ht.event.adapter.RegisteredListAdap;
+import com.ht.event.model.Event;
+import com.ht.event.model.EventList;
+import com.ht.event.utils.EventsPreferences;
+
+import java.util.ArrayList;
 
 
 /**
@@ -26,6 +35,9 @@ public class TicketsFragment extends Fragment implements View.OnClickListener{
     private RelativeLayout relativeLayout;
     private View view;
     private TextView discover;
+    private String item;
+    private RegisteredListAdap registeredListAdap;
+    public ArrayList<Event> eventitem;
 
 
     public TicketsFragment() {
@@ -51,15 +63,29 @@ public class TicketsFragment extends Fragment implements View.OnClickListener{
         relativeLayout = (RelativeLayout)view.findViewById(R.id.saveInfo);
         discover = (TextView)view.findViewById(R.id.discover);
         discover.setOnClickListener(this);
-        display();
+        eventitem = new ArrayList();
+        mListView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        Gson gson = new Gson();
+        item = EventsPreferences.getRegistered(getActivity());
+        EventList eventList = gson.fromJson(item, EventList.class);
+        if (item != null) {
+            registeredListAdap= new RegisteredListAdap(getActivity(), eventList.getData());
+            mListView.setAdapter(registeredListAdap);
+            //  display();
+            relativeLayout.setVisibility(View.GONE);
+            mListView.setVisibility(View.VISIBLE);
+
+        }
+        else {
+
+            relativeLayout.setVisibility(View.VISIBLE);
+            mListView.setVisibility(View.GONE);
+        }
+
      return view ;
     }
 
-     public  void display(){
-         relativeLayout.setVisibility(View.VISIBLE);
-         mListView.setVisibility(View.GONE);
-
-     }
     @Override
     public void onDetach() {
         super.onDetach();

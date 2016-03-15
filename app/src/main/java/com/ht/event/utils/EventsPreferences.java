@@ -180,7 +180,6 @@ public class EventsPreferences {
 
     public static String getRegistered(Context context) {
 
-
         SharedPreferences mPrefs = context.getSharedPreferences(REGISTERED_INFO, 0);
         return mPrefs.getString(REGISTERED_LIST, null);
 

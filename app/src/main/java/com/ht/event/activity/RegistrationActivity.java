@@ -67,7 +67,6 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         mcallbackManager = CallbackManager.Factory.create();
         setContentView(R.layout.activity_registration);
 
-
 //setting the toolbar
         Toolbar mToolbar = (Toolbar) findViewById(R.id.regisbar);
         setSupportActionBar(mToolbar);

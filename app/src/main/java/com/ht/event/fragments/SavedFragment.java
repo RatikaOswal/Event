@@ -92,17 +92,6 @@ public class SavedFragment extends Fragment implements View.OnClickListener {
         return view;
     }
 
-    public void display() {
-
-        if (item != null) {
-            relativeLayout.setVisibility(View.GONE);
-            mListView.setVisibility(View.VISIBLE);
-
-        } else {
-            relativeLayout.setVisibility(View.VISIBLE);
-            mListView.setVisibility(View.GONE);
-        }
-    }
 
     @Override
     public void onDetach() {

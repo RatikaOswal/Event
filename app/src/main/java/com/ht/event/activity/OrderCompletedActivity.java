@@ -1,5 +1,6 @@
 package com.ht.event.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,8 +12,10 @@ import android.widget.Toast;
 import com.ht.event.R;
 import com.ht.event.model.Event;
 import com.ht.event.utils.Config;
+import com.ht.event.utils.EventsPreferences;
 import com.ht.event.utils.Share;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class OrderCompletedActivity extends AppCompatActivity {
@@ -20,6 +23,8 @@ public class OrderCompletedActivity extends AppCompatActivity {
     private TextView add,title,time,done;
     private Event event;
     private ImageView share;
+    private Context context;
+    public ArrayList<Event> eventitem ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +43,9 @@ public class OrderCompletedActivity extends AppCompatActivity {
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+               // final Event current = eventitem.get(position);
+               // EventsPreferences.saveRegistered(OrderCompletedActivity.this.context,current);
                 //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 Toast.makeText(OrderCompletedActivity.this, "Registration Completed", Toast.LENGTH_SHORT).show();
             }

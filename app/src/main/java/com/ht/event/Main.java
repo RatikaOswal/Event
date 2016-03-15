@@ -76,7 +76,7 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
         //default fragment
         ExploreFragment explore = new ExploreFragment();
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.content, explore);
+        fragmentTransaction.addToBackStack("dsds").add(R.id.content, explore);
         fragmentTransaction.commit();
 
         //setting profile page

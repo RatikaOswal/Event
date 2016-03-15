@@ -9,9 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.ht.event.Main;
 import com.ht.event.R;
 import com.ht.event.model.Event;
+import com.ht.event.model.EventList;
 import com.ht.event.utils.Config;
 import com.ht.event.utils.EventsPreferences;
 import com.ht.event.utils.Share;
@@ -26,6 +28,7 @@ public class OrderCompletedActivity extends AppCompatActivity {
     private ImageView share;
     private Context context;
     public ArrayList<Event> eventItem ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,7 @@ public class OrderCompletedActivity extends AppCompatActivity {
         share = (ImageView)findViewById(R.id.ic_share);
         title.setText(event.getTitle());
         time.setText(event.getTime());
+
 
         done.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -126,6 +128,7 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
          private TextView title,tag2,price;
          private TextView venue,tag1;
          private Context context;
+         private LinearLayout list;
          // public ClickListener clickListener;
 
         ArrayList<Event>eventitem=new ArrayList<Event>();
@@ -136,7 +139,7 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
              super(itemView);
              this.eventitem=eventitem;
              this.context=context;
-             itemView.setOnClickListener(this);
+             list = (LinearLayout)itemView.findViewById(R.id.list);
              cover = (ImageView) itemView.findViewById(R.id.CoverView);
              time = (TextView) itemView.findViewById(R.id.event_time);
              title = (TextView) itemView.findViewById(R.id.event_name);
@@ -146,6 +149,7 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
              star =(ImageView)itemView.findViewById(R.id.bookmark);
              share=(ImageView)itemView.findViewById(R.id.share);
              price=(TextView)itemView.findViewById(R.id.price);
+             list.setOnClickListener(this);
 
          }
 
@@ -158,13 +162,6 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
              Event event =this.eventitem.get(position);
              Intent intent=new Intent(this.context, EventDetailActivity.class);
              intent.putExtra(Config.ITEM_INTENT_OBJECT, event);
-
-            /* intent.putExtra("CoverImg",event.getImage());
-             intent.putExtra("Time",event.getTime());
-             intent.putExtra("Title",event.getTitle());
-             intent.putExtra("Price",event.getPrice());
-             intent.putExtra("venue",event.getVenue());
-             intent.putExtra("VenueAddress",event.getVenueAddress());*/
              this.context.startActivity(intent);
 
 

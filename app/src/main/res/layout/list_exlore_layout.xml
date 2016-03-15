@@ -25,6 +25,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+    <LinearLayout
+        android:id="@+id/list"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 <RelativeLayout
 
     android:layout_width="match_parent"
@@ -98,6 +103,7 @@
                 android:paddingBottom="10dp"
                 android:typeface="sans" />
             </LinearLayout>
+        </LinearLayout>
 
 
             <View
@@ -161,6 +167,7 @@
                     android:background="@android:color/darker_gray"
                     android:layout_toLeftOf="@+id/bookmark"
                     android:id="@+id/view2" />
+
 
                 <ImageView
                     android:id="@+id/bookmark"

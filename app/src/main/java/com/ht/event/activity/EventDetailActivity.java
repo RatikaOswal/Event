@@ -20,6 +20,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.ht.event.Main;
 import com.ht.event.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -164,7 +165,10 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
             }
         });
     }
-        public void contactInfo(View view)
+
+
+
+    public void contactInfo(View view)
     {
         Intent intent =new Intent(EventDetailActivity.this,ContactOrganizerActivity.class);
         startActivity(intent);
@@ -355,6 +359,8 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
         super.onResume();
     }
 }
+
+
 
 
 

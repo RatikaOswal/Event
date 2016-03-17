@@ -43,10 +43,10 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
     private NavigationView mNvDrawer;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle actionBarDrawerToggle;
-    public FragmentTransaction fragmentTransaction;
-    public CircleImageView profileImage;
-    public View headerView;
-    public TextView userName;
+    private FragmentTransaction fragmentTransaction;
+    private CircleImageView profileImage;
+    private View headerView;
+    private TextView userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

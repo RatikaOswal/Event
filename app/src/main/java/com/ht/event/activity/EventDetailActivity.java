@@ -50,20 +50,17 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
 
     public ImageView imageView;
     private GoogleMap map;
-    public MenuItem BookmarkItem;
-    public Event eventObjects;
-    public TextView time, registerbut, description,organisationName;
-    public TextView title, price, venue, venueAddress;
-    private boolean bookmarked;
-    private int zoomLevel = 12;
-    public double latitude, longitude;
-    private ArrayList<Event> bookmarkedArrayList;
-
-
+    private Event eventObjects;
+    private TextView time, registerbut, description,organisationName;
+    private TextView title, price, venue, venueAddress;
+    int zoomLevel = 12;
+    double latitude, longitude;
+     MenuItem BookmarkItem;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
 
 
         super.onCreate(savedInstanceState);
@@ -155,6 +152,7 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
             @Override
             public void onClick(View v) {
 
+
                 Intent intent = new Intent(EventDetailActivity.this, EventVenueLocationActivity.class);
                 intent.putExtra("Event", eventObjects);
                 intent.putExtra("Latitude", latitude);
@@ -230,6 +228,8 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        ArrayList<Event> bookmarkedArrayList=null;
+        MenuItem BookmarkItem;
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_discription_of_item, menu);
         BookmarkItem = menu.findItem(R.id.bookmark_ic);
@@ -252,7 +252,7 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
+        boolean bookmarked;
         int id = item.getItemId();
 
 
@@ -317,7 +317,7 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
                     if(isInternetPresent && locationAddress != null){
                     separate=locationAddress.split(",");
                     latitude=Double.parseDouble(separate[0]);
-                    longitude=Double.parseDouble(separate[1]);
+                        longitude = Double.parseDouble(separate[1]);
                         eventObjects.setLat(String.valueOf(latitude));
                         eventObjects.setLng(String.valueOf(longitude));
                     showMap(latitude, longitude);}

@@ -13,8 +13,14 @@ import android.widget.TextView;
 
 import com.ht.event.R;
 import com.ht.event.adapter.ProfilePagerAdapter;
+<<<<<<< Updated upstream
 import com.ht.event.dialog.LogoutMessage;
 import com.ht.event.model.Event;
+=======
+import com.ht.event.dialog.DiscardMessage;
+import com.ht.event.dialog.LogoutMessage;
+import com.ht.event.model.Item;
+>>>>>>> Stashed changes
 import com.ht.event.model.User;
 import com.ht.event.utils.EventsPreferences;
 
@@ -22,6 +28,12 @@ public class UserProfileActivity extends AppCompatActivity {
 
     TextView userName;
     LogoutMessage logoutMessage;
+<<<<<<< Updated upstream
+=======
+    public Item bookmarkedinfo;
+
+
+>>>>>>> Stashed changes
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +52,8 @@ public class UserProfileActivity extends AppCompatActivity {
 
         viewPager.setAdapter(new ProfilePagerAdapter(getSupportFragmentManager()));
         tabLayout.setupWithViewPager(viewPager);
+
+
 
         userName = (TextView)findViewById(R.id.ProfileUserName);
         User user = EventsPreferences.getUser(this);
@@ -72,7 +86,11 @@ public class UserProfileActivity extends AppCompatActivity {
                 return true;
 
             case R.id.action_logout:
+<<<<<<< Updated upstream
                 logoutMessage.show(this.getFragmentManager(), "logout");
+=======
+                logoutMessage.show(this.getFragmentManager(), "discard");
+>>>>>>> Stashed changes
 
 
 

@@ -203,8 +203,6 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
                      this.context.startActivity(intent2);
                      break;
                  default:
-
-
                      int position = getAdapterPosition();
                      Event event = this.eventitem.get(position);
                      if (event.is_registered()) {

@@ -72,10 +72,13 @@
     <string name="action_logout">logout</string>
     <string name="EditProfile">Edit Profile</string>
     <string name="Logout">Log Out</string>
+<<<<<<< Updated upstream
     <string name="awesome">Awesome!</string>
     <string name="awesomeMsg">You already have tickets for this</string>
     <string name="aww">event.</string>
     <string name="viewTicket">View Ticket</string>
+=======
+>>>>>>> Stashed changes
     <string name="logoutMsg">Are you sure you want to Log out?</string>
     <string name="title_activity_edit_profile">EditProfileActivity</string>
     <string name="title_activity_settings__user_profile">settings_User_profileActivity</string>

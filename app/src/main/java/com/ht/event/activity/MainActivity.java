@@ -38,7 +38,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public FragmentManager fragmentManager;
     private DrawerLayout drawerLayout;
-    public FragmentTransaction fragmentTransaction;
+    private FragmentTransaction fragmentTransaction;
+
 
 
     @Override

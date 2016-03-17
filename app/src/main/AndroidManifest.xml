@@ -117,7 +117,7 @@
             android:label="@string/title_activity_ticket_info" >
         </activity>
         <activity
-            android:name=".activity.OrganisationDescription"
+            android:name=".activity.OrganisationDescriptionActivity"
             android:label="@string/title_activity_organisation_description" >
         </activity>
     </application>

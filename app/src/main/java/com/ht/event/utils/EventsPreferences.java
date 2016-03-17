@@ -5,28 +5,33 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
+
 import com.ht.event.model.Event;
 import com.ht.event.model.EventList;
+
+
 import com.ht.event.model.User;
 
-import java.security.PublicKey;
 import java.util.ArrayList;
 
 public class EventsPreferences {
     public static final String USER_INFO = "userInfo";
     public static final String BOOKMARKED_INFO = "bookmarkedInfo";
+
     public static final String BOOKMARKED_LIST = "bookmarkedList";
     public static final String REGISTERED_INFO = "registeredInfo";
     public static final String REGISTERED_LIST = "registeredList";
+
     public static final String NAME = "name";
     public static final String EMAIL = "email";
     public static final String ORGANIZATIONNAME = "orgName";
     public static final String PHONENO = "phoneno";
     public static final String ORGWEBSITE = "orgWebsite";
-
+    public static final String BOOKMARKED = "bookmarked";
 
     public static void saveUser(Context context, User user) {
         try {
+
 
             SharedPreferences mPrefs = context.getSharedPreferences(USER_INFO, 0);
 
@@ -185,3 +190,4 @@ public class EventsPreferences {
 
     }
 }
+

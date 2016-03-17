@@ -23,7 +23,7 @@ import com.ht.event.R;
 import com.ht.event.activity.ContactOrganizerActivity;
 import com.ht.event.activity.EventDescriptionActivity;
 import com.ht.event.activity.EventVenueLocationActivity;
-import com.ht.event.activity.OrganisationDescription;
+import com.ht.event.activity.OrganisationDescriptionActivity;
 import com.ht.event.model.Event;
 import com.ht.event.model.EventList;
 import com.ht.event.utils.Config;
@@ -157,7 +157,7 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
                 startActivity(intent2);
                 break;
             case R.id.organisationName :
-                Intent intent3 = new Intent(getActivity(),OrganisationDescription.class);
+                Intent intent3 = new Intent(getActivity(),OrganisationDescriptionActivity.class);
                 startActivity(intent3);
                 break;
         }

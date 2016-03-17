@@ -23,7 +23,7 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class ExploreFragment extends Fragment  {
-    public ArrayList<Event> eventitem;
+    private ArrayList<Event> eventitem;
     private RecyclerView mListView;
     private RecyclerView.Adapter ExploreItemList;
     private View view;

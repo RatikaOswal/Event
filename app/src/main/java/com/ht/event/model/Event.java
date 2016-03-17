@@ -10,23 +10,23 @@ public class Event implements Serializable
 
 {
     private int id;
-    public String tag2;
-    public String tag1;
-    public int image;
-    public String time;
-    public String title;
-    public String venue;
-    public String price;
-    public String lat;
-    public String lng;
-    public String venueAddress;
-    public String discription;
-    public String organisationName;
+    private String tag2;
+    private String tag1;
+    private int image;
+    private String time;
+    private String title;
+    private String venue;
+    private String price;
+    private String lat;
+    private String lng;
+    private String venueAddress;
+    private String discription;
+    private String organisationName;
     private boolean is_bookmarked;
     private boolean is_registered;
-    public String startTime;
-    public String endTime;
-    public ArrayList<Session>sessions;
+    private String startTime;
+    private String endTime;
+    private ArrayList<Session>sessions;
 
     public ArrayList<Session> getSessions() {
         return sessions;

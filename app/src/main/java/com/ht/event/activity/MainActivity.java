@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 fragmentTransaction.replace(R.id.content, navimap);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
-gi                break;
+                break;
             case R.id.settings_item:
                 SettingsFragment settings = new SettingsFragment();
                 fragmentTransaction = fragmentManager.beginTransaction();

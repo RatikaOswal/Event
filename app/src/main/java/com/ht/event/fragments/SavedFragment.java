@@ -30,7 +30,7 @@ import java.util.ArrayList;
 public class SavedFragment extends Fragment implements View.OnClickListener {
     private RecyclerView mListView;
     private BookmarkedListAdap bookmarkedListAdap;
-    public ArrayList<Event> eventitem;
+    private ArrayList<Event> eventitem;
     private RelativeLayout relativeLayout;
     private View view;
     private String item;

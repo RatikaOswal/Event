@@ -18,8 +18,8 @@ import com.ht.event.R;
 
 public class LogoutMessage extends DialogFragment implements
         android.view.View.OnClickListener {
-    public Activity c;
-    public TextView cancel, logout;
+    private Activity c;
+    private TextView cancel, logout;
     private GoogleApiClient mGoogleApiClient;
 
     public LogoutMessage(Activity c) {

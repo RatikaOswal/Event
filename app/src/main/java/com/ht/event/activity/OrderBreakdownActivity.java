@@ -27,11 +27,11 @@ import com.ht.event.utils.EventsPreferences;
 
 public class OrderBreakdownActivity extends AppCompatActivity {
 
-    public Event event;
-    public TextView venue,time,price,name,email,OrgName,phoneNo, continuetext;
-    public SessionListAdapter sessionListAdapter;
-    public RecyclerView mListView;
-    public View view;
+    private Event event;
+    private TextView venue,time,price,name,email,OrgName,phoneNo, continuetext;
+    private SessionListAdapter sessionListAdapter;
+    private RecyclerView mListView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

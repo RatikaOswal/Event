@@ -34,7 +34,7 @@ public class TicketsFragment extends Fragment implements View.OnClickListener{
     private TextView discover;
     private String item;
     private RegisteredListAdap registeredListAdap;
-    public ArrayList<Event> eventitem;
+    private ArrayList<Event> eventitem;
 
 
     public TicketsFragment() {

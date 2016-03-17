@@ -36,7 +36,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
-    public FragmentManager fragmentManager;
+    private FragmentManager fragmentManager;
     private DrawerLayout drawerLayout;
     private FragmentTransaction fragmentTransaction;
 

@@ -16,8 +16,8 @@ import com.ht.event.R;
  */
 public class RegisteredMessage extends DialogFragment implements
         android.view.View.OnClickListener {
-    public Activity c;
-    public TextView viewTicket;
+    private Activity c;
+    private TextView viewTicket;
 
     public RegisteredMessage(Activity c) {
         this.c = c;

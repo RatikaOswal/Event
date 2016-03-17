@@ -25,8 +25,8 @@ import java.util.ArrayList;
  */
 public class RegisteredListAdap extends RecyclerView.Adapter<RegisteredListAdap.ViewHolderRegisteredList> {
     private LayoutInflater layoutInflater;
-    public ArrayList<Event> eventitem;
-    public Context context;
+    private ArrayList<Event> eventitem;
+    private Context context;
     private ArrayList<Event> registeredArrayList;
 
     public RegisteredListAdap(Context context, ArrayList<Event> eventitem) {
@@ -62,9 +62,9 @@ public class RegisteredListAdap extends RecyclerView.Adapter<RegisteredListAdap.
     }
 
     public class ViewHolderRegisteredList extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public Context context;
-        public TextView title, price, time;
-        public ImageView cover;
+        private Context context;
+        private TextView title, price, time;
+        private ImageView cover;
         ArrayList<Event> eventitem = new ArrayList<Event>();
 
         public ViewHolderRegisteredList(View itemView, Context context, ArrayList<Event> eventitem) {

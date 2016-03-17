@@ -76,7 +76,7 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
         //default fragment
         ExploreFragment explore = new ExploreFragment();
         fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.addToBackStack("dsds").add(R.id.content, explore);
+        fragmentTransaction.add(R.id.content, explore);
         fragmentTransaction.commit();
 
         //setting profile page
@@ -97,6 +97,8 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
             userName.setText(user.getName());
 
         }
+
+
 
 
     }
@@ -205,6 +207,10 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
         return true;
     }
 
-
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 }
+
+

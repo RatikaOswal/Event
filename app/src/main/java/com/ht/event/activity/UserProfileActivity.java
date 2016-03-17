@@ -22,8 +22,8 @@ import com.ht.event.utils.EventsPreferences;
 
 public class UserProfileActivity extends AppCompatActivity {
 
-    TextView userName;
-    LogoutMessage logoutMessage;
+   private TextView userName;
+   private LogoutMessage logoutMessage;
 
     public Event bookmarkedinfo;
 

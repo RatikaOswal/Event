@@ -23,8 +23,8 @@ import java.util.ArrayList;
 public class BookmarkedListAdap extends RecyclerView.Adapter<BookmarkedListAdap.ViewHolderBookmarkedList> {
 
     private LayoutInflater layoutInflater;
-    public ArrayList<Event> eventitem ;
-    public Context context;
+    private ArrayList<Event> eventitem ;
+    private Context context;
     private ArrayList<Event> bookmarkedArrayList;
 
 

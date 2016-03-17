@@ -31,8 +31,8 @@ import java.util.ArrayList;
 
 public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.ViewHolderExploreList> {
 
-    public ArrayList<Event> eventitem;
-    public Context context;
+    private ArrayList<Event> eventitem;
+    private Context context;
     private ArrayList<Event> bookmarkedArrayList;
     private ArrayList<Event> registeredArrayList;
     private Gson gson;

@@ -46,9 +46,9 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
 
     private GoogleMap map;
     private Event eventObjects;
-    int zoomLevel = 12;
-    double latitude, longitude;
-    MenuItem BookmarkItem;
+    private int zoomLevel = 12;
+    private double latitude, longitude;
+    private MenuItem BookmarkItem;
 
 
 

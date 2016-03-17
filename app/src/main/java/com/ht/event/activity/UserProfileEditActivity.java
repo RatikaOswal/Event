@@ -17,8 +17,8 @@ import com.ht.event.utils.EventsPreferences;
 
 public class UserProfileEditActivity extends AppCompatActivity {
 
-    EditText name,phoneNo,orgName,orgWebsite;
-    TextView email,save;
+    private EditText name,phoneNo,orgName,orgWebsite;
+    private TextView email,save;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

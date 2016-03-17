@@ -5,12 +5,12 @@ import java.util.ArrayList;
 
 
 public class Session implements Serializable {
-    public String title;
-    public String venue;
-    public String price;
-    public String startTime;
-    public String endTime;
-    public ArrayList<Speaker> speakerList;
+    private String title;
+    private String venue;
+    private String price;
+    private String startTime;
+    private String endTime;
+    private ArrayList<Speaker> speakerList;
 
     public String getTitle() {
         return title;

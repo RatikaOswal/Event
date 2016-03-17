@@ -19,7 +19,7 @@ public class AttendeesInfoActivity extends AppCompatActivity {
     private EditText phoneNo, orgName, orgWebsite;
     private TextView register, userName, email;
     private String PhoneNo,OrgName,OrgWebsite;
-    public Event eventObjects;
+    private Event eventObjects;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

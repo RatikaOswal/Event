@@ -16,8 +16,8 @@ import com.ht.event.R;
 
 public class DiscardMessage extends DialogFragment implements
         android.view.View.OnClickListener {
-    public Activity c;
-    public TextView yes,no;
+    private Activity c;
+    private TextView yes,no;
 
     public DiscardMessage(Activity c) {
         this.c = c;

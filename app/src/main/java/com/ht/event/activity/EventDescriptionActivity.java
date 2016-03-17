@@ -13,8 +13,8 @@ import com.ht.event.utils.Config;
 
 public class EventDescriptionActivity extends AppCompatActivity {
 
-    Event itemobjects;
-    TextView discription;
+    private Event itemobjects;
+    private TextView discription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

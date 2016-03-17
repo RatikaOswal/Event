@@ -21,8 +21,8 @@ import java.util.ArrayList;
 public class SessionListAdapter extends RecyclerView.Adapter<SessionListAdapter.ViewHolderSessionList> {
 
     private LayoutInflater layoutInflater;
-    public ArrayList<Session> session;
-    public Context context;
+    private ArrayList<Session> session;
+    private Context context;
 
 
     public SessionListAdapter(Context context, ArrayList<Session> session) {
@@ -73,10 +73,10 @@ public class SessionListAdapter extends RecyclerView.Adapter<SessionListAdapter.
 
     public static class ViewHolderSessionList extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        public TextView title,price;
-        public TextView moreInfo;
-        public Context context;
-        public CheckBox checkBox;
+        private TextView title,price;
+        private TextView moreInfo;
+        private Context context;
+        private CheckBox checkBox;
         ArrayList<Session> session=new ArrayList<Session>();
 
         public ViewHolderSessionList(View itemView) {

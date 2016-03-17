@@ -43,22 +43,22 @@ import java.io.InputStream;
 public class RegistrationActivity extends AppCompatActivity implements View.OnClickListener,
         GoogleApiClient.OnConnectionFailedListener {
     private static final int REQUEST_CODE_RESOLVE_ERR = 9001;
-    public CallbackManager mcallbackManager;
-    public TextView mTextDetail;
-    public SignInButton btnSignIn;
-    public ImageView imgProfilePic;
-    public TextView txtName, txtEmail, info;
-    public LinearLayout llProfileLayout;
-    public LoginButton logInButton;
+    private CallbackManager mcallbackManager;
+    private TextView mTextDetail;
+    private SignInButton btnSignIn;
+    private ImageView imgProfilePic;
+    private TextView txtName, txtEmail, info;
+    private LinearLayout llProfileLayout;
+    private LoginButton logInButton;
     public static final String TAG = "MainActivity";
     // Profile pic image size in pixels
     public static final int PROFILE_PIC_SIZE = 400;
     // Google client to interact with Google API
-    public GoogleApiClient mGoogleApiClient;
-    public boolean mIntentInProgress;
-    public boolean mSignInClicked;
-    public ConnectionResult mConnectionResult;
-    public Event eventIntentObject;
+    private GoogleApiClient mGoogleApiClient;
+    private boolean mIntentInProgress;
+    private boolean mSignInClicked;
+    private ConnectionResult mConnectionResult;
+    private Event eventIntentObject;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

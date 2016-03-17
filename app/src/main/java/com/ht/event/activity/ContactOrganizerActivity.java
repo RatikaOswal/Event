@@ -15,8 +15,8 @@ import com.ht.event.utils.EventsPreferences;
 import org.w3c.dom.Text;
 
 public class ContactOrganizerActivity extends AppCompatActivity {
-    DiscardMessage discardMessage;
-    TextView userName,userEmail,userMessage;
+    private DiscardMessage discardMessage;
+    private TextView userName,userEmail,userMessage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

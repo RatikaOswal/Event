@@ -1,0 +1,33 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    tools:context="com.ht.event.activity.OrganisationDescription">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/orgDesbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/toolbar_background"
+        android:minHeight="?attr/actionBarSize"
+        app:popupTheme="@style/Theme.AppCompat.Light.DarkActionBar"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        />
+
+    <TextView
+        android:id="@+id/orgDis"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/Text_title"
+        android:text="@string/textDiscription"
+        android:paddingTop="15dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_below="@+id/orgDesbar"
+        >
+
+    </TextView>
+
+</RelativeLayout>

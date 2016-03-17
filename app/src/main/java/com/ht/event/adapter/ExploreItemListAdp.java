@@ -1,9 +1,8 @@
 package com.ht.event.adapter;
 
 
-import android.app.Activity;
 
-import android.content.ClipData;
+import android.app.Activity;
 import android.content.Context;
 
 import android.content.Intent;
@@ -19,18 +18,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.google.gson.Gson;
 import com.ht.event.Main;
 import com.ht.event.R;
 import com.ht.event.activity.EventDetailActivity;
-import com.ht.event.dialog.MoreInfoMessage;
+
+import com.ht.event.activity.TicketInfoActivity;
+
 import com.ht.event.dialog.RegisteredMessage;
-import com.ht.event.fragments.ExploreFragment;
 import com.ht.event.model.Event;
 import com.ht.event.model.EventList;
 import com.ht.event.utils.Config;
@@ -101,6 +99,8 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
         if(registeredArrayList !=null && registeredArrayList.contains(current))
         {
             current.setIs_registered(true);
+            holder.register.setVisibility(View.VISIBLE);
+
         }
         holder.time.setText(current.time);
         holder.title.setText(current.title);
@@ -150,73 +150,67 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
 
     }
 
-     public static class ViewHolderExploreList extends RecyclerView.ViewHolder implements View.OnClickListener{
+     public static class ViewHolderExploreList extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-         private ImageView cover,star,share;
+         private ImageView cover, star, share;
          private TextView time;
-         private TextView title,tag2,price;
-         private TextView venue,tag1;
+         private TextView title, tag2, price;
+         private TextView venue, tag1, register;
          private Context context;
          private LinearLayout list;
          // public ClickListener clickListener;
 
-        ArrayList<Event>eventitem=new ArrayList<Event>();
+         ArrayList<Event> eventitem = new ArrayList<Event>();
 
 
-
-         public ViewHolderExploreList(View itemView, final Context context,ArrayList<Event>eventitem)
-         {
+         public ViewHolderExploreList(View itemView, final Context context, ArrayList<Event> eventitem) {
              super(itemView);
 
-             this.eventitem=eventitem;
-             this.context=context;
-             list = (LinearLayout)itemView.findViewById(R.id.list);
+             this.eventitem = eventitem;
+             this.context = context;
+             list = (LinearLayout) itemView.findViewById(R.id.list);
              cover = (ImageView) itemView.findViewById(R.id.CoverView);
              time = (TextView) itemView.findViewById(R.id.event_time);
              title = (TextView) itemView.findViewById(R.id.event_name);
              venue = (TextView) itemView.findViewById(R.id.event_venue);
-             tag1 =(TextView) itemView.findViewById(R.id.tag1);
-             tag2 =(TextView) itemView.findViewById(R.id.tag2);
-             star =(ImageView)itemView.findViewById(R.id.bookmark);
-             share=(ImageView)itemView.findViewById(R.id.share);
-             price=(TextView)itemView.findViewById(R.id.price);
+             tag1 = (TextView) itemView.findViewById(R.id.tag1);
+             tag2 = (TextView) itemView.findViewById(R.id.tag2);
+             star = (ImageView) itemView.findViewById(R.id.bookmark);
+             share = (ImageView) itemView.findViewById(R.id.share);
+             price = (TextView) itemView.findViewById(R.id.price);
+             register = (TextView) itemView.findViewById(R.id.register);
              list.setOnClickListener(this);
              //this.context= context;
              tag1.setOnClickListener(this);
              tag2.setOnClickListener(this);
 
 
-
-
-
          }
-
 
 
          @Override
          public void onClick(View v) {
 
 
-             switch (v.getId())
-             {
+             switch (v.getId()) {
                  case R.id.tag1:
-                     Intent intent1 = new Intent(this.context,Main.class);
+                     Intent intent1 = new Intent(this.context, Main.class);
                      this.context.startActivity(intent1);
                      break;
 
                  case R.id.tag2:
-                     Intent intent2 = new Intent(this.context,Main.class);
+                     Intent intent2 = new Intent(this.context, Main.class);
                      this.context.startActivity(intent2);
                      break;
                  default:
+
+
                      int position = getAdapterPosition();
                      Event event = this.eventitem.get(position);
-
                      if (event.is_registered()) {
-                         Activity activity = (Activity) context;
-                         RegisteredMessage registeredMessage = new RegisteredMessage(activity);
-                         registeredMessage.show(activity.getFragmentManager(), "Registered Message");
-
+                         Intent intent = new Intent(this.context, TicketInfoActivity.class);
+                         intent.putExtra(Config.ITEM_INTENT_OBJECT, event);
+                         this.context.startActivity(intent);
                      } else {
                          Intent intent = new Intent(this.context, EventDetailActivity.class);
                          intent.putExtra(Config.ITEM_INTENT_OBJECT, event);
@@ -225,8 +219,5 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
 
 
              }
-
-
          }
-     }
-    }
+     }}

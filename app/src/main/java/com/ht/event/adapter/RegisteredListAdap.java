@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.ht.event.R;
 import com.ht.event.activity.EventDetailActivity;
+import com.ht.event.activity.TicketInfoActivity;
 import com.ht.event.model.Event;
 import com.ht.event.model.EventList;
 import com.ht.event.utils.Config;
@@ -91,7 +92,7 @@ public class RegisteredListAdap extends RecyclerView.Adapter<RegisteredListAdap.
         public void onClick(View v) {
             int position = getAdapterPosition();
             Event event = this.eventitem.get(position);
-            Intent intent = new Intent(this.context, EventDetailActivity.class);
+            Intent intent = new Intent(this.context, TicketInfoActivity.class);
             intent.putExtra(Config.ITEM_INTENT_OBJECT, event);
             this.context.startActivity(intent);
 

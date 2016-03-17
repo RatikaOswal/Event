@@ -318,6 +318,8 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
                     separate=locationAddress.split(",");
                     latitude=Double.parseDouble(separate[0]);
                     longitude=Double.parseDouble(separate[1]);
+                        eventObjects.setLat(String.valueOf(latitude));
+                        eventObjects.setLng(String.valueOf(longitude));
                     showMap(latitude, longitude);}
                     else
                     {

@@ -9,23 +9,23 @@ import java.util.ArrayList;
 public class Event implements Serializable
 
 {
-    private int id;
-    private String tag2;
-    private String tag1;
-    private int image;
-    private String time;
-    private String title;
-    private String venue;
-    private String price;
-    private String lat;
-    private String lng;
-    private String venueAddress;
-    private String discription;
-    private String organisationName;
+    public int id;
+    public String tag2;
+    public String tag1;
+    public int image;
+    public String time;
+    public String title;
+    public String venue;
+    public String price;
+    public String lat;
+    public String lng;
+    public String venueAddress;
+    public String discription;
+    public String organisationName;
     private boolean is_bookmarked;
     private boolean is_registered;
-    private String startTime;
-    private String endTime;
+    public String startTime;
+    public String endTime;
     private ArrayList<Session>sessions;
 
     public ArrayList<Session> getSessions() {

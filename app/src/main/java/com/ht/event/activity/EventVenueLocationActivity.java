@@ -25,7 +25,6 @@ public class EventVenueLocationActivity extends AppCompatActivity implements Goo
 
     private GoogleMap map;
     private int zoomLevel = 15;
-    public TextView venue,venueAddress;
     public double latitude, longitude;
 
 
@@ -41,15 +40,15 @@ public class EventVenueLocationActivity extends AppCompatActivity implements Goo
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        venue = (TextView)findViewById(R.id.venuemap);
-        venueAddress = (TextView) findViewById(R.id.venueAddressmap);
+        TextView venue = (TextView)findViewById(R.id.venuemap);
+        TextView venueAddress = (TextView) findViewById(R.id.venueAddressmap);
 
 
         Event itemobjects = (Event) getIntent().getSerializableExtra(Config.ITEM_INTENT_OBJECT);
         Bundle  extras = getIntent().getExtras();
         if(extras!=null){
-            latitude =  extras.getDouble("Latitude");
-            longitude = extras.getDouble("Longitude");
+            latitude =  extras.getDouble(itemobjects.getLat());
+            longitude = extras.getDouble(itemobjects.getLng());
 
         }
         venue.setText(itemobjects.getVenue());

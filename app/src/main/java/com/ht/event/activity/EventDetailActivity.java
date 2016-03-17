@@ -1,14 +1,12 @@
 package com.ht.event.activity;
 
 
-import android.content.Context;
 import android.content.Intent;
 
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -20,7 +18,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.ht.event.Main;
 import com.ht.event.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -30,7 +27,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.ht.event.Interface.DataHandler;
 
-import com.ht.event.adapter.ExploreItemListAdp;
 import com.ht.event.dialog.ConnectionDetector;
 import com.ht.event.dialog.ConnectionFragment;
 import com.ht.event.model.Event;
@@ -48,14 +44,12 @@ import java.util.HashMap;
 
 public class EventDetailActivity extends AppCompatActivity implements DataHandler {
 
-    public ImageView imageView;
     private GoogleMap map;
     private Event eventObjects;
-    private TextView time, registerbut, description,organisationName;
-    private TextView title, price, venue, venueAddress;
     int zoomLevel = 12;
     double latitude, longitude;
-     MenuItem BookmarkItem;
+    MenuItem BookmarkItem;
+
 
 
     @Override
@@ -69,15 +63,16 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
 
         RelativeLayout relativeLayout = (RelativeLayout) findViewById(R.id.address_frame);
 
-        imageView = (ImageView) findViewById(R.id.CoverView);
-        time = (TextView) findViewById(R.id.event_time);
-        title = (TextView) findViewById(R.id.event_name);
-        price = (TextView) findViewById(R.id.price);
-        registerbut = (TextView) findViewById(R.id.registerBut);
-        venue = (TextView) findViewById(R.id.venue);
-        venueAddress = (TextView) findViewById(R.id.venueAddress);
-        description = (TextView) findViewById(R.id.text_discription);
-        organisationName = (TextView) findViewById(R.id.organisationName);
+
+        ImageView imageView = (ImageView) findViewById(R.id.CoverView);
+        TextView time = (TextView) findViewById(R.id.event_time);
+        TextView title = (TextView) findViewById(R.id.event_name);
+        TextView price = (TextView) findViewById(R.id.price);
+        TextView registerbut = (TextView) findViewById(R.id.registerBut);
+        TextView venue = (TextView) findViewById(R.id.venue);
+        TextView venueAddress = (TextView) findViewById(R.id.venueAddress);
+        TextView description = (TextView) findViewById(R.id.text_discription);
+        TextView organisationName = (TextView) findViewById(R.id.organisationName);
 
 
         eventObjects = (Event) getIntent().getSerializableExtra(Config.ITEM_INTENT_OBJECT);
@@ -95,7 +90,7 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
         //GeoCoder
         GeocoderLocation locationAddress = new GeocoderLocation();
         locationAddress.getAddressFromLocation(address,
-                getApplicationContext(), new GeocoderHandler());
+               this , new GeocoderHandler());
 
         //Setting toolbar
         Toolbar mToolbar = (Toolbar) findViewById(R.id.discrbar);
@@ -154,9 +149,8 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
 
 
                 Intent intent = new Intent(EventDetailActivity.this, EventVenueLocationActivity.class);
-                intent.putExtra("Event", eventObjects);
-                intent.putExtra("Latitude", latitude);
-                intent.putExtra("Longitude", longitude);
+                intent.putExtra(Config.ITEM_INTENT_OBJECT, eventObjects);
+
                 startActivity(intent);
 
 

@@ -10,21 +10,12 @@ import android.view.Window;
 import android.widget.TextView;
 
 import com.google.android.gms.auth.api.Auth;
-<<<<<<< Updated upstream
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-=======
->>>>>>> Stashed changes
+
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
+
 import com.ht.event.R;
 
-<<<<<<< Updated upstream
-=======
-/**
- * Created by hp on 3/7/2016.
- */
->>>>>>> Stashed changes
 public class LogoutMessage extends DialogFragment implements
         android.view.View.OnClickListener {
     public Activity c;
@@ -45,7 +36,6 @@ public class LogoutMessage extends DialogFragment implements
         logout = (TextView) d.findViewById(R.id.logout);
         logout.setOnClickListener(this);
         cancel.setOnClickListener(this);
-<<<<<<< Updated upstream
 
         //setting google
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -54,15 +44,6 @@ public class LogoutMessage extends DialogFragment implements
 
         return d;
     }
-
-=======
-        return d;
-    }
-
-    {
-
-    }
->>>>>>> Stashed changes
 
     @Override
     public void onClick(View v) {
@@ -81,18 +62,10 @@ public class LogoutMessage extends DialogFragment implements
         }
     }
     private void signOut(){
-<<<<<<< Updated upstream
+
         if(mGoogleApiClient.isConnected()){
             mGoogleApiClient.disconnect();
         }
-=======
-        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(new ResultCallback<Status>() {
-            @Override
-            public void onResult(Status status) {
 
-            }
-        });
->>>>>>> Stashed changes
-
-    }
+}
 }

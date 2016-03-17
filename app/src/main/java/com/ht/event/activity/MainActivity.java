@@ -1,4 +1,4 @@
-package com.ht.event;
+package com.ht.event.activity;
 
 
 import android.content.Intent;
@@ -19,8 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.ht.event.activity.FilterActivity;
-import com.ht.event.activity.UserProfileActivity;
+import com.ht.event.R;
 import com.ht.event.fragments.AboutFragment;
 import com.ht.event.fragments.ExploreFragment;
 import com.ht.event.fragments.MyScheduleFragment;
@@ -34,19 +33,14 @@ import com.ht.event.utils.EventsPreferences;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-public class Main extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
     public FragmentManager fragmentManager;
-
-    private Toolbar mToolbar;
-    private NavigationView mNvDrawer;
     private DrawerLayout drawerLayout;
-    private ActionBarDrawerToggle actionBarDrawerToggle;
     private FragmentTransaction fragmentTransaction;
-    private CircleImageView profileImage;
-    private View headerView;
-    private TextView userName;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,12 +49,12 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
         fragmentManager = getSupportFragmentManager();
 
         //Setting toolbar
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
+         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         // Setting Drawer layout
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.opendrawer, R.string.closedrawer);
+       drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+       ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.opendrawer, R.string.closedrawer);
         drawerLayout.setDrawerListener(actionBarDrawerToggle);
         ActionBar actionBar = getSupportActionBar();
         //hambager menu icon
@@ -69,9 +63,9 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
         actionBarDrawerToggle.syncState();
 
         // Setting navigation view
-        mNvDrawer = (NavigationView) findViewById(R.id.nvView);
-        mNvDrawer.setNavigationItemSelectedListener(this);
-        mNvDrawer.getMenu();
+         NavigationView nvDrawer = (NavigationView) findViewById(R.id.nvView);
+        nvDrawer.setNavigationItemSelectedListener(this);
+        nvDrawer.getMenu();
 
         //default fragment
         ExploreFragment explore = new ExploreFragment();
@@ -80,18 +74,18 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
         fragmentTransaction.commit();
 
         //setting profile page
-        headerView=mNvDrawer.getHeaderView(0);
-        profileImage =(CircleImageView) headerView.findViewById(R.id.circleImageViewProfile);
+          View headerView=nvDrawer.getHeaderView(0);
+        CircleImageView profileImage =(CircleImageView) headerView.findViewById(R.id.circleImageViewProfile);
         profileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(Main.this,UserProfileActivity.class);
+                Intent intent=new Intent(MainActivity.this,UserProfileActivity.class);
                 startActivity(intent);
             }
         });
         //Setting User name
-        headerView=mNvDrawer.getHeaderView(0);
-        userName = (TextView) headerView.findViewById(R.id.textViewUserName);
+        headerView=nvDrawer.getHeaderView(0);
+         TextView userName = (TextView) headerView.findViewById(R.id.textViewUserName);
         User user = EventsPreferences.getUser(this);
         if(user.getEmail()!= null){
             userName.setText(user.getName());
@@ -105,7 +99,6 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
     @Override
     public void onBackPressed() {
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
 
@@ -131,8 +124,7 @@ public class Main extends AppCompatActivity implements NavigationView.OnNavigati
 
         switch(id){
             case android.R.id.home:
-            if (drawerLayout.isDrawerOpen(GravityCompat.START))
-            {
+            if (drawerLayout.isDrawerOpen(GravityCompat.START))  {
                 drawerLayout.closeDrawer(GravityCompat.START);
             } else {
                 drawerLayout.openDrawer(GravityCompat.START);

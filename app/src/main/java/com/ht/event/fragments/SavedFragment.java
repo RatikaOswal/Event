@@ -10,15 +10,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.ht.event.Main;
+import com.ht.event.activity.MainActivity;
 import com.ht.event.R;
 import com.ht.event.adapter.BookmarkedListAdap;
-import com.ht.event.adapter.ExploreItemListAdp;
 import com.ht.event.model.Event;
 import com.ht.event.model.EventList;
 import com.ht.event.utils.EventsPreferences;
@@ -109,7 +107,7 @@ public class SavedFragment extends Fragment implements View.OnClickListener {
 
         switch (id){
             case R.id.discover:
-                Intent intent = new Intent(getActivity(),Main.class);
+                Intent intent = new Intent(getActivity(),MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
         }

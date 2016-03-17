@@ -52,6 +52,7 @@ public class OrderCompletedActivity extends AppCompatActivity {
                 EventsPreferences.saveRegistered(OrderCompletedActivity.this, event);
                 Toast.makeText(OrderCompletedActivity.this, "Registration Completed", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(OrderCompletedActivity.this,Main.class);
+                intent.putExtra(Config.ITEM_INTENT_OBJECT,event);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
 

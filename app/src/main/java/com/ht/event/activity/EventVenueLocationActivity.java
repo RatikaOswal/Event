@@ -19,6 +19,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.ht.event.model.Event;
+import com.ht.event.utils.Config;
 
 public class EventVenueLocationActivity extends AppCompatActivity implements GoogleMap.OnInfoWindowClickListener {
 
@@ -44,7 +45,7 @@ public class EventVenueLocationActivity extends AppCompatActivity implements Goo
         venueAddress = (TextView) findViewById(R.id.venueAddressmap);
 
 
-        Event itemobjects = (Event) getIntent().getSerializableExtra("Event");
+        Event itemobjects = (Event) getIntent().getSerializableExtra(Config.ITEM_INTENT_OBJECT);
         Bundle  extras = getIntent().getExtras();
         if(extras!=null){
             latitude =  extras.getDouble("Latitude");

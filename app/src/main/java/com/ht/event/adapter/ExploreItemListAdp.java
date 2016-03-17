@@ -50,7 +50,7 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
         String registerInStr = EventsPreferences.getRegistered(context);
         if (registerInStr != null) {
             registeredArrayList = getList(registerInStr);
-//          
+//
         }
     }
 
@@ -147,7 +147,7 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
         private TextView venue, tag1, register;
         private Context context;
         private LinearLayout list;
-        // public ClickListener clickListener;
+
 
         ArrayList<Event> eventitem = new ArrayList<Event>();
 
@@ -169,7 +169,6 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
             price = (TextView) itemView.findViewById(R.id.price);
             register = (TextView) itemView.findViewById(R.id.register);
             list.setOnClickListener(this);
-            //this.context= context;
             tag1.setOnClickListener(this);
             tag2.setOnClickListener(this);
 

@@ -150,7 +150,7 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
             public void onClick(View v) {
 
                 Intent intent = new Intent(EventDetailActivity.this, EventVenueLocationActivity.class);
-                intent.putExtra("Event", eventObjects);
+                intent.putExtra(Config.ITEM_INTENT_OBJECT, eventObjects);
 
                 startActivity(intent);
 

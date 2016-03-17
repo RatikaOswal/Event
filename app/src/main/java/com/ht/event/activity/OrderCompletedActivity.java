@@ -23,8 +23,6 @@ public class OrderCompletedActivity extends AppCompatActivity {
     private TextView add,title,time,done;
     private Event event;
     private ImageView share;
-    private Context context;
-    public ArrayList<Event> eventItem ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

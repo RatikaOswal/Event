@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
 
         // Setting Drawer layout
-       DrawerLayout drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+       drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.opendrawer, R.string.closedrawer);
         drawerLayout.setDrawerListener(actionBarDrawerToggle);
         ActionBar actionBar = getSupportActionBar();
@@ -99,7 +99,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onBackPressed() {
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
 

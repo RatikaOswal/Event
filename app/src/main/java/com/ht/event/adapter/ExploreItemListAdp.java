@@ -16,12 +16,9 @@ import com.google.gson.Gson;
 import com.ht.event.activity.MainActivity;
 import com.ht.event.R;
 import com.ht.event.activity.EventDetailActivity;
-<<<<<<< HEAD
-=======
 
 import com.ht.event.activity.TicketInfoActivity;
 
->>>>>>> komal
 import com.ht.event.dialog.RegisteredMessage;
 import com.ht.event.model.Event;
 import com.ht.event.model.EventList;
@@ -145,7 +142,7 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
 
     }
 
-<<<<<<< HEAD
+
     public static class ViewHolderExploreList extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private ImageView cover, star, share;
@@ -154,46 +151,10 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
         private TextView venue, tag1, register;
         private Context context;
         private LinearLayout list;
-
-=======
-     public static class ViewHolderExploreList extends RecyclerView.ViewHolder implements View.OnClickListener {
-
-         private ImageView cover, star, share;
-         private TextView time;
-         private TextView title, tag2, price;
-         private TextView venue, tag1, register;
-         private Context context;
-         private LinearLayout list;
-         // public ClickListener clickListener;
-
-         ArrayList<Event> eventitem = new ArrayList<Event>();
-
-
-         public ViewHolderExploreList(View itemView, final Context context, ArrayList<Event> eventitem) {
-             super(itemView);
-
-             this.eventitem = eventitem;
-             this.context = context;
-             list = (LinearLayout) itemView.findViewById(R.id.list);
-             cover = (ImageView) itemView.findViewById(R.id.CoverView);
-             time = (TextView) itemView.findViewById(R.id.event_time);
-             title = (TextView) itemView.findViewById(R.id.event_name);
-             venue = (TextView) itemView.findViewById(R.id.event_venue);
-             tag1 = (TextView) itemView.findViewById(R.id.tag1);
-             tag2 = (TextView) itemView.findViewById(R.id.tag2);
-             star = (ImageView) itemView.findViewById(R.id.bookmark);
-             share = (ImageView) itemView.findViewById(R.id.share);
-             price = (TextView) itemView.findViewById(R.id.price);
-             register = (TextView) itemView.findViewById(R.id.register);
-             list.setOnClickListener(this);
-             //this.context= context;
-             tag1.setOnClickListener(this);
-             tag2.setOnClickListener(this);
->>>>>>> komal
+        // public ClickListener clickListener;
 
         ArrayList<Event> eventitem = new ArrayList<Event>();
 
-<<<<<<< HEAD
 
         public ViewHolderExploreList(View itemView, final Context context, ArrayList<Event> eventitem) {
             super(itemView);
@@ -212,9 +173,10 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
             price = (TextView) itemView.findViewById(R.id.price);
             register = (TextView) itemView.findViewById(R.id.register);
             list.setOnClickListener(this);
+            //this.context= context;
             tag1.setOnClickListener(this);
             tag2.setOnClickListener(this);
-
+            ;
 
         }
 
@@ -253,41 +215,7 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
 
         }
     }
+
+
 }
 
-=======
-         }
-
-
-         @Override
-         public void onClick(View v) {
-
-
-             switch (v.getId()) {
-                 case R.id.tag1:
-                     Intent intent1 = new Intent(this.context, Main.class);
-                     this.context.startActivity(intent1);
-                     break;
-
-                 case R.id.tag2:
-                     Intent intent2 = new Intent(this.context, Main.class);
-                     this.context.startActivity(intent2);
-                     break;
-                 default:
-                     int position = getAdapterPosition();
-                     Event event = this.eventitem.get(position);
-                     if (event.is_registered()) {
-                         Intent intent = new Intent(this.context, TicketInfoActivity.class);
-                         intent.putExtra(Config.ITEM_INTENT_OBJECT, event);
-                         this.context.startActivity(intent);
-                     } else {
-                         Intent intent = new Intent(this.context, EventDetailActivity.class);
-                         intent.putExtra(Config.ITEM_INTENT_OBJECT, event);
-                         this.context.startActivity(intent);
-                     }
-
-
-             }
-         }
-     }}
->>>>>>> komal

@@ -46,11 +46,9 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
 
     private GoogleMap map;
     private Event eventObjects;
-    private TextView time, registerbut, description,organisationName;
-    private TextView title, price, venue, venueAddress;
     int zoomLevel = 12;
     double latitude, longitude;
-     MenuItem BookmarkItem;
+    MenuItem BookmarkItem;
 
 
 

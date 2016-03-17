@@ -9,11 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.ht.event.Main;
 import com.ht.event.R;
 import com.ht.event.model.Event;
-import com.ht.event.model.EventList;
 import com.ht.event.utils.Config;
 import com.ht.event.utils.EventsPreferences;
 import com.ht.event.utils.Share;
@@ -51,7 +48,7 @@ public class OrderCompletedActivity extends AppCompatActivity {
 
                 EventsPreferences.saveRegistered(OrderCompletedActivity.this, event);
                 Toast.makeText(OrderCompletedActivity.this, "Registration Completed", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(OrderCompletedActivity.this,Main.class);
+                Intent intent = new Intent(OrderCompletedActivity.this,MainActivity.class);
                 intent.putExtra(Config.ITEM_INTENT_OBJECT,event);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);

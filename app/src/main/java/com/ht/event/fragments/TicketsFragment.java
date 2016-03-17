@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,9 +14,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.ht.event.Main;
+import com.ht.event.activity.MainActivity;
 import com.ht.event.R;
-import com.ht.event.adapter.BookmarkedListAdap;
 import com.ht.event.adapter.RegisteredListAdap;
 import com.ht.event.model.Event;
 import com.ht.event.model.EventList;
@@ -103,7 +100,7 @@ public class TicketsFragment extends Fragment implements View.OnClickListener{
         switch (id)
         {
             case R.id.discover :
-                Intent intent =new Intent(getActivity(), Main.class);
+                Intent intent =new Intent(getActivity(), MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
 

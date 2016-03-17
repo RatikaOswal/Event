@@ -18,13 +18,18 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.gson.Gson;
 import com.ht.event.R;
 import com.ht.event.activity.ContactOrganizerActivity;
 import com.ht.event.activity.EventDescriptionActivity;
 import com.ht.event.activity.EventVenueLocationActivity;
 import com.ht.event.activity.OrganisationDescription;
 import com.ht.event.model.Event;
+import com.ht.event.model.EventList;
 import com.ht.event.utils.Config;
+import com.ht.event.utils.EventsPreferences;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,6 +43,7 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
     private int zoomLevel = 12;
     private LinearLayout mapLayout;
     private double latitude,longitude;
+    private ArrayList<Event> registerArrayList;
 
 
     public InfoFragment() {
@@ -77,8 +83,22 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
         venueName.setText(event.getVenue());
         venueAddress.setText(event.getVenueAddress());
         coverView.setImageResource(event.getImage());
-        latitude = Double.parseDouble(event.getLat());
-        longitude = Double.parseDouble(event.getLng());
+
+
+    if(event.getLat()== null  && event.getLng() ==null ) {
+
+        String eventsInStr = EventsPreferences.getRegistered(getActivity());
+        if(eventsInStr!=null) {
+            Gson gson = new Gson();
+            EventList eventList = gson.fromJson(eventsInStr, EventList.class);
+             registerArrayList= eventList.getData();
+        }
+
+
+
+    }
+
+
 
 
         map = ((MapFragment) getActivity().getFragmentManager().findFragmentById(R.id.maplocationstatic))

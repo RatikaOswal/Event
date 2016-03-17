@@ -13,7 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.google.gson.Gson;
-import com.ht.event.Main;
+import com.ht.event.activity.MainActivity;
 import com.ht.event.R;
 import com.ht.event.activity.EventDetailActivity;
 import com.ht.event.dialog.RegisteredMessage;
@@ -28,32 +28,37 @@ import java.util.ArrayList;
 
 public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.ViewHolderExploreList> {
 
-    private LayoutInflater layoutInflater;
     public ArrayList<Event> eventitem;
     public Context context;
     private ArrayList<Event> bookmarkedArrayList;
     private ArrayList<Event> registeredArrayList;
+    private Gson gson;
 
 
     public ExploreItemListAdp(Context context, ArrayList<Event> eventitem) {
 
         this.context = context;
-        layoutInflater = LayoutInflater.from(context);
+
         this.eventitem = eventitem;
+        gson = new Gson();
         String eventsInStr = EventsPreferences.getBookmarked(context);
         if (eventsInStr != null) {
-            Gson gson = new Gson();
-            EventList eventList = gson.fromJson(eventsInStr, EventList.class);
-            bookmarkedArrayList = eventList.getData();
+            bookmarkedArrayList = getList(eventsInStr);
+
         }
 
         String registerInStr = EventsPreferences.getRegistered(context);
         if (registerInStr != null) {
-            Gson gson = new Gson();
-            EventList regList = gson.fromJson(registerInStr, EventList.class);
-            registeredArrayList = regList.getData();
-
+            registeredArrayList = getList(registerInStr);
+//          
         }
+    }
+
+    private ArrayList<Event> getList(String eventsInStr) {
+        Gson gson = new Gson();
+        EventList eventList = gson.fromJson(eventsInStr, EventList.class);
+        ArrayList<Event> eventArrayList = eventList.getData();
+        return eventArrayList;
     }
 
 
@@ -61,7 +66,7 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
     public ViewHolderExploreList onCreateViewHolder(ViewGroup parent, int viewType) {
 
 
-        View view = layoutInflater.inflate(R.layout.list_exlore_layout, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.list_exlore_layout, parent, false);
         ViewHolderExploreList viewHolderExploreList;
         viewHolderExploreList = new ViewHolderExploreList(view, context, eventitem);
 
@@ -177,12 +182,12 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
 
             switch (v.getId()) {
                 case R.id.tag1:
-                    Intent intent1 = new Intent(this.context, Main.class);
+                    Intent intent1 = new Intent(this.context, MainActivity.class);
                     this.context.startActivity(intent1);
                     break;
 
                 case R.id.tag2:
-                    Intent intent2 = new Intent(this.context, Main.class);
+                    Intent intent2 = new Intent(this.context, MainActivity.class);
                     this.context.startActivity(intent2);
                     break;
                 default:

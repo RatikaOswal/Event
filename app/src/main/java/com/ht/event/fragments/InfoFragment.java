@@ -43,6 +43,7 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
     private int zoomLevel = 12;
     private LinearLayout mapLayout;
     private double latitude,longitude;
+    private TextView learnMore;
     private ArrayList<Event> registerArrayList;
 
 
@@ -76,6 +77,7 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
         mapLayout = (LinearLayout) view.findViewById(R.id.mapLayout);
         organisation = (TextView)view.findViewById(R.id.organisationName);
         contact = (TextView)view.findViewById(R.id.contact);
+        learnMore  = (TextView)view.findViewById(R.id.learnMore);
 
         title.setText(event.getTitle());
         time.setText(event.getTime());
@@ -84,6 +86,8 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
         venueAddress.setText(event.getVenueAddress());
         coverView.setImageResource(event.getImage());
 
+        map = ((MapFragment) getActivity().getFragmentManager().findFragmentById(R.id.maplocationstatic))
+                .getMap();
 
     if(event.getLat()== null  && event.getLng() ==null ) {
 
@@ -92,22 +96,29 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
             Gson gson = new Gson();
             EventList eventList = gson.fromJson(eventsInStr, EventList.class);
              registerArrayList= eventList.getData();
+
+            for(Event event: registerArrayList)
+            {
+
+                if(this.event.equals(event)) {
+                    this.event = event;
+                    break;
+                }
+
+            }
+
+
         }
 
 
+        showMap(Double.parseDouble(event.getLat()),Double.parseDouble(event.getLat()));
 
     }
-
-
-
-
-        map = ((MapFragment) getActivity().getFragmentManager().findFragmentById(R.id.maplocationstatic))
-                .getMap();
-        showMap(latitude, longitude);
         mapLayout.setOnClickListener(this);
         description.setOnClickListener(this);
         contact.setOnClickListener(this);
         organisation.setOnClickListener(this);
+        learnMore.setOnClickListener(this);
 
 
         return view;
@@ -160,6 +171,9 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
                 Intent intent3 = new Intent(getActivity(),OrganisationDescriptionActivity.class);
                 startActivity(intent3);
                 break;
+            case R.id.learnMore:
+                Intent intent4 = new Intent(getActivity(),EventDescriptionActivity.class);
+                startActivity(intent4);
         }
 
     }

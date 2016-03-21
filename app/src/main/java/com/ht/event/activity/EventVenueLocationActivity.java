@@ -47,8 +47,8 @@ public class EventVenueLocationActivity extends AppCompatActivity implements Goo
         Event itemobjects = (Event) getIntent().getSerializableExtra(Config.ITEM_INTENT_OBJECT);
         Bundle  extras = getIntent().getExtras();
         if(extras!=null){
-            latitude =  extras.getDouble(itemobjects.getLat());
-            longitude = extras.getDouble(itemobjects.getLng());
+            latitude =Double.parseDouble(itemobjects.getLat());
+            longitude = Double.parseDouble(itemobjects.getLng());
 
         }
         venue.setText(itemobjects.getVenue());

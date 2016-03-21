@@ -2,7 +2,6 @@ package com.ht.event.adapter;
 
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -18,8 +17,7 @@ import com.ht.event.R;
 import com.ht.event.activity.EventDetailActivity;
 
 import com.ht.event.activity.TicketInfoActivity;
-
-import com.ht.event.dialog.RegisteredMessage;
+import com.ht.event.fragments.TicketDetailFragment;
 import com.ht.event.model.Event;
 import com.ht.event.model.EventList;
 import com.ht.event.utils.Config;
@@ -199,9 +197,10 @@ public class ExploreItemListAdp extends RecyclerView.Adapter<ExploreItemListAdp.
                     Event event = this.eventitem.get(position);
 
                     if (event.is_registered()) {
-                        Activity activity = (Activity) context;
-                        RegisteredMessage registeredMessage = new RegisteredMessage(activity);
-                        registeredMessage.show(activity.getFragmentManager(), "Registered Message");
+                       Intent intent3 = new Intent(this.context, TicketInfoActivity.class);
+                        intent3.putExtra(Config.ITEM_INTENT_OBJECT,event);
+                        this.context.startActivity(intent3);
+
 
                     } else {
                         Intent intent = new Intent(this.context, EventDetailActivity.class);

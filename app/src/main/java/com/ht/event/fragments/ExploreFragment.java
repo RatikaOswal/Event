@@ -1,7 +1,6 @@
 package com.ht.event.fragments;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.ht.event.R;
 import com.google.gson.Gson;
-import com.ht.event.adapter.ExploreItemListAdp;
+import com.ht.event.adapter.ExploreItemListAdapter;
 import com.ht.event.model.Event;
 import com.ht.event.model.EventList;
 import com.ht.event.model.Session;
@@ -28,7 +27,7 @@ public class ExploreFragment extends Fragment  {
     private RecyclerView.Adapter ExploreItemList;
     private View view;
 
-   // private ExploreItemListAdp.ViewHolderExploreList.ClickListener clickListener;
+   // private ExploreItemListAdapter.ViewHolderExploreList.ClickListener clickListener;
    // public RecyclerView.LayoutManager mLayoutManager;
 
 
@@ -64,7 +63,7 @@ public class ExploreFragment extends Fragment  {
         String jsonData = getData();
         Gson gson = new Gson();
         EventList eventList = gson.fromJson(jsonData, EventList.class);
-        ExploreItemList = new ExploreItemListAdp(getActivity(), eventList.getData());
+        ExploreItemList = new ExploreItemListAdapter(getActivity(), eventList.getData());
         mListView.setAdapter(ExploreItemList);
 
         return view;

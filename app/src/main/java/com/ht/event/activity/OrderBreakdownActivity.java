@@ -1,6 +1,5 @@
 package com.ht.event.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,13 +13,9 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.ht.event.R;
-import com.ht.event.adapter.ExploreItemListAdp;
 import com.ht.event.adapter.SessionListAdapter;
 import com.ht.event.model.Event;
-import com.ht.event.model.EventList;
-import com.ht.event.model.SessionList;
 import com.ht.event.model.User;
 import com.ht.event.utils.Config;
 import com.ht.event.utils.EventsPreferences;

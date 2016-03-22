@@ -2,31 +2,13 @@ package com.ht.event.fragments;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.gson.Gson;
 import com.ht.event.R;
-import com.ht.event.adapter.RegisteredListAdap;
-import com.ht.event.model.Event;
-import com.ht.event.model.EventList;
-import com.ht.event.utils.Config;
-import com.ht.event.utils.EventsPreferences;
-
-import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.

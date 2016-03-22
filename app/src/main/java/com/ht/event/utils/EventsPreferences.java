@@ -17,11 +17,11 @@ import java.util.ArrayList;
 public class EventsPreferences {
     public static final String USER_INFO = "userInfo";
     public static final String BOOKMARKED_INFO = "bookmarkedInfo";
-
     public static final String BOOKMARKED_LIST = "bookmarkedList";
     public static final String REGISTERED_INFO = "registeredInfo";
+    public static final String TICKETID_INFO = "ticketIdInfo";
     public static final String REGISTERED_LIST = "registeredList";
-
+    public static final String TICKETID_LIST = "ticketIdList";
     public static final String NAME = "name";
     public static final String EMAIL = "email";
     public static final String ORGANIZATIONNAME = "orgName";
@@ -189,5 +189,18 @@ public class EventsPreferences {
         return mPrefs.getString(REGISTERED_LIST, null);
 
     }
-}
 
+    public static void setSaveTicketId(Context context, Event event) {
+
+        String TicketListInStr = getSaveTicketId(context);
+        Gson gson = new Gson();
+
+    }
+
+    private static String getSaveTicketId(Context context) {
+
+        SharedPreferences mPrefs = context.getSharedPreferences(TICKETID_INFO, 0);
+        return mPrefs.getString(TICKETID_LIST, null);
+
+    }
+}

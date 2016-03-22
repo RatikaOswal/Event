@@ -28,6 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/transparent_black"
+        android:visibility="gone"
         >
 
         <TextView

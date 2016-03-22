@@ -3,6 +3,7 @@ package com.ht.event.activity;
 
 import android.content.Intent;
 
+import android.opengl.Visibility;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -49,6 +50,7 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
     private int zoomLevel = 12;
     private double latitude, longitude;
     private MenuItem BookmarkItem;
+    private RelativeLayout footer;
 
 
 
@@ -73,6 +75,8 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
         TextView venueAddress = (TextView) findViewById(R.id.venueAddress);
         TextView description = (TextView) findViewById(R.id.text_discription);
         TextView organisationName = (TextView) findViewById(R.id.organisationName);
+        footer = (RelativeLayout) findViewById(R.id.footer);
+
 
 
         eventObjects = (Event) getIntent().getSerializableExtra(Config.ITEM_INTENT_OBJECT);
@@ -314,7 +318,10 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
                         longitude = Double.parseDouble(separate[1]);
                         eventObjects.setLat(String.valueOf(latitude));
                         eventObjects.setLng(String.valueOf(longitude));
-                    showMap(latitude, longitude);}
+                    showMap(latitude, longitude);
+                    footer.setVisibility(View.VISIBLE);
+                    }
+
                     else
                     {
                         ConnectionFragment  cFragment = new ConnectionFragment();

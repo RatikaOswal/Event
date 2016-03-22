@@ -89,7 +89,7 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
         map = ((MapFragment) getActivity().getFragmentManager().findFragmentById(R.id.maplocationstatic))
                 .getMap();
 
-    if(event.getLat()== null  && event.getLng() ==null ) {
+    if(event.getLat()== null  && event.getLng() ==null) {
 
         String eventsInStr = EventsPreferences.getRegistered(getActivity());
         if(eventsInStr!=null) {

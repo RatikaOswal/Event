@@ -33,6 +33,7 @@ import com.facebook.FacebookSdk;
 import com.facebook.Profile;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.ht.event.application.AppController;
 import com.ht.event.model.Event;
 import com.ht.event.model.User;
 import com.ht.event.utils.Config;
@@ -47,13 +48,9 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     private TextView mTextDetail;
     private SignInButton btnSignIn;
     private ImageView imgProfilePic;
-    private TextView txtName, txtEmail, info;
-    private LinearLayout llProfileLayout;
     private LoginButton logInButton;
     public static final String TAG = "MainActivity";
-    // Profile pic image size in pixels
     public static final int PROFILE_PIC_SIZE = 400;
-    // Google client to interact with Google API
     private GoogleApiClient mGoogleApiClient;
     private boolean mIntentInProgress;
     private boolean mSignInClicked;
@@ -77,11 +74,6 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
 
         btnSignIn = (SignInButton) findViewById(R.id.google_sign_in);
-        imgProfilePic = (ImageView) findViewById(R.id.imgProfilePic);
-        txtName = (TextView) findViewById(R.id.txtName);
-        txtEmail = (TextView) findViewById(R.id.txtEmail);
-        llProfileLayout = (LinearLayout) findViewById(R.id.llProfile);
-        info = (TextView) findViewById(R.id.info);
         if (getIntent().hasExtra(Config.ITEM_INTENT_OBJECT)){
             eventIntentObject = (Event) getIntent().getSerializableExtra(Config.ITEM_INTENT_OBJECT);
         }
@@ -123,13 +115,12 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
             @Override
             public void onCancel() {
-                System.out.println("Facebook Login failed!!");
+                    Log.d(AppController.TAG, "fb cancel success");
 
             }
 
             @Override
             public void onError(FacebookException e) {
-                System.out.println("Facebook Login failed!!");
             }
         });
     }

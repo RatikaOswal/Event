@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ht.event.R;
 import com.ht.event.model.Event;
@@ -24,7 +25,6 @@ public class AttendeesInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendees_info);
-
 
 //setting the toolbar
         Toolbar mToolbar = (Toolbar) findViewById(R.id.attendeebar);
@@ -43,8 +43,6 @@ public class AttendeesInfoActivity extends AppCompatActivity {
         orgName = (EditText)findViewById(R.id.company);
         register = (TextView)findViewById(R.id.continuetext);
 
-
-
         final User user = EventsPreferences.getUser(AttendeesInfoActivity.this);
         userName.setText(user.getName());
         email.setText(user.getEmail());
@@ -56,6 +54,12 @@ public class AttendeesInfoActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 PhoneNo = phoneNo.getText().toString();
+                int lng = phoneNo.getText().length();
+                if(lng != 10)
+                {
+                    Toast.makeText(AttendeesInfoActivity.this, "Invalid Number", Toast.LENGTH_SHORT).show();
+
+                }
                 OrgName = orgName.getText().toString();
                 OrgWebsite = orgWebsite.getText().toString();
 
@@ -71,12 +75,7 @@ public class AttendeesInfoActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -88,7 +87,5 @@ public class AttendeesInfoActivity extends AppCompatActivity {
 
         return true;
     }
-
-
 
 }

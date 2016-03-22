@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ht.event.R;
 import com.ht.event.adapter.SessionListAdapter;
@@ -19,6 +20,12 @@ import com.ht.event.model.Event;
 import com.ht.event.model.User;
 import com.ht.event.utils.Config;
 import com.ht.event.utils.EventsPreferences;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.util.UUID;
 
 public class OrderBreakdownActivity extends AppCompatActivity {
 
@@ -26,6 +33,8 @@ public class OrderBreakdownActivity extends AppCompatActivity {
     private TextView venue,time,price,name,email,OrgName,phoneNo, continuetext;
     private SessionListAdapter sessionListAdapter;
     private RecyclerView mListView;
+
+
 
 
     @Override
@@ -84,6 +93,11 @@ public class OrderBreakdownActivity extends AppCompatActivity {
         continuetext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                String uniqueID = UUID.randomUUID().toString();
+                event.setTicketId(uniqueID);
+                EventsPreferences.saveRegistered(OrderBreakdownActivity.this, event);
+                Toast.makeText(OrderBreakdownActivity.this, "Registration Completed", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(OrderBreakdownActivity.this,OrderCompletedActivity.class);
                 intent.putExtra(Config.ITEM_INTENT_OBJECT, event);
                 startActivity(intent);

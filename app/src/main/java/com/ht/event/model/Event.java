@@ -26,6 +26,16 @@ public class Event implements Serializable
     private boolean is_registered;
     public String startTime;
     public String endTime;
+    public String TicketId;
+
+    public String getTicketId() {
+        return TicketId;
+    }
+
+    public void setTicketId(String ticketId) {
+        TicketId = ticketId;
+    }
+
     private ArrayList<Session>sessions;
 
     public ArrayList<Session> getSessions() {

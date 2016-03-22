@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 
 import com.ht.event.R;
+import com.ht.event.application.AppController;
 
 import java.util.HashMap;
 import java.util.List;
@@ -26,7 +27,7 @@ import java.util.List;
 /**
  * Created by hp on 2/23/2016.
  */
-public class listAdapter extends BaseExpandableListAdapter {
+public class listAdapter extends BaseExpandableListAdapter implements View.OnClickListener {
     private Context _context;
     private static final int CHILD_TYPE_1 = 0;
     private static final int CHILD_TYPE_2 = 1;
@@ -114,64 +115,99 @@ public class listAdapter extends BaseExpandableListAdapter {
 
     }*/
 
+
+    public void onRadioButtonClicked(View view) {
+
+    }
+
     @Override
-    public View getChildView(final int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-        final String incoming_text = (String) getChild(groupPosition, childPosition);
-        int childType = getChildType(groupPosition,childPosition);
+    public View getChildView(final int groupPosition, final int childPosition, boolean isLastChild,
+                             View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) _context.getSystemService
-                (Context.LAYOUT_INFLATER_SERVICE);
-
-        if (convertView == null || (int) convertView.getTag()!= childType) {
-
-
-            switch (childType)
-
-            {
-
-                case CHILD_TYPE_1:
-                    convertView = inflater.inflate(R.layout.child_layout, null);
-                    convertView.setTag(childType);
-
-
-                    break;
-
-                case CHILD_TYPE_2:
-
-                    convertView = inflater.inflate(R.layout.child_layout1, null);
-                    convertView.setTag(childType);
-
-                    break;
-
+              (Context.LAYOUT_INFLATER_SERVICE);
+        final String incoming_text = (String) getChild(groupPosition, childPosition);
+        if(groupPosition ==0) {
+            if (convertView == null) {
+                convertView = inflater.inflate(R.layout.child_layout, null);
             }
-        } else {
-        }
-        switch (childType) {
+            RadioButton radioButton1 = (RadioButton) convertView.findViewById(R.id.radiobutton1);
+            radioButton1.setOnClickListener(this);
+            RadioButton radioButton2 = (RadioButton) convertView.findViewById(R.id.radiobutton2);
+            radioButton2.setOnClickListener(this);
+            RadioButton radioButton3 = (RadioButton) convertView.findViewById(R.id.radiobutton3);
+            radioButton3.setOnClickListener(this);
+            RadioButton radioButton4 = (RadioButton) convertView.findViewById(R.id.radiobutton4);
+            radioButton4.setOnClickListener(this);
+            TextView txtListChild = (TextView) convertView.findViewById(R.id.child_txt);
+            txtListChild.setText(incoming_text);
 
-            case CHILD_TYPE_1:
-                TextView txtListChild = (TextView) convertView.findViewById(R.id.child_txt);
-                final RadioGroup radioGroup =(RadioGroup)convertView.findViewById(R.id.radiogroup);
-                //final RadioButton radioButton =(RadioButton)convertView.findViewById(R.id.radiobutton);
-
-
-                txtListChild.setText(incoming_text);
-
-                break;
-
-            case CHILD_TYPE_2:
-                CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.checkBox1);
-                TextView txtListChild2 = (TextView) convertView.findViewById(R.id.child1_txt);
-
-
-
-
-
-                txtListChild2.setText(incoming_text);
-
-
-
-                break;
 
         }
+        else {
+            if (convertView == null) {
+                convertView = inflater.inflate(R.layout.child_layout1, null);
+            }
+            TextView txtListChild = (TextView) convertView.findViewById(R.id.child1_txt);
+            txtListChild.setText(incoming_text);
+
+        }
+
+//
+//        int childType = getChildType(groupPosition,childPosition);
+//        LayoutInflater inflater = (LayoutInflater) _context.getSystemService
+//                (Context.LAYOUT_INFLATER_SERVICE);
+//
+//        if (convertView == null || (int) convertView.getTag()!= childType) {
+//
+//
+//            switch (childType)
+//
+//            {
+//
+//                case CHILD_TYPE_1:
+//                    convertView = inflater.inflate(R.layout.child_layout, null);
+//                    convertView.setTag(childType);
+//
+//
+//                    break;
+//
+//                case CHILD_TYPE_2:
+//
+//                    convertView = inflater.inflate(R.layout.child_layout1, null);
+//                    convertView.setTag(childType);
+//
+//                    break;
+//
+//            }
+//        } else {
+//        }
+//        switch (childType) {
+//
+//            case CHILD_TYPE_1:
+//                TextView txtListChild = (TextView) convertView.findViewById(R.id.child_txt);
+//                final RadioGroup radioGroup =(RadioGroup)convertView.findViewById(R.id.radiogroup);
+//                //final RadioButton radioButton =(RadioButton)convertView.findViewById(R.id.radiobutton);
+//
+//
+//                txtListChild.setText(incoming_text);
+//
+//                break;
+//
+//            case CHILD_TYPE_2:
+//                CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.checkBox1);
+//                TextView txtListChild2 = (TextView) convertView.findViewById(R.id.child1_txt);
+//
+//
+//
+//
+//
+//                txtListChild2.setText(incoming_text);
+//
+//
+//
+//                break;
+//
+//        }
 
 
 
@@ -190,7 +226,7 @@ public class listAdapter extends BaseExpandableListAdapter {
 
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
-        return false;
+        return true;
     }
 
     @Override
@@ -199,6 +235,12 @@ public class listAdapter extends BaseExpandableListAdapter {
             return CHILD_TYPE_1;
         }
         return CHILD_TYPE_2;
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        Log.d(AppController.TAG,String.valueOf(((RadioButton) v).isChecked()));
 
     }
 }

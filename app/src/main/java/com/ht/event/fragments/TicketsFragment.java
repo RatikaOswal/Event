@@ -16,7 +16,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.ht.event.activity.MainActivity;
 import com.ht.event.R;
-import com.ht.event.adapter.RegisteredListAdap;
+import com.ht.event.adapter.RegisteredListAdapter;
 import com.ht.event.model.Event;
 import com.ht.event.model.EventList;
 import com.ht.event.utils.EventsPreferences;
@@ -33,7 +33,7 @@ public class TicketsFragment extends Fragment implements View.OnClickListener{
     private View view;
     private TextView discover;
     private String item;
-    private RegisteredListAdap registeredListAdap;
+    private RegisteredListAdapter registeredListAdap;
     private ArrayList<Event> eventitem;
 
 
@@ -67,7 +67,7 @@ public class TicketsFragment extends Fragment implements View.OnClickListener{
         item = EventsPreferences.getRegistered(getActivity());
         EventList eventList = gson.fromJson(item, EventList.class);
         if (item != null) {
-            registeredListAdap= new RegisteredListAdap(getActivity(), eventList.getData());
+            registeredListAdap= new RegisteredListAdapter(getActivity(), eventList.getData());
             mListView.setAdapter(registeredListAdap);
             //  display();
             relativeLayout.setVisibility(View.GONE);

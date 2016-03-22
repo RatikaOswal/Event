@@ -20,7 +20,7 @@ import com.ht.event.utils.EventsPreferences;
 import java.util.ArrayList;
 
 
-public class BookmarkedListAdap extends RecyclerView.Adapter<BookmarkedListAdap.ViewHolderBookmarkedList> {
+public class BookmarkedListAdapter extends RecyclerView.Adapter<BookmarkedListAdapter.ViewHolderBookmarkedList> {
 
     private LayoutInflater layoutInflater;
     private ArrayList<Event> eventitem ;
@@ -28,7 +28,7 @@ public class BookmarkedListAdap extends RecyclerView.Adapter<BookmarkedListAdap.
     private ArrayList<Event> bookmarkedArrayList;
 
 
-    public BookmarkedListAdap(Context context,ArrayList<Event> eventitem){
+    public BookmarkedListAdapter(Context context, ArrayList<Event> eventitem){
         this.context=context;
         layoutInflater=LayoutInflater.from(context);
         this.eventitem=eventitem;
@@ -42,7 +42,7 @@ public class BookmarkedListAdap extends RecyclerView.Adapter<BookmarkedListAdap.
 
     }
     @Override
-    public BookmarkedListAdap.ViewHolderBookmarkedList onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BookmarkedListAdapter.ViewHolderBookmarkedList onCreateViewHolder(ViewGroup parent, int viewType) {
          View view = layoutInflater.inflate(R.layout.fragment_saved_card,parent,false);
         ViewHolderBookmarkedList viewHolderBookmarkedList;
         viewHolderBookmarkedList = new ViewHolderBookmarkedList(view,context,eventitem);
@@ -52,7 +52,7 @@ public class BookmarkedListAdap extends RecyclerView.Adapter<BookmarkedListAdap.
     }
 
     @Override
-    public void onBindViewHolder(BookmarkedListAdap.ViewHolderBookmarkedList holder, int position) {
+    public void onBindViewHolder(BookmarkedListAdapter.ViewHolderBookmarkedList holder, int position) {
         final Event current = eventitem.get(position);
         holder.bind(current);
 

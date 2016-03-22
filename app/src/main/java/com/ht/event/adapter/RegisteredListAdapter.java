@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.ht.event.R;
-import com.ht.event.activity.EventDetailActivity;
 import com.ht.event.activity.TicketInfoActivity;
 import com.ht.event.model.Event;
 import com.ht.event.model.EventList;
@@ -23,13 +22,13 @@ import java.util.ArrayList;
 /**
  * Created by RATIKA on 15-Mar-16.
  */
-public class RegisteredListAdap extends RecyclerView.Adapter<RegisteredListAdap.ViewHolderRegisteredList> {
+public class RegisteredListAdapter extends RecyclerView.Adapter<RegisteredListAdapter.ViewHolderRegisteredList> {
     private LayoutInflater layoutInflater;
     private ArrayList<Event> eventitem;
     private Context context;
     private ArrayList<Event> registeredArrayList;
 
-    public RegisteredListAdap(Context context, ArrayList<Event> eventitem) {
+    public RegisteredListAdapter(Context context, ArrayList<Event> eventitem) {
         this.context = context;
         layoutInflater = LayoutInflater.from(context);
         this.eventitem = eventitem;
@@ -42,15 +41,15 @@ public class RegisteredListAdap extends RecyclerView.Adapter<RegisteredListAdap.
     }
 
     @Override
-    public  RegisteredListAdap.ViewHolderRegisteredList onCreateViewHolder(ViewGroup parent, int viewType) {
+    public  RegisteredListAdapter.ViewHolderRegisteredList onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.fragment_saved_card, parent, false);
-        RegisteredListAdap.ViewHolderRegisteredList viewHolderRegisteredList;
+        RegisteredListAdapter.ViewHolderRegisteredList viewHolderRegisteredList;
         viewHolderRegisteredList = new ViewHolderRegisteredList(view, context, eventitem);
         return viewHolderRegisteredList;
     }
 
     @Override
-    public void onBindViewHolder(RegisteredListAdap.ViewHolderRegisteredList holder, int position) {
+    public void onBindViewHolder(RegisteredListAdapter.ViewHolderRegisteredList holder, int position) {
         final Event current = eventitem.get(position);
         holder.bind(current);
     }

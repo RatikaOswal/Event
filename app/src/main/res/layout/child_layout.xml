@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
+    android:background="#fff"
     android:layout_height="wrap_content"
     android:padding="10dp">
 
@@ -32,6 +33,46 @@
 
 
 
+    <RadioButton
+            android:id="@+id/radiobutton1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:button="@drawable/radio_button"
+            android:checked="true"
+            android:paddingBottom="10dp"
+
+
+            />
+
+        <RadioButton
+            android:id="@+id/radiobutton2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:button="@drawable/radio_button"
+            android:paddingBottom="10dp"
+
+
+
+            />
+
+        <RadioButton
+            android:id="@+id/radiobutton3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:button="@drawable/radio_button"
+            android:paddingBottom="10dp"
+
+
+            />
+
+        <RadioButton
+            android:id="@+id/radiobutton4"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:button="@drawable/radio_button"
+            android:paddingBottom="10dp"
+
+            />
 
 
 
@@ -42,12 +83,8 @@
 
 
 
-    </RadioGroup>
 
-
-
-
-
+</RadioGroup>
 
 
 

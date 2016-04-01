@@ -5,8 +5,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.ht.event.adapter.listAdapter;
 
@@ -23,7 +28,12 @@ public class FilterActivity extends AppCompatActivity {
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
-
+    private TextView dates;
+    private RadioGroup datesradiogroup;
+    private TextView event_topics;
+    private RelativeLayout checkbox_relativeLayout;
+    private TextView event_types;
+    private RelativeLayout event_types_relativelayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,10 +46,59 @@ public class FilterActivity extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        checkbox_relativeLayout =(RelativeLayout)findViewById(R.id.checkbox_relativelayout);
+        datesradiogroup = (RadioGroup)findViewById(R.id.dates_radioGroup);
+        event_topics =(TextView)findViewById(R.id.event_topics);
+        event_topics.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(checkbox_relativeLayout.getVisibility()==View.VISIBLE) {
+                    checkbox_relativeLayout.setVisibility(View.GONE);
+                }
+                else {
+                    checkbox_relativeLayout.setVisibility(View.VISIBLE);
+                }
 
 
-    // get the listview
-        expListView = (ExpandableListView) findViewById(R.id.expandablelist);
+            }
+        });
+        dates = (TextView)findViewById(R.id.dates);
+        dates.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                if(datesradiogroup.getVisibility()==View.VISIBLE) {
+                    datesradiogroup.setVisibility(View.GONE);
+
+                }
+                else {
+                    datesradiogroup.setVisibility(View.VISIBLE);
+                }
+
+
+
+
+            }
+        });
+        event_types_relativelayout = (RelativeLayout)findViewById(R.id.checkbox_event_types_relativelayout);
+        event_types =(TextView)findViewById(R.id.event_types);
+        event_types.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(event_types_relativelayout.getVisibility()==View.VISIBLE) {
+                    event_types_relativelayout.setVisibility(View.GONE);
+
+                }
+                else {
+                    event_types_relativelayout.setVisibility(View.VISIBLE);
+                }
+
+
+            }
+        });
+
+
 
 
         // preparing list data
@@ -47,13 +106,11 @@ public class FilterActivity extends AppCompatActivity {
         listAdapter = new listAdapter(this, listDataHeader, listDataChild);
 
 
-        // setting list adapter
-        expListView.setAdapter(listAdapter);
     }
 
 
 
-    /*
+    /*no
      * Preparing the list data
      */
     private void prepareListData() {
@@ -109,4 +166,8 @@ public class FilterActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
-    }}
+    }
+
+
+}
+

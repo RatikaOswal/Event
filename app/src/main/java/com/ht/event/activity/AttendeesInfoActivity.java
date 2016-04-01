@@ -33,50 +33,51 @@ public class AttendeesInfoActivity extends AppCompatActivity {
 //setting the icon
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        if(getIntent().hasExtra(Config.ITEM_INTENT_OBJECT)) {
+        if (getIntent().hasExtra(Config.ITEM_INTENT_OBJECT)) {
             eventObjects = (Event) getIntent().getSerializableExtra(Config.ITEM_INTENT_OBJECT);
         }
-        userName = (TextView)findViewById(R.id.getuserName);
-        email = (TextView)findViewById(R.id.attendeeEmail);
-        phoneNo = (EditText)findViewById(R.id.contactNumber);
-        orgWebsite = (EditText)findViewById(R.id.companywebsite);
-        orgName = (EditText)findViewById(R.id.company);
-        register = (TextView)findViewById(R.id.continuetext);
+        userName = (TextView) findViewById(R.id.getuserName);
+        email = (TextView) findViewById(R.id.attendeeEmail);
+        phoneNo = (EditText) findViewById(R.id.contactNumber);
+        orgWebsite = (EditText) findViewById(R.id.companywebsite);
+        orgName = (EditText) findViewById(R.id.company);
+        register = (TextView) findViewById(R.id.continuetext);
 
         final User user = EventsPreferences.getUser(AttendeesInfoActivity.this);
         userName.setText(user.getName());
         email.setText(user.getEmail());
 
+        int length = PhoneNo.length();
+      //  int lng = phoneNo.getText().length();
+      //  if (length >= 10) {
+            register.setOnClickListener(new View.OnClickListener() {
 
-        register.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-            @Override
-            public void onClick(View v) {
+                    PhoneNo = phoneNo.getText().toString();
+                    OrgName = orgName.getText().toString();
+                    OrgWebsite = orgWebsite.getText().toString();
 
-                PhoneNo = phoneNo.getText().toString();
-                int lng = phoneNo.getText().length();
-                if(lng != 10)
-                {
-                    Toast.makeText(AttendeesInfoActivity.this, "Invalid Number", Toast.LENGTH_SHORT).show();
+                    user.setPhoneNo(PhoneNo);
+                    user.setOrgWebsite(OrgWebsite);
+                    user.setOrganisation(OrgName);
 
+                    EventsPreferences.saveUser(AttendeesInfoActivity.this, user);
+                    Intent intent = new Intent(AttendeesInfoActivity.this, OrderBreakdownActivity.class);
+                    intent.putExtra(Config.ITEM_INTENT_OBJECT, eventObjects);
+                    startActivity(intent);
+                    AttendeesInfoActivity.this.finish();
                 }
-                OrgName = orgName.getText().toString();
-                OrgWebsite = orgWebsite.getText().toString();
+            });
 
-                user.setPhoneNo(PhoneNo);
-                user.setOrgWebsite(OrgWebsite);
-                user.setOrganisation(OrgName);
 
-                EventsPreferences.saveUser(AttendeesInfoActivity.this, user);
-                Intent intent = new Intent(AttendeesInfoActivity.this,OrderBreakdownActivity.class);
-                intent.putExtra(Config.ITEM_INTENT_OBJECT, eventObjects);
-                startActivity(intent);
-                AttendeesInfoActivity.this.finish();
-            }
-        });
+        } //else {
 
-    }
+            //Toast.makeText(AttendeesInfoActivity.this, "Invalid Number", Toast.LENGTH_SHORT).show();
 
+        //}
+  //  }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();

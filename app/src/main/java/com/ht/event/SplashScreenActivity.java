@@ -10,7 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import com.ht.event.activity.MainActivity;
 
 
-public class SplashScreen extends AppCompatActivity {
+public class SplashScreenActivity extends AppCompatActivity {
 
 
     @Override
@@ -20,7 +20,7 @@ public class SplashScreen extends AppCompatActivity {
             int secondsDelayed = 1;
             new Handler().postDelayed(new Runnable() {
                 public void run() {
-                    startActivity(new Intent(SplashScreen.this, MainActivity.class));
+                    startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
                     finish();
                 }
             }, secondsDelayed * 500);

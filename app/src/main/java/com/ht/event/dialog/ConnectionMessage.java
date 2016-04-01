@@ -14,10 +14,10 @@ import android.view.ViewGroup;
 
 import com.ht.event.R;
 
-public class ConnectionFragment extends DialogFragment {
+public class ConnectionMessage extends DialogFragment {
 
 
-    public ConnectionFragment() {
+    public ConnectionMessage() {
         // Required empty public constructor
     }
 

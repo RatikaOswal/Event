@@ -2,12 +2,20 @@
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@color/fragment_backgrnd"
         tools:context="com.ht.event.fragments.TicketDetailFragment"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         >
+<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:gravity="center"
+        android:background="@color/white"
 
+    >
         <ImageView
             android:id="@+id/qrImg"
             android:layout_width="wrap_content"
@@ -15,7 +23,17 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             />
-
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/userName"
+        android:textColor="@color/Text_title"
+        android:paddingTop="10dp"
+        android:textSize="20sp"
+        android:layout_below="@+id/qrImg"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>
 
 
 </RelativeLayout>

@@ -25,10 +25,13 @@ import com.ht.event.R;
 
 import com.ht.event.model.Event;
 import com.ht.event.model.EventList;
+import com.ht.event.model.User;
 import com.ht.event.utils.Config;
 import com.ht.event.utils.EventsPreferences;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+
+import org.w3c.dom.Text;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -43,6 +46,7 @@ public class TicketDetailFragment extends Fragment {
     private ImageLoader imgLoader;
     private Event event;
     private ImageView qrImage;
+    private TextView name;
     private String fullUrl = Config.BASE_QR_URL;
     private ArrayList<Event> registerArrayList;
 
@@ -67,7 +71,10 @@ public class TicketDetailFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_ticket_detail, container, false);
         qrImage = (ImageView) view.findViewById(R.id.qrImg);
+        name =(TextView)view.findViewById(R.id.userName);
         event = (Event) getActivity().getIntent().getSerializableExtra(Config.ITEM_INTENT_OBJECT);
+        User user = EventsPreferences.getUser(getActivity());
+        name.setText(user.getName());
 
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getActivity()).build();
         imgLoader = ImageLoader.getInstance();

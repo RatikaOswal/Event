@@ -47,7 +47,6 @@ public class AttendeesInfoActivity extends AppCompatActivity {
         userName.setText(user.getName());
         email.setText(user.getEmail());
 
-        int length = PhoneNo.length();
       //  int lng = phoneNo.getText().length();
       //  if (length >= 10) {
             register.setOnClickListener(new View.OnClickListener() {
@@ -58,23 +57,36 @@ public class AttendeesInfoActivity extends AppCompatActivity {
                     PhoneNo = phoneNo.getText().toString();
                     OrgName = orgName.getText().toString();
                     OrgWebsite = orgWebsite.getText().toString();
+                    if(validateInput(phoneNo)) {
 
-                    user.setPhoneNo(PhoneNo);
-                    user.setOrgWebsite(OrgWebsite);
-                    user.setOrganisation(OrgName);
+                        user.setPhoneNo(PhoneNo);
+                        user.setOrgWebsite(OrgWebsite);
+                        user.setOrganisation(OrgName);
 
-                    EventsPreferences.saveUser(AttendeesInfoActivity.this, user);
-                    Intent intent = new Intent(AttendeesInfoActivity.this, OrderBreakdownActivity.class);
-                    intent.putExtra(Config.ITEM_INTENT_OBJECT, eventObjects);
-                    startActivity(intent);
-                    AttendeesInfoActivity.this.finish();
+                        EventsPreferences.saveUser(AttendeesInfoActivity.this, user);
+                        Intent intent = new Intent(AttendeesInfoActivity.this, OrderBreakdownActivity.class);
+                        intent.putExtra(Config.ITEM_INTENT_OBJECT, eventObjects);
+                        startActivity(intent);
+                        AttendeesInfoActivity.this.finish();
+                    }
+
                 }
             });
 
 
         } //else {
 
-            //Toast.makeText(AttendeesInfoActivity.this, "Invalid Number", Toast.LENGTH_SHORT).show();
+    private boolean validateInput(EditText phoneNo) {
+        int lng = PhoneNo.length();
+        if (lng>=10)
+        {
+            return true;
+        }
+        Toast.makeText(AttendeesInfoActivity.this, "Invalid Number", Toast.LENGTH_SHORT).show();
+        return false;
+    }
+
+    //Toast.makeText(AttendeesInfoActivity.this, "Invalid Number", Toast.LENGTH_SHORT).show();
 
         //}
   //  }

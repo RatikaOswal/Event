@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:visibility="gone"
+        android:visibility="visible"
 
 
         >
@@ -41,7 +41,7 @@
         android:id="@+id/resultLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible"
+        android:visibility="gone"
         >
         <TextView
             android:id="@+id/scan"
@@ -49,26 +49,113 @@
             android:layout_width="wrap_content"
             android:paddingBottom="10dp"
             android:textColor="@color/Text_title"
-            android:textSize="17sp"
+            android:textSize="20sp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:text="@string/scan"
 
             />
+
         <TextView
-            android:id="@+id/result"
+            android:id="@+id/Name"
             android:layout_below="@+id/scan"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:textSize="15sp"
-            android:textColor="@color/Text_time"
+            android:text="@string/name"
+            android:textColor="@color/Text_title"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"
-            android:paddingBottom="10dp"
+            android:paddingBottom="5dp"
 
             />
+        <TextView
+            android:id="@+id/userName"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="15sp"
+            android:text="@string/userName"
+            android:textColor="@color/Text_time"
+            android:layout_below="@id/scan"
+            android:layout_toRightOf="@id/Name"
+            android:layout_toEndOf="@id/Name"
+            android:layout_marginLeft="5dp"
+            android:paddingBottom="5dp"/>
+
+        <TextView
+            android:id="@+id/Email"
+            android:layout_below="@+id/Name"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="15sp"
+            android:text="@string/email"
+            android:textColor="@color/Text_title"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:paddingBottom="5dp"
+
+            />
+        <TextView
+            android:id="@+id/userEmail"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="15sp"
+            android:text="@string/userEmail"
+            android:textColor="@color/Text_time"
+            android:paddingBottom="5dp"
+            android:layout_below="@+id/userName"
+            android:layout_alignLeft="@+id/userName"
+            android:layout_alignStart="@+id/userName" />
+        <TextView
+            android:id="@+id/Phone"
+            android:layout_below="@+id/Email"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="15sp"
+            android:text="@string/contactnumber"
+            android:textColor="@color/Text_title"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:paddingBottom="5dp"
+
+            />
+        <TextView
+            android:id="@+id/userContact"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/Text_time"
+            android:paddingBottom="5dp"
+            android:layout_below="@+id/userEmail"
+            android:layout_toRightOf="@+id/userEmail"
+             />
+        <TextView
+            android:id="@+id/Org"
+            android:layout_below="@+id/Phone"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="15sp"
+            android:text="@string/organization"
+            android:textColor="@color/Text_title"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:paddingBottom="5dp"
+
+            />
+        <TextView
+            android:id="@+id/userOrg"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="15sp"
+            android:text=" User Organisation"
+            android:textColor="@color/Text_time"
+            android:paddingBottom="5dp"
+            android:layout_below="@+id/userContact"
+            android:layout_toRightOf="@+id/Org"
+            android:layout_toEndOf="@+id/Org">
+
+        </TextView>
 
         <Button
             android:id="@+id/qrscan_btn_again"

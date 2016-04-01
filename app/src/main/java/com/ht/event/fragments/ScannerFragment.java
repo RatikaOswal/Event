@@ -20,7 +20,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.google.gson.Gson;
 import com.ht.event.R;
+import com.ht.event.model.User;
 import com.ht.event.scanner.ZBarConstants;
 import com.ht.event.scanner.ZBarScannerActivity;
 
@@ -33,9 +35,10 @@ public class ScannerFragment extends Fragment implements View.OnClickListener {
     private View view;
     private Button scan,scanAgain;
     private LinearLayout layout;
+    private TextView name,contact,email,organisation;
     private static final int ZBAR_SCANNER_REQUEST = 0;
     private static final int ZBAR_QR_SCANNER_REQUEST = 1;
-    private TextView result;
+
     private RelativeLayout resultLayout;
 
 
@@ -62,8 +65,11 @@ public class ScannerFragment extends Fragment implements View.OnClickListener {
         view = inflater.inflate(R.layout.fragment_scanner, container, false);
         scan = (Button)view.findViewById(R.id.qrscan_btn);
         scanAgain = (Button)view.findViewById(R.id.qrscan_btn_again);
+        name = (TextView)view.findViewById(R.id.userName);
+        email = (TextView)view.findViewById(R.id.userEmail);
+        contact = (TextView)view.findViewById(R.id.userContact);
+        organisation = (TextView)view.findViewById(R.id.userOrg);
         resultLayout = (RelativeLayout)view.findViewById(R.id.resultLayout);
-        result = (TextView)view.findViewById(R.id.result);
         layout = (LinearLayout)view.findViewById(R.id.layout);
         scan.setOnClickListener(this);
         scanAgain.setOnClickListener(this);
@@ -82,14 +88,22 @@ public class ScannerFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        String resultStr;
+        Gson gson = new Gson();
         switch (requestCode) {
             case ZBAR_SCANNER_REQUEST:
             case ZBAR_QR_SCANNER_REQUEST:
 
+
                 if (resultCode == getActivity().RESULT_OK) {
                         layout.setVisibility(View.GONE);
+                    resultStr = data.getStringExtra(ZBarConstants.SCAN_RESULT);
+                    User user = gson.fromJson(resultStr,User.class);
+                    name.setText(user.getName());
+                    email.setText(user.getEmail());
+                    contact.setText(user.getPhoneNo());
+                    organisation.setText(user.getOrganisation());
                     resultLayout.setVisibility(View.VISIBLE);
-                    result.setText(data.getStringExtra(ZBarConstants.SCAN_RESULT));
                     scanAgain.setOnClickListener(this);
                   //  Toast.makeText(getActivity(), "Scan Result = "+ data.getStringExtra(ZBarConstants.SCAN_RESULT), Toast.LENGTH_SHORT).show();
                 } else if(resultCode == getActivity().RESULT_CANCELED && data != null) {

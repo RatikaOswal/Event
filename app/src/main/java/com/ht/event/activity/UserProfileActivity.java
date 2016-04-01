@@ -19,12 +19,17 @@ import com.ht.event.dialog.LogoutMessage;
 import com.ht.event.model.Event;
 import com.ht.event.model.User;
 import com.ht.event.utils.EventsPreferences;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserProfileActivity extends AppCompatActivity {
 
    private TextView userName;
    private LogoutMessage logoutMessage;
-
+    private CircleImageView profilePicture;
+    private ImageLoader imgLoader;
     public Event bookmarkedinfo;
 
 
@@ -47,13 +52,19 @@ public class UserProfileActivity extends AppCompatActivity {
         viewPager.setAdapter(new ProfilePagerAdapter(getSupportFragmentManager()));
         tabLayout.setupWithViewPager(viewPager);
 
-
+        profilePicture = (CircleImageView)findViewById(R.id.circleImageViewProfilePicture);
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
+        imgLoader = com.nostra13.universalimageloader.core.ImageLoader.getInstance();
+        imgLoader.init(config);
 
         userName = (TextView)findViewById(R.id.ProfileUserName);
         User user = EventsPreferences.getUser(this);
+        String imageUrl = user.getImage();
 
         if(user.getEmail() != null){
             userName.setText(user.getName());
+            imgLoader.displayImage(imageUrl,profilePicture);
+
 
         }
 

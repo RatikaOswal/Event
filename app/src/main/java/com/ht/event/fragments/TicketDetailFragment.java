@@ -49,8 +49,11 @@ public class TicketDetailFragment extends Fragment {
     private Event event;
     private ImageView qrImage;
     private TextView name;
-    private String fullUrl = Config.BASE_QR_URL;
+    private String userStr;
+    private String fullUrl;
     private ArrayList<Event> registerArrayList;
+    Gson gson = new Gson();
+
 
 
     public TicketDetailFragment() {
@@ -75,8 +78,17 @@ public class TicketDetailFragment extends Fragment {
         qrImage = (ImageView) view.findViewById(R.id.qrImg);
         name =(TextView)view.findViewById(R.id.userName);
         event = (Event) getActivity().getIntent().getSerializableExtra(Config.ITEM_INTENT_OBJECT);
+
         User user = EventsPreferences.getUser(getActivity());
         name.setText(user.getName());
+        userStr = gson.toJson(user);
+
+        try {
+            fullUrl = Config.BASE_QR_URL;
+            fullUrl += URLEncoder.encode(userStr, "UTF-8");}
+        catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
 
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getActivity()).build();
         imgLoader = ImageLoader.getInstance();
@@ -85,36 +97,24 @@ public class TicketDetailFragment extends Fragment {
         if (event.getTicketId() == null) {
 
             String eventsInStr = EventsPreferences.getRegistered(getActivity());
-            Gson gson = new Gson();
             EventList eventList = gson.fromJson(eventsInStr, EventList.class);
             registerArrayList = eventList.getData();
+
 
             for (Event event : registerArrayList) {
 
                 if (this.event.equals(event)) {
-                    try {
-                        fullUrl += URLEncoder.encode(event.getTicketId(), "UTF-8");
-                        imgLoader.displayImage(fullUrl, qrImage);
-                        this.event = event;
-                        break;
-
-                    } catch (UnsupportedEncodingException e) {
-                        e.printStackTrace();
-                    }
-
+                    imgLoader.displayImage(fullUrl, qrImage);
+                    this.event = event;
+                    break;
                 }
             }
         }
-                else{
-                    try {
+                else {
+            imgLoader.displayImage(fullUrl, qrImage);
+        }
 
-                        fullUrl += URLEncoder.encode(event.getTicketId(), "UTF-8");
-                        imgLoader.displayImage(fullUrl, qrImage);
 
-                    } catch (UnsupportedEncodingException e) {
-                        e.printStackTrace();
-                    }
-                }
 
 
 

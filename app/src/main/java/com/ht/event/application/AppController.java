@@ -11,6 +11,7 @@ import android.util.Log;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
 import java.security.MessageDigest;
@@ -77,4 +78,6 @@ public class AppController extends Application {
 
         }
     }
+
+
 }

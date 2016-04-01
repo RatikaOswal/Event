@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.ht.event.fragments.InfoFragment;
+import com.ht.event.fragments.ScannerFragment;
 import com.ht.event.fragments.TicketDetailFragment;
 
 /**
@@ -24,13 +25,16 @@ public class TicketInfoAdapter extends FragmentPagerAdapter{
 
             case 1:
                return new InfoFragment();
+
+            case 2:
+                return new ScannerFragment();
         }
         return null;
     }
 
     @Override
     public int getCount() {
-       return 2;
+       return 3;
     }
 
     public CharSequence getPageTitle(int position){
@@ -40,6 +44,9 @@ public class TicketInfoAdapter extends FragmentPagerAdapter{
 
             case 1:
                 return "INFO";
+
+            case 2:
+                return "SCANNER";
 
         }
         return null;

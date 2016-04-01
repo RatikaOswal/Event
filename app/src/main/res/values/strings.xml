@@ -1,4 +1,7 @@
 <resources>
+    <string name="scan_only_qr_codes">Scan only QR Codes</string>
+    <string name="allmostThere">ALMOST THERE</string>
+    <string name="scan">SCAN RESULT :</string>
     <string name="learnMore">Learn More</string>
     <string name="get">Get Going!</string>
     <string name="gett">Save some events you find interesting </string>

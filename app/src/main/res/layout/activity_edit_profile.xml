@@ -32,11 +32,18 @@
         android:layout_marginRight="10dp"
         android:layout_alignParentRight="true"
          />
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"
+        android:layout_below="@+id/profileEditToolbar"
+        >
+
 <RelativeLayout
     android:id="@+id/imageView"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/profileEditToolbar">
+    android:layout_height="wrap_content">
+
     <ImageView
         android:id="@+id/test_image"
         android:layout_width="match_parent"
@@ -55,16 +62,11 @@
         app:border_width="2dp"
         android:paddingTop="10dp"
         app:border_color="@color/border"
-        android:layout_centerVertical="true"
+        android:layout_marginTop="31dp"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
-</RelativeLayout>
 
-    <ScrollView
-        android:id="@+id/scrollView"
-        android:layout_height="fill_parent"
-        android:layout_width="fill_parent"
-        android:layout_below="@+id/imageView"
-        >
+
         <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -76,7 +78,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/userName"
+            android:text="@string/name"
             android:textColor="@color/overlayBlue"/>
 
         <EditText
@@ -97,7 +99,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/userEmail"
+            android:text="@string/email"
             android:textColor="@color/overlayBlue"/>
         <TextView
             android:id="@+id/emailAddress"
@@ -173,6 +175,7 @@
             android:theme="@style/EditTextTheme"
             />
             </LinearLayout>
+</RelativeLayout>
 
         </ScrollView>
 

@@ -3,7 +3,6 @@ package com.ht.event.activity;
 
 import android.content.Intent;
 
-import android.opengl.Visibility;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -28,11 +27,11 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.ht.event.Interface.DataHandler;
 
-import com.ht.event.dialog.ConnectionDetector;
-import com.ht.event.dialog.ConnectionFragment;
+import com.ht.event.utils.ConnectionDetector;
+import com.ht.event.dialog.ConnectionMessage;
 import com.ht.event.model.Event;
 import com.ht.event.model.EventList;
-import com.ht.event.model.GeocoderLocation;
+import com.ht.event.utils.GeocoderLocation;
 import com.ht.event.model.User;
 import com.ht.event.utils.Config;
 
@@ -140,25 +139,25 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
                 }
 
 
-            }
-        });
+    }
+});
 
         map = ((MapFragment) getFragmentManager().findFragmentById(R.id.maplocationstatic))
-                .getMap();
+        .getMap();
 
 
         relativeLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+@Override
+public void onClick(View v) {
 
 
-                Intent intent = new Intent(EventDetailActivity.this, EventVenueLocationActivity.class);
-                intent.putExtra(Config.ITEM_INTENT_OBJECT, eventObjects);
+        Intent intent = new Intent(EventDetailActivity.this, EventVenueLocationActivity.class);
+        intent.putExtra(Config.ITEM_INTENT_OBJECT, eventObjects);
 
-                startActivity(intent);
+        startActivity(intent);
 
 
-            }
+        }
         });
     }
 
@@ -324,7 +323,7 @@ public class EventDetailActivity extends AppCompatActivity implements DataHandle
 
                     else
                     {
-                        ConnectionFragment  cFragment = new ConnectionFragment();
+                        ConnectionMessage cFragment = new ConnectionMessage();
                         // Show DialogFragment
                         cFragment.show(EventDetailActivity.this,"No Internet Connection","You don't have internet connection.",false);
 

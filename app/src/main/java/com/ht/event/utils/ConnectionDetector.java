@@ -1,4 +1,4 @@
-package com.ht.event.dialog;
+package com.ht.event.utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

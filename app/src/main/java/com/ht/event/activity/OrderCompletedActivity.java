@@ -20,7 +20,7 @@ import java.util.Calendar;
 
 public class OrderCompletedActivity extends AppCompatActivity {
 
-    private TextView add,title,time,done;
+    private TextView add,title,time,done,view;
     private Event event;
     private ImageView share;
 
@@ -35,6 +35,7 @@ public class OrderCompletedActivity extends AppCompatActivity {
         title = (TextView) findViewById(R.id.compTitle);
         time = (TextView) findViewById(R.id.timeComp);
         done = (TextView)findViewById(R.id.done);
+        view = (TextView)findViewById(R.id.view);
         share = (ImageView)findViewById(R.id.ic_share);
         title.setText(event.getTitle());
         time.setText(event.getTime());
@@ -44,14 +45,21 @@ public class OrderCompletedActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(OrderCompletedActivity.this,MainActivity.class);
-                intent.putExtra(Config.ITEM_INTENT_OBJECT,event);
+                Intent intent = new Intent(OrderCompletedActivity.this, MainActivity.class);
+                intent.putExtra(Config.ITEM_INTENT_OBJECT, event);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
 
             }
         });
-
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(OrderCompletedActivity.this,TicketInfoActivity.class);
+                intent.putExtra(Config.ITEM_INTENT_OBJECT, event);
+                startActivity(intent);
+            }
+        });
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

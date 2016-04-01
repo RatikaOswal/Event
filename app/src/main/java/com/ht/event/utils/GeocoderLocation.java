@@ -1,4 +1,4 @@
-package com.ht.event.model;
+package com.ht.event.utils;
 
 
 import android.content.Context;

@@ -37,13 +37,12 @@ import java.util.ArrayList;
 public class InfoFragment extends Fragment implements View.OnClickListener {
     private View view;
     private Event event;
-    private TextView title, time, description, venueName, venueAddress,organisation,contact;
+    private TextView title, time,description, venueName, venueAddress,organisation,contact;
     private ImageView coverView;
     private GoogleMap map;
     private int zoomLevel = 12;
-    private LinearLayout mapLayout;
+    private LinearLayout mapLayout,disLayout;
     private double latitude,longitude;
-    private TextView learnMore;
     private ArrayList<Event> registerArrayList;
 
 
@@ -70,14 +69,15 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
 
         title = (TextView) view.findViewById(R.id.event_name);
         time = (TextView) view.findViewById(R.id.event_time);
-        description = (TextView) view.findViewById(R.id.description);
         venueName = (TextView) view.findViewById(R.id.venue);
+        description = (TextView)view.findViewById(R.id.description);
         venueAddress = (TextView) view.findViewById(R.id.venueAddress);
         coverView = (ImageView) view.findViewById(R.id.CoverView);
         mapLayout = (LinearLayout) view.findViewById(R.id.mapLayout);
         organisation = (TextView)view.findViewById(R.id.organisationName);
         contact = (TextView)view.findViewById(R.id.contact);
-        learnMore  = (TextView)view.findViewById(R.id.learnMore);
+        disLayout = (LinearLayout)view.findViewById(R.id.text_discription);
+
 
         title.setText(event.getTitle());
         time.setText(event.getTime());
@@ -115,10 +115,10 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
 
     }
         mapLayout.setOnClickListener(this);
-        description.setOnClickListener(this);
+        disLayout.setOnClickListener(this);
         contact.setOnClickListener(this);
         organisation.setOnClickListener(this);
-        learnMore.setOnClickListener(this);
+
 
 
         return view;
@@ -158,7 +158,7 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
             intent.putExtra(Config.ITEM_INTENT_OBJECT, event);
             startActivity(intent);
                 break;
-            case R.id.description :
+            case R.id.text_discription :
                 Intent intent1 = new Intent(getActivity(), EventDescriptionActivity.class);
                 intent1.putExtra(Config.ITEM_INTENT_OBJECT, event);
                 startActivity(intent1);
@@ -171,9 +171,7 @@ public class InfoFragment extends Fragment implements View.OnClickListener {
                 Intent intent3 = new Intent(getActivity(),OrganisationDescriptionActivity.class);
                 startActivity(intent3);
                 break;
-            case R.id.learnMore:
-                Intent intent4 = new Intent(getActivity(),EventDescriptionActivity.class);
-                startActivity(intent4);
+
         }
 
     }

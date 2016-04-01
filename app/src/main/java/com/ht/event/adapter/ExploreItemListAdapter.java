@@ -12,12 +12,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.google.gson.Gson;
 import com.ht.event.activity.MainActivity;
 import com.ht.event.R;
 import com.ht.event.activity.EventDetailActivity;
 
 //import com.ht.event.dialog.RegisteredMessage;
+import com.ht.event.activity.TicketInfoActivity;
 import com.ht.event.model.Event;
 import com.ht.event.model.EventList;
 import com.ht.event.utils.Config;
@@ -109,12 +112,14 @@ public class ExploreItemListAdapter extends RecyclerView.Adapter<ExploreItemList
                     holder.star.setImageResource(R.drawable.ic_starfill);
                     current.setIs_bookmarked(true);
                     EventsPreferences.saveBookmarked(ExploreItemListAdapter.this.context, current);
+                    Toast.makeText(ExploreItemListAdapter.this.context, "Bookmarked", Toast.LENGTH_SHORT).show();
 
 
                 } else {
                     holder.star.setImageResource(R.drawable.ic_sstar);
                     current.setIs_bookmarked(false);
                     EventsPreferences.removeBookmarked(ExploreItemListAdapter.this.context, current);
+                    Toast.makeText(ExploreItemListAdapter.this.context, "Bookmark Removed", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -197,9 +202,9 @@ public class ExploreItemListAdapter extends RecyclerView.Adapter<ExploreItemList
                     Event event = this.eventitem.get(position);
 
                     if (event.is_registered()) {
-                        Activity activity = (Activity) context;
-                        //RegisteredMessage registeredMessage = new RegisteredMessage(activity);
-                        //registeredMessage.show(activity.getFragmentManager(), "Registered Message");
+                        Intent intent = new Intent(this.context, TicketInfoActivity.class);
+                        intent.putExtra(Config.ITEM_INTENT_OBJECT, event);
+                        this.context.startActivity(intent);
 
                     } else {
                         Intent intent = new Intent(this.context, EventDetailActivity.class);

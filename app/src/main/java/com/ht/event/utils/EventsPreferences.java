@@ -24,6 +24,7 @@ public class EventsPreferences {
     public static final String TICKETID_LIST = "ticketIdList";
     public static final String NAME = "name";
     public static final String EMAIL = "email";
+    public static final String IMAGE = "image";
     public static final String ORGANIZATIONNAME = "orgName";
     public static final String PHONENO = "phoneno";
     public static final String ORGWEBSITE = "orgWebsite";
@@ -38,13 +39,13 @@ public class EventsPreferences {
             SharedPreferences.Editor editor = mPrefs.edit();
             // conversion gson to json
             Gson gson = new Gson();
-            String userStr = gson.toJson(user);
 
             String name = user.getName();
             String email = user.getEmail();
             String phoneno = user.getPhoneNo();
             String orgName = user.getOrganisation();
             String orgWebsite = user.getOrgWebsite();
+            String image = user.getImage();
 
 
             if (name != null) {
@@ -63,6 +64,10 @@ public class EventsPreferences {
             }
             if (orgName != null) {
                 editor.putString(ORGANIZATIONNAME, orgName);
+            }
+            if (image != null)
+            {
+                editor.putString(IMAGE, image);
             }
             editor.commit();
 
@@ -83,6 +88,7 @@ public class EventsPreferences {
             user.setPhoneNo(mPref.getString(PHONENO, null));
             user.setOrganisation(mPref.getString(ORGANIZATIONNAME, null));
             user.setOrgWebsite(mPref.getString(ORGWEBSITE, null));
+            user.setImage(mPref.getString(IMAGE,null));
             return user;
 
 

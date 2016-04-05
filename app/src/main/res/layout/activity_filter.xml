@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/fragment_backgrnd">
-
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/filtertoolbar"
@@ -16,28 +16,291 @@
 
         </android.support.v7.widget.Toolbar>
 
-    <TextView
-        android:text="@string/apply"
-        android:textAllCaps="true"
-        android:textSize="15sp"
-        android:textColor="@color/white"
+<RelativeLayout
+    android:layout_marginTop="?attr/actionBarSize"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+   <TextView
+
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="@string/dates"
+       android:clickable="true"
+       android:onClick="onClick"
+       android:textColor="@color/Text_title"
+       android:textSize="25sp"
+       android:layout_marginTop="10dp"
+       android:layout_marginLeft="10dp"
+       android:background="@color/white"
+       android:layout_marginRight="10dp"
+       android:id="@+id/dates" />
+
+        <RadioGroup
+            android:id="@+id/dates_radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/dates"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:visibility="gone">
+
+
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/alldates"
+                android:checked="false"
+                android:text="@string/alldates"
+                android:textColor="@color/Text_title"
+                />
+
+    <RadioButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_gravity="right|center_horizontal"
+        android:id="@+id/today"
+        android:checked="false"
+        android:text="@string/today"
+        android:textColor="@color/Text_title"
+        />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tomorrow"
+        android:checked="false"
+        android:text="@string/tomorrow"
+        android:textColor="@color/Text_title"
+        />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/weekend"
+        android:checked="false"
+        android:text="@string/weekend"
+        android:textColor="@color/Text_title"
+         />
+
+    </RadioGroup>
+
+
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/event_topics"
+        android:layout_below="@id/dates_radioGroup"
+        android:text="@string/event_topics"
+        android:textColor="@color/Text_title"
+        android:textSize="25sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@color/white"
+        android:layout_marginRight="10dp"
 
         />
 
-    <ExpandableListView
-        android:id="@+id/expandablelist"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:layout_width="match_parent"
+
+
+        <RelativeLayout
+            android:id="@+id/checkbox_relativelayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/event_topics"
+            android:visibility="invisible">
+            <CheckBox
+        android:id="@+id/all_events"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/list_border"
-        android:dividerHeight="5dp"
-        android:divider="@drawable/divider"
-        android:groupIndicator="@drawable/group_indicator"/>
+        android:text="@string/all_event_topics"
+        android:textColor="@color/Text_title"
+
+         />
+
+    <CheckBox
+        android:id="@+id/music"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/music"
+        android:layout_below="@id/all_events"
+        android:textColor="@color/Text_title"
+
+    />
+
+    <CheckBox
+        android:id="@+id/buisness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/buisness"
+        android:layout_below="@id/music"
+        android:textColor="@color/Text_title"
 
 
-</FrameLayout>
+        />
+    <CheckBox
+        android:id="@+id/food_drink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/food_drink"
+        android:layout_below="@id/buisness"
+        android:textColor="@color/Text_title"
+
+
+        />
+    <CheckBox
+        android:id="@+id/film_media"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/film_media"
+        android:layout_below="@id/food_drink"
+        android:textColor="@color/Text_title"
+
+
+        />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/event_types"
+                android:text="@string/event_types"
+                android:textColor="@color/Text_title"
+                android:textSize="25sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:background="@color/white"
+                android:layout_marginRight="10dp"
+                android:layout_below="@+id/film_media"
+
+
+                />
+
+
+
+            <RelativeLayout
+                android:id="@+id/checkbox_event_types_relativelayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/event_types"
+                android:visibility="invisible">
+                <CheckBox
+                    android:id="@+id/all_event_types"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/all_event_topics"
+                    android:textColor="@color/Text_title"/>
+
+
+
+                <CheckBox
+                    android:id="@+id/conference"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/music"
+                    android:layout_below="@id/all_event_types"
+                    android:textColor="@color/Text_title" />
+
+
+
+                <CheckBox
+                    android:id="@+id/seminar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/buisness"
+                    android:layout_below="@id/all_event_types"
+                    android:textColor="@color/Text_title" />
+
+
+
+                <CheckBox
+                    android:id="@+id/other"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/food_drink"
+                    android:layout_below="@id/seminar"
+                    android:textColor="@color/Text_title" />
+
+
+
+    </RelativeLayout>
+   </RelativeLayout>
+    </RelativeLayout>
+
+
+
+    </FrameLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!--<RadioButton-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/radioButton2"-->
+                <!--android:checked="false"-->
+                <!--android:textColor="@color/Text_title"-->
+                <!--android:textSize="15sp"-->
+                <!--android:layout_marginLeft="300dp"-->
+                <!--/>-->
+
+            <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:text="Today"-->
+                    <!--android:textColor="@color/Text_title"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="10dp"-->
+                    <!--/>-->
+
+                <!--<RadioButton-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/radioButton3"-->
+                <!--android:checked="false"-->
+                <!--android:textSize="15sp"-->
+                    <!--android:layout_marginLeft="300dp"-->
+                <!--android:textColor="@color/Text_title" />-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:text="Today"-->
+                    <!--android:textColor="@color/Text_title"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="10dp"/>-->
+
+
+                <!--<RadioButton-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/radioButton4"-->
+                <!--android:checked="false"-->
+                <!--android:textSize="15sp"-->
+                    <!--android:layout_marginLeft="300dp"-->
+                <!--android:textColor="@color/Text_title" />-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:text="Tommorow"-->
+                    <!--android:textColor="@color/Text_title"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="10dp"/>-->
+
+
+
+
 

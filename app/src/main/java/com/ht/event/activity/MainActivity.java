@@ -15,11 +15,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.android.volley.toolbox.ImageLoader;
 import com.ht.event.R;
+import com.ht.event.application.AppController;
 import com.ht.event.fragments.AboutFragment;
 import com.ht.event.fragments.ExploreFragment;
 import com.ht.event.fragments.MyScheduleFragment;
@@ -29,6 +33,7 @@ import com.ht.event.fragments.NaviMapFragment;
 import com.ht.event.fragments.SettingsFragment;
 import com.ht.event.model.User;
 import com.ht.event.utils.EventsPreferences;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -39,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private FragmentManager fragmentManager;
     private DrawerLayout drawerLayout;
     private FragmentTransaction fragmentTransaction;
+    private String imageUrl;
+    private com.nostra13.universalimageloader.core.ImageLoader imgLoader;
 
 
 
@@ -75,19 +82,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //setting profile page
           View headerView=nvDrawer.getHeaderView(0);
-        CircleImageView profileImage =(CircleImageView) headerView.findViewById(R.id.circleImageViewProfile);
-        profileImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(MainActivity.this,UserProfileActivity.class);
-                startActivity(intent);
-            }
-        });
-        //Setting User name
-        headerView=nvDrawer.getHeaderView(0);
-         TextView userName = (TextView) headerView.findViewById(R.id.textViewUserName);
         User user = EventsPreferences.getUser(this);
-        if(user.getEmail()!= null){
+        CircleImageView profileImage =(CircleImageView) headerView.findViewById(R.id.circleImageViewProfile);
+        imageUrl = user.getImage();
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
+        imgLoader = com.nostra13.universalimageloader.core.ImageLoader.getInstance();
+        imgLoader.init(config);
+
+        RelativeLayout drawerImage =(RelativeLayout)headerView.findViewById(R.id.containerDrawerImage);
+               drawerImage .setOnClickListener(new View.OnClickListener() {
+                   @Override
+                   public void onClick(View v) {
+                       Intent intent = new Intent(MainActivity.this, UserProfileActivity.class);
+                       startActivity(intent);
+                   }
+               });
+        //Setting User name
+         TextView userName = (TextView) headerView.findViewById(R.id.textViewUserName);
+
+        if(user.getImage()!= null){
+            imgLoader.displayImage(imageUrl,profileImage);
             userName.setText(user.getName());
 
 

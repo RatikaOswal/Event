@@ -49,6 +49,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     private SignInButton btnSignIn;
     private ImageView imgProfilePic;
     private LoginButton logInButton;
+    Uri personPhotoUrl;
     public static final String TAG = "MainActivity";
     public static final int PROFILE_PIC_SIZE = 400;
     private GoogleApiClient mGoogleApiClient;
@@ -240,7 +241,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             if (result.isSuccess()){
                 GoogleSignInAccount acct = result.getSignInAccount();
                 String personName = acct.getDisplayName();
-               Uri personPhotoUrl =  acct.getPhotoUrl();
+                personPhotoUrl =  acct.getPhotoUrl();
                 String email = acct.getEmail();
 
                 Log.e(TAG, "Name: " + personName + ", plusProfile: "
@@ -250,25 +251,12 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 User user = new User();
                 user.setEmail(email);
                 user.setName(personName);
+                user.setImage(personPhotoUrl + "");
+               // System.out.println("USER_IMAGE_USER_AC" + personPhotoUrl);
                 EventsPreferences.saveUser(this, user);
 
                 Toast.makeText(this, personName + " is connected.", Toast.LENGTH_LONG)
                         .show();
-
-
-                // by default the profile url gives 50x50 px image only
-                // we can replace the value with whatever dimension we want by
-                // replacing sz=X
-//                personPhotoUrl = personPhotoUrl.substring(0,
-//                        personPhotoUrl.length() - 2)
-//                        + PROFILE_PIC_SIZE;
-                if(personPhotoUrl != null) {
-                    new LoadProfileImage(imgProfilePic);
-                }
-                    else {
-
-
-                }
               Intent intent =new Intent(this,AttendeesInfoActivity.class);
                 intent.putExtra(Config.ITEM_INTENT_OBJECT, eventIntentObject);
                 startActivity(intent);

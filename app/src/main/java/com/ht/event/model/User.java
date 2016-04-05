@@ -12,6 +12,15 @@ public class User implements Serializable{
     private String PhoneNo;
     private String Organisation;
     private String OrgWebsite;
+    private String Image;
+
+    public String getImage() {
+        return Image;
+    }
+
+    public void setImage(String image) {
+        Image = image;
+    }
 
     public String getPhoneNo() {
         return PhoneNo;

@@ -252,7 +252,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 user.setEmail(email);
                 user.setName(personName);
                 user.setImage(personPhotoUrl + "");
-                System.out.println("USER_IMAGE_USER_AC" + personPhotoUrl);
+               // System.out.println("USER_IMAGE_USER_AC" + personPhotoUrl);
                 EventsPreferences.saveUser(this, user);
 
                 Toast.makeText(this, personName + " is connected.", Toast.LENGTH_LONG)

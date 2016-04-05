@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(user.getEmail()!= null){
             userName.setText(user.getName());
 
+
         }
 
 

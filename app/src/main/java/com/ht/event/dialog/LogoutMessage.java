@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.net.wifi.WifiConfiguration;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -14,6 +15,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 import com.ht.event.R;
 
 public class LogoutMessage extends DialogFragment implements
@@ -53,7 +56,7 @@ public class LogoutMessage extends DialogFragment implements
             case R.id.cancel:
                 getDialog().dismiss();
                 break;
-                
+
             case R.id.logout:
                 signOut();
                 break;
@@ -61,11 +64,14 @@ public class LogoutMessage extends DialogFragment implements
 
         }
     }
-    private void signOut(){
 
-        if(mGoogleApiClient.isConnected()){
-            mGoogleApiClient.disconnect();
-        }
-
-}
+    private void signOut() {
+        Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
+                new ResultCallback<Status>() {
+                    @Override
+                    public void onResult(Status status) {
+                       
+                    }
+                });
+    }
 }

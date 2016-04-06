@@ -148,6 +148,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
 //                System.out.println("Facebook Login Successful!");
 //                System.out.println("Logged in user Details : ");
+
 //                System.out.println("--------------------------");
 //                System.out.println("User ID  : " + loginResult.getAccessToken().getUserId());
 //                System.out.println("Authentication Token : " + loginResult.getAccessToken().getToken());

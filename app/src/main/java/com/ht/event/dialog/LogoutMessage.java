@@ -66,6 +66,7 @@ public class LogoutMessage extends DialogFragment implements
     }
 
     private void signOut() {
+        if (mGoogleApiClient.isConnected())
         Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
                 new ResultCallback<Status>() {
                     @Override
@@ -74,4 +75,5 @@ public class LogoutMessage extends DialogFragment implements
                     }
                 });
     }
+
 }

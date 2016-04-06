@@ -19,6 +19,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.facebook.FacebookAuthorizationException;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
@@ -70,6 +72,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     private boolean mSignInClicked;
     private ConnectionResult mConnectionResult;
     private Event eventIntentObject;
+    private  int counter =0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -106,12 +109,12 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
         //setting  facebook loginButton
         logInButton = (LoginButton) findViewById(R.id.login_button);
-        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("email", "public_profile", "user_friends"));
-        logInButton.setReadPermissions();
-        logInButton.registerCallback(mcallbackManager, new FacebookCallback<LoginResult>() {
-        Gson gson = new Gson();
+        logInButton.setOnClickListener(this);
+        LoginManager.getInstance().registerCallback(mcallbackManager, new FacebookCallback<LoginResult>() {
+
             @Override
             public void onSuccess(final LoginResult loginResult) {
+
                 GraphRequest request = GraphRequest.newMeRequest(
                         loginResult.getAccessToken(),
                         new GraphRequest.GraphJSONObjectCallback() {
@@ -121,6 +124,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                                     JSONObject object,
                                     GraphResponse response) {
                                 try {
+
                                     String userImage = object.getJSONObject("picture").getJSONObject("data").getString("url");
                                     String name = object.getString("name");
                                     String email = object.getString("email");
@@ -128,39 +132,29 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                                     user.setName(name);
                                     user.setEmail(email);
                                     user.setImage(userImage);
-                                EventsPreferences.saveUser(RegistrationActivity.this,user);
+                                    EventsPreferences.saveUser(RegistrationActivity.this, user);
+                                    counter = counter++;
+
+                                    if(counter == 3) {
+                                        RegistrationActivity.this.finish();
+                                        Intent intent = new Intent(RegistrationActivity.this, AttendeesInfoActivity.class);
+                                        intent.putExtra(Config.ITEM_INTENT_OBJECT, eventIntentObject);
+                                        startActivity(intent);
+
+                                    }
+
                                 } catch (JSONException e) {
                                     e.printStackTrace();
                                 }
 
-                                System.out.println(object.toString());
-                                Log.e("GraphResponse", "-------------" + response.toString());
-
-
-
                             }
                         });
+
                 Bundle parameters = new Bundle();
                 parameters.putString("fields", "id,link,name,email,picture");
                 request.setParameters(parameters);
                 request.executeAsync();
             }
-
-//                System.out.println("Facebook Login Successful!");
-//                System.out.println("Logged in user Details : ");
-
-//                System.out.println("--------------------------");
-//                System.out.println("User ID  : " + loginResult.getAccessToken().getUserId());
-//                System.out.println("Authentication Token : " + loginResult.getAccessToken().getToken());
-//                System.out.println("User Name : " + loginResult.getClass());
-//
-//                Profile profile = Profile.getCurrentProfile();
-//
-//                if (profile != null) {
-//                    mTextDetail.setText("WELCOME" + profile.getName());
-//
-//                }
-
 
             @Override
             public void onCancel() {
@@ -169,7 +163,19 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             }
 
             @Override
-            public void onError(FacebookException e) {
+            public void onError(FacebookException exception) {
+                Log.d(AppController.TAG, "fb error success" + exception);
+                if (exception instanceof FacebookAuthorizationException) {
+                    if (AccessToken.getCurrentAccessToken() != null) {
+                        LoginManager.getInstance().logOut();
+                        Log.d(AppController.TAG, "fb error success2" + exception);
+                        LoginManager.getInstance().logInWithReadPermissions(RegistrationActivity.this, Arrays.asList("email", "public_profile", "user_friends"));
+
+
+                    }
+
+            }
+
             }
         });
     }
@@ -332,6 +338,10 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             case R.id.google_sign_in:
                 // SignIn button clicked
                 signInWithGplus();
+                break;
+            case R.id.login_button:
+                LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("email", "public_profile", "user_friends"));
+                logInButton.setReadPermissions();
                 break;
 
         }

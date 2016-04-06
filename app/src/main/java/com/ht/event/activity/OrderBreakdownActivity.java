@@ -101,6 +101,7 @@ public class OrderBreakdownActivity extends AppCompatActivity {
                 Intent intent = new Intent(OrderBreakdownActivity.this,OrderCompletedActivity.class);
                 intent.putExtra(Config.ITEM_INTENT_OBJECT, event);
                 startActivity(intent);
+                OrderBreakdownActivity.this.finish();
             }
         });
 

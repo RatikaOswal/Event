@@ -67,12 +67,13 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     Uri personPhotoUrl;
     public static final String TAG = "MainActivity";
     public static final int PROFILE_PIC_SIZE = 400;
-    private GoogleApiClient mGoogleApiClient;
+    public static  GoogleApiClient mGoogleApiClient;
     private boolean mIntentInProgress;
     private boolean mSignInClicked;
     private ConnectionResult mConnectionResult;
     private Event eventIntentObject;
-    private  int counter =0;
+    private static int counter;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

@@ -89,7 +89,7 @@ public class EventsPreferences {
             user.setPhoneNo(mPref.getString(PHONENO, null));
             user.setOrganisation(mPref.getString(ORGANIZATIONNAME, null));
             user.setOrgWebsite(mPref.getString(ORGWEBSITE, null));
-            user.setImage(mPref.getString(IMAGE,null));
+            user.setImage(mPref.getString(IMAGE, null));
             return user;
 
 
@@ -116,6 +116,7 @@ public class EventsPreferences {
 
         } catch (Exception e) {
             e.printStackTrace();
+
         }
     }
 
@@ -159,6 +160,7 @@ public class EventsPreferences {
         return mPrefs.getString(BOOKMARKED_LIST, null);
 
     }
+
 
 
     public static void removeBookmarked(Context context, Event event) {
@@ -213,6 +215,14 @@ public class EventsPreferences {
 
         SharedPreferences mPrefs = context.getSharedPreferences(REGISTERED_INFO, 0);
         return mPrefs.getString(REGISTERED_LIST, null);
+
+    }
+    public static void delTickets ( Context context)
+    {
+        SharedPreferences mPrefs = context.getSharedPreferences(REGISTERED_INFO, 0);
+        SharedPreferences.Editor editor = mPrefs.edit();
+        editor.remove(REGISTERED_LIST);
+
 
     }
 

@@ -111,7 +111,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/event_topics"
-            android:visibility="invisible">
+            android:visibility="gone">
             <CheckBox
         android:id="@+id/all_events"
         android:layout_width="wrap_content"
@@ -186,7 +186,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/event_types"
-                android:visibility="invisible">
+                android:visibility="gone">
                 <CheckBox
                     android:id="@+id/all_event_types"
                     android:layout_width="wrap_content"
@@ -200,7 +200,7 @@
                     android:id="@+id/conference"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/music"
+                    android:text="@string/conference"
                     android:layout_below="@id/all_event_types"
                     android:textColor="@color/Text_title" />
 
@@ -210,8 +210,8 @@
                     android:id="@+id/seminar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/buisness"
-                    android:layout_below="@id/all_event_types"
+                    android:text="@string/seminar"
+                    android:layout_below="@id/conference"
                     android:textColor="@color/Text_title" />
 
 
@@ -220,7 +220,7 @@
                     android:id="@+id/other"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/food_drink"
+                    android:text="@string/other"
                     android:layout_below="@id/seminar"
                     android:textColor="@color/Text_title" />
 

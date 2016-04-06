@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -18,6 +19,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -25,6 +29,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.gson.Gson;
 import com.ht.event.R;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -39,7 +44,15 @@ import com.ht.event.model.User;
 import com.ht.event.utils.Config;
 import com.ht.event.utils.EventsPreferences;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.InputStream;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 public class RegistrationActivity extends AppCompatActivity implements View.OnClickListener,
         GoogleApiClient.OnConnectionFailedListener {
@@ -93,26 +106,60 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
         //setting  facebook loginButton
         logInButton = (LoginButton) findViewById(R.id.login_button);
-        logInButton.setReadPermissions("user_friends");
+        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("email", "public_profile", "user_friends"));
+        logInButton.setReadPermissions();
         logInButton.registerCallback(mcallbackManager, new FacebookCallback<LoginResult>() {
-
+        Gson gson = new Gson();
             @Override
-            public void onSuccess(LoginResult loginResult) {
+            public void onSuccess(final LoginResult loginResult) {
+                GraphRequest request = GraphRequest.newMeRequest(
+                        loginResult.getAccessToken(),
+                        new GraphRequest.GraphJSONObjectCallback() {
 
-                System.out.println("Facebook Login Successful!");
-                System.out.println("Logged in user Details : ");
-                System.out.println("--------------------------");
-                System.out.println("User ID  : " + loginResult.getAccessToken().getUserId());
-                System.out.println("Authentication Token : " + loginResult.getAccessToken().getToken());
-                System.out.println("User Name : " + loginResult.getClass());
+                            @Override
+                            public void onCompleted(
+                                    JSONObject object,
+                                    GraphResponse response) {
+                                try {
+                                    String userImage = object.getJSONObject("picture").getJSONObject("data").getString("url");
+                                    String name = object.getString("name");
+                                    String email = object.getString("email");
+                                    User user = new User();
+                                    user.setName(name);
+                                    user.setEmail(email);
+                                    user.setImage(userImage);
+                                EventsPreferences.saveUser(RegistrationActivity.this,user);
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
 
-                Profile profile = Profile.getCurrentProfile();
+                                System.out.println(object.toString());
+                                Log.e("GraphResponse", "-------------" + response.toString());
 
-                if (profile != null) {
-                    mTextDetail.setText("WELCOME" + profile.getName());
 
-                }
+
+                            }
+                        });
+                Bundle parameters = new Bundle();
+                parameters.putString("fields", "id,link,name,email,picture");
+                request.setParameters(parameters);
+                request.executeAsync();
             }
+
+//                System.out.println("Facebook Login Successful!");
+//                System.out.println("Logged in user Details : ");
+//                System.out.println("--------------------------");
+//                System.out.println("User ID  : " + loginResult.getAccessToken().getUserId());
+//                System.out.println("Authentication Token : " + loginResult.getAccessToken().getToken());
+//                System.out.println("User Name : " + loginResult.getClass());
+//
+//                Profile profile = Profile.getCurrentProfile();
+//
+//                if (profile != null) {
+//                    mTextDetail.setText("WELCOME" + profile.getName());
+//
+//                }
+
 
             @Override
             public void onCancel() {

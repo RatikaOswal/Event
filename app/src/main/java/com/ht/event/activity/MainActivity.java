@@ -90,13 +90,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         imgLoader.init(config);
 
         RelativeLayout drawerImage =(RelativeLayout)headerView.findViewById(R.id.containerDrawerImage);
-               drawerImage .setOnClickListener(new View.OnClickListener() {
-                   @Override
-                   public void onClick(View v) {
-                       Intent intent = new Intent(MainActivity.this, UserProfileActivity.class);
-                       startActivity(intent);
-                   }
-               });
+        if (user.getEmail()!=null) {
+            drawerImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this, UserProfileActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
         //Setting User name
          TextView userName = (TextView) headerView.findViewById(R.id.textViewUserName);
 

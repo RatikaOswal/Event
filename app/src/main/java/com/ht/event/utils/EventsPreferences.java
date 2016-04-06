@@ -222,6 +222,7 @@ public class EventsPreferences {
         SharedPreferences mPrefs = context.getSharedPreferences(REGISTERED_INFO, 0);
         SharedPreferences.Editor editor = mPrefs.edit();
         editor.remove(REGISTERED_LIST);
+        editor.commit();
 
 
     }

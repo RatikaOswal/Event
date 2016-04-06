@@ -134,15 +134,13 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                                     user.setEmail(email);
                                     user.setImage(userImage);
                                     EventsPreferences.saveUser(RegistrationActivity.this, user);
-                                    counter = counter++;
 
-                                    if(counter == 3) {
                                         RegistrationActivity.this.finish();
                                         Intent intent = new Intent(RegistrationActivity.this, AttendeesInfoActivity.class);
                                         intent.putExtra(Config.ITEM_INTENT_OBJECT, eventIntentObject);
                                         startActivity(intent);
 
-                                    }
+
 
                                 } catch (JSONException e) {
                                     e.printStackTrace();

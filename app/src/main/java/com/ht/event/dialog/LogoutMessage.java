@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.Intent;
 import android.net.wifi.WifiConfiguration;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 
@@ -19,13 +21,17 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.ht.event.R;
+import com.ht.event.activity.MainActivity;
 import com.ht.event.activity.RegistrationActivity;
+import com.ht.event.model.Event;
+import com.ht.event.utils.Config;
 import com.ht.event.utils.EventsPreferences;
 
 public class LogoutMessage extends DialogFragment implements
         android.view.View.OnClickListener {
     private Activity c;
     private TextView cancel, logout;
+    private Event event;
 
 
     public LogoutMessage(Activity c) {
@@ -36,6 +42,7 @@ public class LogoutMessage extends DialogFragment implements
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         super.onCreateDialog(savedInstanceState);
         //setting google
+        event = (Event) getActivity().getIntent().getSerializableExtra(Config.ITEM_INTENT_OBJECT);
        // RegistrationActivity.mGoogleApiClient.isConnected();
         Dialog d = new Dialog(c);
         d.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -65,21 +72,33 @@ public class LogoutMessage extends DialogFragment implements
                 signOut();
                 Toast.makeText(LogoutMessage.this.getActivity(), "Successfully Logout ", Toast.LENGTH_SHORT).show();
                 getDialog().dismiss();
+                Intent intent = new Intent(LogoutMessage.this.getActivity(),MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra(Config.ITEM_INTENT_OBJECT, event);
+                startActivity(intent);
                 break;
+
+
 
 
         }
     }
 
     private void signOut() {
-        if (RegistrationActivity.mGoogleApiClient.isConnected())
-        Auth.GoogleSignInApi.signOut(RegistrationActivity.mGoogleApiClient).setResultCallback(
-                new ResultCallback<Status>() {
-                    @Override
-                    public void onResult(Status status) {
+        if (RegistrationActivity.mGoogleApiClient.isConnected()) {
+            Auth.GoogleSignInApi.signOut(RegistrationActivity.mGoogleApiClient).setResultCallback(
+                    new ResultCallback<Status>() {
+                        @Override
+                        public void onResult(Status status) {
 
-                    }
-                });
+                        }
+                    });
+
+        }else
+        {
+            LoginManager.getInstance().logOut();
+
+        }
         EventsPreferences.deleteUserInfo(LogoutMessage.this.getActivity());
         EventsPreferences.delTickets(LogoutMessage.this.getActivity());
     }

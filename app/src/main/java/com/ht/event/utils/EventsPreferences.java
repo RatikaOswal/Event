@@ -37,12 +37,7 @@ public class EventsPreferences {
             SharedPreferences mPrefs = context.getSharedPreferences(USER_INFO, 0);
 
             SharedPreferences.Editor editor = mPrefs.edit();
-            editor.remove(NAME);
-            editor.remove(EMAIL);
-            editor.remove(PHONENO);
-            editor.remove(ORGANIZATIONNAME);
-            editor.remove(ORGWEBSITE);
-            editor.remove(IMAGE);
+
             // conversion gson to json
             Gson gson = new Gson();
 
@@ -103,6 +98,25 @@ public class EventsPreferences {
         }
 
         return null;
+    }
+
+    public static void deleteUserInfo(Context context) {
+        try {
+            SharedPreferences mPrefs = context.getSharedPreferences(USER_INFO, 0);
+            SharedPreferences.Editor editor = mPrefs.edit();
+
+            editor.remove(NAME);
+            editor.remove(EMAIL);
+            editor.remove(PHONENO);
+            editor.remove(ORGANIZATIONNAME);
+            editor.remove(ORGWEBSITE);
+            editor.remove(IMAGE);
+            editor.commit();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 

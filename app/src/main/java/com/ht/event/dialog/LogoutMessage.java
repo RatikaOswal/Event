@@ -18,6 +18,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.ht.event.R;
+import com.ht.event.utils.EventsPreferences;
 
 public class LogoutMessage extends DialogFragment implements
         android.view.View.OnClickListener {
@@ -70,8 +71,10 @@ public class LogoutMessage extends DialogFragment implements
                 new ResultCallback<Status>() {
                     @Override
                     public void onResult(Status status) {
-                       
+
                     }
                 });
+        EventsPreferences.deleteUserInfo(LogoutMessage.this.getActivity());
     }
+
 }

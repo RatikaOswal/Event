@@ -10,6 +10,8 @@ import com.ht.event.model.Event;
 import com.ht.event.model.EventList;
 
 
+import com.ht.event.model.Session;
+import com.ht.event.model.SessionList;
 import com.ht.event.model.User;
 
 import java.util.ArrayList;
@@ -22,6 +24,8 @@ public class EventsPreferences {
     public static final String TICKETID_INFO = "ticketIdInfo";
     public static final String REGISTERED_LIST = "registeredList";
     public static final String TICKETID_LIST = "ticketIdList";
+    public static final String SESSION_LIST = "sessionList";
+    public static final String SESSION_INFO = "sessionInfo";
     public static final String NAME = "name";
     public static final String EMAIL = "email";
     public static final String IMAGE = "image";
@@ -239,6 +243,42 @@ public class EventsPreferences {
 
         SharedPreferences mPrefs = context.getSharedPreferences(TICKETID_INFO, 0);
         return mPrefs.getString(TICKETID_LIST, null);
+
+    }
+
+    private static void saveSession(Context context,Session sEvent){
+        String saveSessionListInStr = getSaveSession(context);
+        Gson gson = new Gson();
+        if (saveSessionListInStr == null) {
+            ArrayList<Session> registeredSessionArrayList = new ArrayList<Session>();
+            registeredSessionArrayList.add(sEvent);
+            SessionList registeredList = new SessionList();
+            registeredList.setSession(registeredSessionArrayList);
+            String itemListInString = gson.toJson(registeredList);
+            SharedPreferences mPrefs = context.getSharedPreferences(SESSION_INFO, 0);
+            SharedPreferences.Editor editor = mPrefs.edit();
+            editor.putString(SESSION_LIST, itemListInString);
+            editor.commit();
+        } else {
+            SessionList registeredSessionList = gson.fromJson(saveSessionListInStr, SessionList.class);
+            ArrayList<Session> registeredItemArrayList = registeredSessionList.getSession();
+            registeredItemArrayList.add(sEvent);
+            registeredSessionList.setSession(registeredItemArrayList);
+
+            String itemListInString = gson.toJson(registeredSessionList);
+            SharedPreferences mPrefs = context.getSharedPreferences(SESSION_INFO, 0);
+            SharedPreferences.Editor editor = mPrefs.edit();
+            editor.putString(SESSION_LIST, itemListInString);
+            editor.commit();
+
+
+        }
+    }
+
+    public static String getSaveSession(Context context) {
+
+        SharedPreferences mPrefs = context.getSharedPreferences(SESSION_INFO, 0);
+        return mPrefs.getString(SESSION_LIST, null);
 
     }
 }

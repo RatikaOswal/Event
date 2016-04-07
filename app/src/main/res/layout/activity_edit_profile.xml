@@ -175,6 +175,15 @@
             android:theme="@style/EditTextTheme"
             />
             </LinearLayout>
+
+    <ImageView
+        android:id="@+id/picEdit"
+        android:background="@drawable/ic_camera"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_alignBottom="@+id/circleImageViewProfilePicture"
+        android:layout_toRightOf="@+id/circleImageViewProfilePicture"
+        android:layout_toEndOf="@+id/circleImageViewProfilePicture" />
 </RelativeLayout>
 
         </ScrollView>

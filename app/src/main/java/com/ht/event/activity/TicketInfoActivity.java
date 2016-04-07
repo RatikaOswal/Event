@@ -14,6 +14,7 @@ import com.ht.event.adapter.ProfilePagerAdapter;
 import com.ht.event.adapter.TicketInfoAdapter;
 import com.ht.event.model.Event;
 import com.ht.event.utils.Config;
+import com.ht.event.utils.Share;
 
 public class TicketInfoActivity extends AppCompatActivity {
     private Event event;
@@ -54,11 +55,16 @@ public class TicketInfoActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == android.R.id.home) {
-            onBackPressed();
-            return true;
+        switch (id){
+            case android.R.id.home:
+                onBackPressed();
+            break;
+            case R.id.share_ic:
+                Share.shareItem(this,"");
+                break;
+            case R.id.calender:
+                break;
         }
-
         return super.onOptionsItemSelected(item);
 
     }

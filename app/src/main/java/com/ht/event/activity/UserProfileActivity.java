@@ -1,7 +1,11 @@
 package com.ht.event.activity;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +13,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ht.event.R;
 import com.ht.event.adapter.ProfilePagerAdapter;
@@ -24,13 +31,14 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class UserProfileActivity extends AppCompatActivity {
+public class UserProfileActivity extends AppCompatActivity  {
 
-   private TextView userName;
-   private LogoutMessage logoutMessage;
+    private TextView userName;
+    private LogoutMessage logoutMessage;
     private CircleImageView profilePicture;
     private ImageLoader imgLoader;
-    public Event bookmarkedinfo;
+
+
 
 
 
@@ -52,18 +60,20 @@ public class UserProfileActivity extends AppCompatActivity {
         viewPager.setAdapter(new ProfilePagerAdapter(getSupportFragmentManager()));
         tabLayout.setupWithViewPager(viewPager);
 
-        profilePicture = (CircleImageView)findViewById(R.id.circleImageViewProfilePicture);
+
+
+        profilePicture = (CircleImageView) findViewById(R.id.circleImageViewProfilePicture);
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
         imgLoader = com.nostra13.universalimageloader.core.ImageLoader.getInstance();
         imgLoader.init(config);
 
-        userName = (TextView)findViewById(R.id.ProfileUserName);
-        User user = EventsPreferences.getUser(this);
+        userName = (TextView) findViewById(R.id.ProfileUserName);
+       User user = EventsPreferences.getUser(this);
         String imageUrl = user.getImage();
 
-        if(user.getEmail() != null){
+        if (user.getEmail() != null) {
             userName.setText(user.getName());
-            imgLoader.displayImage(imageUrl,profilePicture);
+            imgLoader.displayImage(imageUrl, profilePicture);
 
 
         }
@@ -79,9 +89,9 @@ public class UserProfileActivity extends AppCompatActivity {
             return true;
         }
 
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.action_edit_profile:
-                Intent intent =new Intent(this,UserProfileEditActivity.class);
+                Intent intent = new Intent(this, UserProfileEditActivity.class);
                 startActivity(intent);
                 return true;
 
@@ -94,8 +104,6 @@ public class UserProfileActivity extends AppCompatActivity {
                 logoutMessage.show(this.getFragmentManager(), "logout");
 
 
-
-
         }
 
         return super.onOptionsItemSelected(item);
@@ -104,12 +112,11 @@ public class UserProfileActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_user_profile,menu);
+        inflater.inflate(R.menu.menu_user_profile, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
 
 }
-
 
 

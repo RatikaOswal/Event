@@ -25,8 +25,12 @@ import com.ht.event.R;
 import com.ht.event.model.User;
 import com.ht.event.scanner.ZBarConstants;
 import com.ht.event.scanner.ZBarScannerActivity;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import net.sourceforge.zbar.Symbol;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,9 +39,11 @@ public class ScannerFragment extends Fragment implements View.OnClickListener {
     private View view;
     private Button scan,scanAgain;
     private LinearLayout layout;
+    private CircleImageView image;
     private TextView name,contact,email,organisation;
     private static final int ZBAR_SCANNER_REQUEST = 0;
     private static final int ZBAR_QR_SCANNER_REQUEST = 1;
+
 
     private RelativeLayout resultLayout;
 
@@ -71,6 +77,8 @@ public class ScannerFragment extends Fragment implements View.OnClickListener {
         organisation = (TextView)view.findViewById(R.id.userOrg);
         resultLayout = (RelativeLayout)view.findViewById(R.id.resultLayout);
         layout = (LinearLayout)view.findViewById(R.id.layout);
+        image = (CircleImageView)view.findViewById(R.id.circleImageView);
+
         scan.setOnClickListener(this);
         scanAgain.setOnClickListener(this);
 
@@ -105,6 +113,15 @@ public class ScannerFragment extends Fragment implements View.OnClickListener {
                     organisation.setText(user.getOrganisation());
                     resultLayout.setVisibility(View.VISIBLE);
                     scanAgain.setOnClickListener(this);
+
+                    //Image loader
+                    String imageUrl=user.getImage();
+                    ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getActivity()).build();
+                    ImageLoader imgLoader = ImageLoader.getInstance();
+                    imgLoader.init(config);
+                    imgLoader.displayImage(imageUrl, image);
+
+
                   //  Toast.makeText(getActivity(), "Scan Result = "+ data.getStringExtra(ZBarConstants.SCAN_RESULT), Toast.LENGTH_SHORT).show();
                 } else if(resultCode == getActivity().RESULT_CANCELED && data != null) {
                     String error = data.getStringExtra(ZBarConstants.ERROR_INFO);

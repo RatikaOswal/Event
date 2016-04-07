@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -125,11 +126,13 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:textSize="15sp"
+            android:text="+91kddjfk"
             android:textColor="@color/Text_time"
             android:paddingBottom="5dp"
-            android:layout_below="@+id/userEmail"
-            android:layout_toRightOf="@+id/userEmail"
-             />
+            android:layout_alignTop="@+id/Phone"
+            android:layout_alignLeft="@+id/userEmail"
+            android:layout_alignStart="@+id/userEmail"
+           />
         <TextView
             android:id="@+id/Org"
             android:layout_below="@+id/Phone"
@@ -157,6 +160,19 @@
 
         </TextView>
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleImageView"
+            android:icon="@drawable/user_icon"
+            android:title="@string/username"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_account_circle"
+            app:border_width="2dp"
+            android:paddingTop="10dp"
+            android:layout_marginTop="31dp"
+            app:border_color="@color/border"
+            android:layout_below="@+id/Org"
+            android:layout_centerHorizontal="true" />
         <Button
             android:id="@+id/qrscan_btn_again"
             android:layout_height="wrap_content"

@@ -44,6 +44,7 @@
         app:border_color="@color/border"
         android:layout_centerHorizontal="true" />
 
+
     <TextView
         android:id="@+id/ProfileUserName"
         android:layout_width="wrap_content"

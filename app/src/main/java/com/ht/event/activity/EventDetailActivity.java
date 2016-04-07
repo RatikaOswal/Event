@@ -226,7 +226,7 @@ public void onClick(View v) {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         ArrayList<Event> bookmarkedArrayList=null;
-        MenuItem BookmarkItem;
+
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_discription_of_item, menu);
         BookmarkItem = menu.findItem(R.id.bookmark_ic);

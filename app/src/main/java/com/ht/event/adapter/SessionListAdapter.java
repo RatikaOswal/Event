@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.ht.event.R;
 import com.ht.event.dialog.MoreInfoMessage;
+import com.ht.event.model.Event;
 import com.ht.event.model.Session;
 
 import java.util.ArrayList;
@@ -79,17 +80,33 @@ public class SessionListAdapter extends RecyclerView.Adapter<SessionListAdapter.
         private CheckBox checkBox;
         ArrayList<Session> session=new ArrayList<Session>();
 
+
         public ViewHolderSessionList(View itemView) {
             super(itemView);
             moreInfo= (TextView)itemView.findViewById(R.id.moreInfo);
             title = (TextView)itemView.findViewById(R.id.sessionName);
             price = (TextView)itemView.findViewById(R.id.sessionPrice);
             checkBox = (CheckBox)itemView.findViewById(R.id.checkBox);
+            checkBox.setOnClickListener(this);
+
+
 
         }
 
         @Override
         public void onClick(View v) {
+            int id = v.getId();
+            switch (id){
+                case R.id.checkBox:
+                    int position = getAdapterPosition();
+                    Session session = this.session.get(position);
+                    if(session.isChecked())
+                    {
+                    }
+                    break;
+
+            }
+
 
 
         }

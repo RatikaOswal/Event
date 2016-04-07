@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:visibility="visible"
+        android:visibility="invisible"
 
 
         >
@@ -57,10 +57,22 @@
             android:text="@string/scan"
 
             />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleImageView"
+            android:icon="@drawable/user_icon"
+            android:title="@string/username"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_account_circle"
+            app:border_width="2dp"
+            android:layout_marginTop="40dp"
+            app:border_color="@color/border"
+            android:layout_alignTop="@+id/scan"
+            android:layout_centerHorizontal="true" />
 
         <TextView
             android:id="@+id/Name"
-            android:layout_below="@+id/scan"
+            android:layout_below="@+id/circleImageView"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:textSize="15sp"
@@ -69,6 +81,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:paddingBottom="5dp"
+            android:paddingTop="10dp"
 
             />
         <TextView
@@ -76,13 +89,13 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:textSize="15sp"
+            android:paddingTop="10dp"
             android:text="@string/userName"
             android:textColor="@color/Text_time"
-            android:layout_below="@id/scan"
-            android:layout_toRightOf="@id/Name"
-            android:layout_toEndOf="@id/Name"
-            android:layout_marginLeft="5dp"
-            android:paddingBottom="5dp"/>
+            android:paddingBottom="5dp"
+            android:layout_below="@+id/circleImageView"
+            android:layout_toRightOf="@+id/Name"
+            android:layout_toEndOf="@+id/Name" />
 
         <TextView
             android:id="@+id/Email"
@@ -129,10 +142,9 @@
             android:text="+91kddjfk"
             android:textColor="@color/Text_time"
             android:paddingBottom="5dp"
-            android:layout_alignTop="@+id/Phone"
-            android:layout_alignLeft="@+id/userEmail"
-            android:layout_alignStart="@+id/userEmail"
-           />
+            android:layout_below="@+id/userEmail"
+            android:layout_toRightOf="@+id/userName"
+            android:layout_toEndOf="@+id/userName" />
         <TextView
             android:id="@+id/Org"
             android:layout_below="@+id/Phone"
@@ -160,19 +172,7 @@
 
         </TextView>
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/circleImageView"
-            android:icon="@drawable/user_icon"
-            android:title="@string/username"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@drawable/ic_account_circle"
-            app:border_width="2dp"
-            android:paddingTop="10dp"
-            android:layout_marginTop="31dp"
-            app:border_color="@color/border"
-            android:layout_below="@+id/Org"
-            android:layout_centerHorizontal="true" />
+
         <Button
             android:id="@+id/qrscan_btn_again"
             android:layout_height="wrap_content"

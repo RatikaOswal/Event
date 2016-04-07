@@ -10,7 +10,16 @@ public class Session implements Serializable {
     private String price;
     private String startTime;
     private String endTime;
+    private boolean isChecked;
     private ArrayList<Speaker> speakerList;
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setIsChecked(boolean isChecked) {
+        this.isChecked = isChecked;
+    }
 
     public String getTitle() {
         return title;

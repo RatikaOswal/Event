@@ -68,6 +68,7 @@ public class EventsPreferences {
             }
             if (image != null)
             {
+                System.out.print("PREFERENCES "+image);
                 editor.putString(IMAGE, image);
             }
             editor.commit();

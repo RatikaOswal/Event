@@ -68,11 +68,12 @@ public class UserProfileActivity extends AppCompatActivity  {
         imgLoader.init(config);
 
         userName = (TextView) findViewById(R.id.ProfileUserName);
-       User user = EventsPreferences.getUser(this);
+        User user = EventsPreferences.getUser(this);
         String imageUrl = user.getImage();
 
         if (user.getEmail() != null) {
             userName.setText(user.getName());
+            System.out.print("Imager Url "+imageUrl);
             imgLoader.displayImage(imageUrl, profilePicture);
 
 

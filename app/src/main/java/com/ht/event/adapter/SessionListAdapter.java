@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.ht.event.R;
@@ -52,6 +53,7 @@ public class SessionListAdapter extends RecyclerView.Adapter<SessionListAdapter.
     public void onBindViewHolder(final ViewHolderSessionList holder, int position) {
 
         final Session current = session.get(position);
+
         holder.bind(current);
         holder.moreInfo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,16 +79,29 @@ public class SessionListAdapter extends RecyclerView.Adapter<SessionListAdapter.
         private TextView moreInfo;
         private Context context;
         private CheckBox checkBox;
+        private int position;
         ArrayList<Session> session=new ArrayList<Session>();
 
         public ViewHolderSessionList(View itemView) {
             super(itemView);
+            session.get(position);
             moreInfo= (TextView)itemView.findViewById(R.id.moreInfo);
             title = (TextView)itemView.findViewById(R.id.sessionName);
             price = (TextView)itemView.findViewById(R.id.sessionPrice);
             checkBox = (CheckBox)itemView.findViewById(R.id.checkBox);
 
+            checkBox.setOnCheckedChangeListener(myCheckChangeListener);
+            checkBox.setTag(position);
+            checkBox.setChecked();
         }
+        CompoundButton.OnCheckedChangeListener myCheckChangeListener = new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+            }
+        };
+
+
 
         @Override
         public void onClick(View v) {

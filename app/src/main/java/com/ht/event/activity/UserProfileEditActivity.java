@@ -31,6 +31,8 @@ public class UserProfileEditActivity extends AppCompatActivity implements View.O
     private String imgDecodableString;
     private User user;
     private ImageView profilePic,editPic ;
+    ImageLoader imgLoader;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +54,7 @@ public class UserProfileEditActivity extends AppCompatActivity implements View.O
         editPic.setOnClickListener(this);
 
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this).build();
-        ImageLoader imgLoader = ImageLoader.getInstance();
+        imgLoader = ImageLoader.getInstance();
         imgLoader.init(config);
 
         user = EventsPreferences.getUser(UserProfileEditActivity.this);
@@ -107,14 +109,22 @@ public class UserProfileEditActivity extends AppCompatActivity implements View.O
                 cursor.moveToFirst();
 
                 int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+
                 imgDecodableString = cursor.getString(columnIndex);
-                user.setImage(imgDecodableString);
+               // System.out.println("image display 2" + imgDecodableString + "URI PATH " + selectedImage);
+                user.setImage(selectedImage.toString());
+                imgLoader.displayImage(selectedImage.toString(), profilePic);
+
+//                profilePic.setImageBitmap(BitmapFactory
+//                        .decodeFile(imgDecodableString));
                 EventsPreferences.saveUser(UserProfileEditActivity.this, user);
+                user = EventsPreferences.getUser(UserProfileEditActivity.this);
+                Toast.makeText(UserProfileEditActivity.this, "Profile Picture Saved", Toast.LENGTH_SHORT).show();
                 cursor.close();
 
+
                 // Set the Image in ImageView after decoding the String
-                profilePic.setImageBitmap(BitmapFactory
-                        .decodeFile(imgDecodableString));
+
 
 
             } else {

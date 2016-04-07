@@ -136,6 +136,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                                     EventsPreferences.saveUser(RegistrationActivity.this, user);
 
                                         RegistrationActivity.this.finish();
+                                        System.out.println("FB success");
                                         Intent intent = new Intent(RegistrationActivity.this, AttendeesInfoActivity.class);
                                         intent.putExtra(Config.ITEM_INTENT_OBJECT, eventIntentObject);
                                         startActivity(intent);
@@ -231,9 +232,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        mcallbackManager.onActivityResult(requestCode, resultCode, data);
         //System.out.println("onActivityResult" + requestCode + "resultCode" + resultCode);
-        mcallbackManager.onActivityResult(requestCode, resultCode, data);
+//        mcallbackManager.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_RESOLVE_ERR) {
             if (resultCode != RESULT_OK) {
                 mSignInClicked = false;
@@ -249,6 +249,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             if (!mGoogleApiClient.isConnecting()) {
                 mGoogleApiClient.connect();
             }
+        }else{
+            mcallbackManager.onActivityResult(requestCode, resultCode, data);
         }
 
     }

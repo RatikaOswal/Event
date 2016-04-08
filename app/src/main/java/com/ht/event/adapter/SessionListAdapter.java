@@ -93,19 +93,7 @@ public class SessionListAdapter extends RecyclerView.Adapter<SessionListAdapter.
             checkBox = (CheckBox)itemView.findViewById(R.id.checkBox);
             checkBox.setOnClickListener(this);
 
-
-
-            checkBox.setOnCheckedChangeListener(myCheckChangeListener);
-            checkBox.setTag(position);
-            checkBox.setChecked();
         }
-        CompoundButton.OnCheckedChangeListener myCheckChangeListener = new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-
-            }
-        };
-
 
 
         @Override
@@ -115,8 +103,9 @@ public class SessionListAdapter extends RecyclerView.Adapter<SessionListAdapter.
                 case R.id.checkBox:
                     int position = getAdapterPosition();
                     Session session = this.session.get(position);
-                    if(session.isChecked())
+                    if(checkBox.isChecked())
                     {
+                        this.session.get(position).setIsChecked(true);
                     }
                     break;
 

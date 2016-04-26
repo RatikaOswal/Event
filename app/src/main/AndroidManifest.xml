@@ -14,10 +14,9 @@
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-        />
-
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    />
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
     <uses-feature
@@ -133,6 +132,10 @@
             android:name=".activity.OrganisationDescriptionActivity"
             android:label="@string/title_activity_organisation_description" />
         <activity android:name=".activity.AddressLocationActivity" />
+        <activity
+            android:name=".activity.EventScheduleActivity"
+            android:label="@string/title_activity_event_schedule"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

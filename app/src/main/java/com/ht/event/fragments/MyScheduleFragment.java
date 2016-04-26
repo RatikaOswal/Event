@@ -19,6 +19,7 @@ import com.ht.event.R;
 import com.ht.event.activity.MainActivity;
 import com.ht.event.adapter.ExploreItemListAdp;
 import com.ht.event.adapter.RegisteredListAdapter;
+import com.ht.event.adapter.ScheduleListAdapter;
 import com.ht.event.model.Event;
 import com.ht.event.model.EventList;
 import com.ht.event.model.Scheduler;
@@ -31,7 +32,7 @@ import java.util.ArrayList;
 public class MyScheduleFragment extends Fragment implements View.OnClickListener {
     private ArrayList<Event> eventitem;
     private RecyclerView mListView;
-    private RegisteredListAdapter registeredListAdap;
+    private ScheduleListAdapter scheduleListAdap;
     private View view;
     private TextView discover;
     private String item;
@@ -68,8 +69,8 @@ public class MyScheduleFragment extends Fragment implements View.OnClickListener
         item = EventsPreferences.getRegistered(getActivity());
         EventList eventList = gson.fromJson(item, EventList.class);
         if (item != null) {
-            registeredListAdap= new RegisteredListAdapter(getActivity(), eventList.getData());
-            mListView.setAdapter(registeredListAdap);
+            scheduleListAdap= new ScheduleListAdapter(getActivity(), eventList.getData());
+            mListView.setAdapter(scheduleListAdap);
             //  display();
             relativeLayout.setVisibility(View.GONE);
             mListView.setVisibility(View.VISIBLE);

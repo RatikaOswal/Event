@@ -114,6 +114,7 @@
     <string name="title">Title</string>
     <string name="title_activity_ticket_info">TicketInfo</string>
     <string name="title_activity_organisation_description">OrganisationDescription</string>
+    <string name="title_activity_event_schedule">EventScheduleActivity</string>
 
 
 </resources>

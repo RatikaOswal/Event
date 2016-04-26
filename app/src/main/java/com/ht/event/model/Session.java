@@ -21,7 +21,7 @@ public class Session implements Serializable {
         this.isChecked = isChecked;
     }
 
-    public String getTitle() {
+    public String getTitle(String s) {
         return title;
     }
 
@@ -29,7 +29,7 @@ public class Session implements Serializable {
         this.title = title;
     }
 
-    public String getVenue() {
+    public String getVenue(String s) {
         return venue;
     }
 
@@ -37,7 +37,7 @@ public class Session implements Serializable {
         this.venue = venue;
     }
 
-    public String getPrice() {
+    public String getPrice(String s) {
         return price;
     }
 

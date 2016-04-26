@@ -12,7 +12,18 @@ public class User implements Serializable{
     private String PhoneNo;
     private String Organisation;
     private String OrgWebsite;
+    private String Address;
     private String Image;
+
+    public String getAddress() {
+        return Address;
+    }
+
+    public void setAddress(String address) {
+        Address = address;
+    }
+
+
 
     public String getImage() {
         return Image;

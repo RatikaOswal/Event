@@ -2,20 +2,16 @@ package com.ht.event.adapter;
 
 
 import android.app.Activity;
-import android.app.Notification;
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.ht.event.R;
 import com.ht.event.dialog.MoreInfoMessage;
-import com.ht.event.model.Event;
 import com.ht.event.model.Session;
 
 import java.util.ArrayList;
@@ -55,7 +51,7 @@ public class SessionListAdapter extends RecyclerView.Adapter<SessionListAdapter.
 
         final Session current = session.get(position);
 
-        holder.bind(current);
+        //holder.bind(current);
         holder.moreInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,13 +110,10 @@ public class SessionListAdapter extends RecyclerView.Adapter<SessionListAdapter.
 
 
         }
-        public void bind(Session session){
-            title.setText(session.getTitle());
-            price.setText(session.getPrice());
+       // public void bind(Session session){
+          //  title.setText(session.getTitle(title[i]));
+          //  price.setText(session.getPrice(price[i]));
         }
     }
-
-
-}
 
 

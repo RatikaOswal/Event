@@ -155,6 +155,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     return true;
             }
 
+            case R.id.map:
+            {
+                Intent intent =new Intent(this,MapActivity.class);
+                startActivity(intent);
+                return true;
+            }
+
         }
             return super.onOptionsItemSelected(item);
 

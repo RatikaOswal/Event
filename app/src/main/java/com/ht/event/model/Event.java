@@ -27,6 +27,24 @@ public class Event implements Serializable
     public String startTime;
     public String endTime;
     public String TicketId;
+    private ArrayList<Session>sessions;
+    private ArrayList<Scheduler>scheduler;
+
+    public void setSessions(ArrayList<Session> sessions) {
+        this.sessions = sessions;
+    }
+
+    public ArrayList<Session> getSessions() {
+        return sessions;
+    }
+
+    public ArrayList<Scheduler> getScheduler() {
+        return scheduler;
+    }
+
+    public void setScheduler(ArrayList<Scheduler> scheduler) {
+        this.scheduler = scheduler;
+    }
 
     public String getTicketId() {
         return TicketId;
@@ -34,16 +52,6 @@ public class Event implements Serializable
 
     public void setTicketId(String ticketId) {
         TicketId = ticketId;
-    }
-
-    private ArrayList<Session>sessions;
-
-    public ArrayList<Session> getSessions() {
-        return sessions;
-    }
-
-    public void setSessions(ArrayList<Session> sessions) {
-        this.sessions = sessions;
     }
 
     public boolean is_registered() {

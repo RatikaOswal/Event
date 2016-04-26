@@ -90,25 +90,25 @@ public class ExploreFragment extends Fragment  {
         String[] organisationName = {"Uk Trade & Investment", "Analytics.Club", "WeAreTheCity India", "TechHub", "University of Maryland"};
 
         ArrayList<Session> sessionList = new ArrayList<>();
-        Session sess1 = new Session();
-        sess1.setTitle("Session1");
-        sess1.setVenue("6th floor Room No. 356");
-        sess1.setPrice("free");
-        sessionList.add(sess1);
+        Session session1 = new Session();
+        session1.getTitle("session1");
+        session1.getVenue("6th floor Room No. 356");
+       session1.getPrice("free");
+        sessionList.add(session1);
 
-        Session sess2 = new Session();
-        sess2.setTitle("Session2");
-        sess2.setVenue("2nd floor Room No. 56");
-        sess2.setPrice("free");
-        sessionList.add(sess2);
+        Session session2 =new Session();
+        session2.getTitle("session2");
+        session2.getVenue("2nd floor Room No. 56");
+        session2.getPrice("free");
+        sessionList.add(session2);
 
-        Session sess3 = new Session();
-        sess3.setTitle("Session3");
-        sess3.setVenue("11th floor Audi");
-        sess3.setPrice("free");
-        sessionList.add(sess3);
+        Session session3 =new Session();
+        session3.getTitle("session2");
+        session3.getVenue("11th floor Audi");
+        session3.getPrice("free");
+        sessionList.add(session3);
 
-        for(int i=0;i<title.length && i<time.length&&i<venue.length&&i<icon.length && i<tag1.length && i<tag2.length && i<price.length ;i++)
+        for(int i=0;i<title.length;i++)
         {
             Event current=new Event();
             current.setId(id[i]);

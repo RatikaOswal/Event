@@ -44,6 +44,7 @@
     <string name="registerinfo">Click to LogIn</string>
     <string name="email">Email :</string>
     <string name="firstName">First Name</string>
+    <string name="address">Address</string>
     <string name="app_id">171135796238815</string>>
     <string name="search_event">Search Events</string>>
     <string name="apply">apply</string>
@@ -53,7 +54,7 @@
     <string name="message">Message</string>
     <string name="venue">Venue Name</string>
     <string name="venueAddress">Complete Address</string>
-    <string name="API_key">AIzaSyAi3gpVBC_egUEjIsEtAgkH0wqYHzp_EP8</string>
+    <string name="API_key">AIzaSyCHmoyZQDBtBzopCIkR-tkvvgqJigK55HA</string>
     <string name="textDiscription">Text Discription</string>
     <string name="dates">DATES</string>
     <string name="alldates">All Dates</string>
@@ -111,8 +112,8 @@
     <string name="title_activity_attendees_info">Attendees</string>
     <string name="title_activity_order_breakdown">Order Breakdown</string>
     <string name="title">Title</string>
-        <string name="title_activity_ticket_info">TicketInfo</string>
-        <string name="title_activity_organisation_description">OrganisationDescription</string>
+    <string name="title_activity_ticket_info">TicketInfo</string>
+    <string name="title_activity_organisation_description">OrganisationDescription</string>
 
 
 </resources>

@@ -19,9 +19,7 @@ import com.ht.event.utils.EventsPreferences;
 
 import java.util.ArrayList;
 
-/**
- * Created by RATIKA on 15-Mar-16.
- */
+
 public class RegisteredListAdapter extends RecyclerView.Adapter<RegisteredListAdapter.ViewHolderRegisteredList> {
     private LayoutInflater layoutInflater;
     private ArrayList<Event> eventitem;

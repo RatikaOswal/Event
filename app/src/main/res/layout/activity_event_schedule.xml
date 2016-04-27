@@ -7,10 +7,6 @@
     android:fitsSystemWindows="true"
     tools:context="com.ht.event.activity.EventScheduleActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -19,16 +15,84 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-    </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_event_schedule" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/schedule_list"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/fab_margin"
-        android:src="@android:drawable/ic_dialog_email" />
+        android:orientation="vertical"
+        android:layout_marginTop="?attr/actionBarSize">
+        <TextView
+            android:id="@+id/month"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/Text_time"
+            android:textAllCaps="true"
+            android:paddingLeft="150dp"
+            android:text="Month"
+            android:textSize="10sp"
+            android:textStyle="normal"
+            android:paddingBottom="7dp"
+            android:paddingTop="7dp"
+            android:layout_marginBottom="3dp"
+            android:background="@color/white"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/day"
+            android:text="Day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/Text_title"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:paddingLeft="160dp"
+            android:layout_below="@+id/month"
+            android:background="@color/white" />
+
+        <TextView
+            android:id="@+id/date"
+            android:text="Date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/Text_title"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            android:paddingLeft="150dp"
+            android:layout_marginBottom="3dp"
+            android:layout_below="@+id/day"
+            android:background="@color/white"/>
+
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Time"
+            android:textSize="25sp"
+            android:textColor="@color/transparent_black"
+            android:layout_marginTop="1dp"
+            android:layout_below="@id/date"
+            android:background="@color/transparent"
+            android:paddingLeft="10dp"
+            />
+
+        <TextView
+            android:id="@+id/detailing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Detailing"
+            android:textSize="25sp"
+            android:textColor="@color/transparent_black"
+            android:layout_marginTop="1dp"
+            android:layout_below="@id/time"
+            android:background="@color/white"
+            android:padding="50dp"
+            />
+    </RelativeLayout>
+
+
+
+
 
 </android.support.design.widget.CoordinatorLayout>
